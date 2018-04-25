@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BudgetBuddy" x:Class="BudgetBuddy.BudgetBuddyPage">
+<<<<<<< HEAD
     <Label Text="Welcome to Budget Buddy!" VerticalOptions="Center" HorizontalOptions="Center" />
     <Label Text="Hou Je Bek, Rene! Het is een goede naam!" VerticalOptions="Center" HorizontalOptions="Center" />
     <Button HorizontalOptions="Center" VerticalOptions="Center" Text="Click Me" Clicked="Handle_Clicked"></Button>
+=======
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Welcome to Budget Buddy!"  />
+        <Label Text="Hou Je Bek, Rene! Het is een goede naam!" x:Name="Rene" />
+        <Slider ValueChanged="Handle_ValueChanged" Maximum="100"/>
+        
+    </StackLayout>
+>>>>>>> 8e8aebf... * BudgetBuddyPage.xaml: Ik ben 55.15% Rene!
 </ContentPage>
