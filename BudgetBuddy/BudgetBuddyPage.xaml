@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BudgetBuddy" x:Class="BudgetBuddy.BudgetBuddyPage">
     <Label Text="Welcome to Budget Buddy!" VerticalOptions="Center" HorizontalOptions="Center" />
     <Label Text="Hou Je Bek, Rene! Het is een goede naam!" VerticalOptions="Center" HorizontalOptions="Center" />
+=======
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:BudgetBuddy" 
+    x:Class="BudgetBuddy.BudgetBuddyPage">
+    <Label 
+    Text="Welcome to Budget Buddy!" 
+    VerticalOptions="End" 
+    HorizontalOptions="Center"/>
+    <Button HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Text="Click Me"
+            Clicked="Handle_Clicked"></Button>
+>>>>>>> 7439111... Added button
 </ContentPage>

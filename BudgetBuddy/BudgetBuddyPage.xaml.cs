@@ -8,5 +8,10 @@ namespace BudgetBuddy
         {
             InitializeComponent();
         }
+
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            DisplayAlert("Welcome", "This is Budget Buddy", "OK");
+        }
     }
 }
