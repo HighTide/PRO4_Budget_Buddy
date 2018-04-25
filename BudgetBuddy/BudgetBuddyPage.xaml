@@ -16,9 +16,44 @@
         <Slider ValueChanged="Handle_ValueChanged" Maximum="100"/>
         <Picker x:Name="IndustryTypePicker1" SelectedIndex="{Binding Industry}" HorizontalOptions="FillAndExpand">
         <Picker.Items>
-                <x:String>"Rood"</x:String> 
-                <x:String>"Wit"</x:String>
-                <x:String>"Blauw"</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+                <x:String>Kleding</x:String> 
+                <x:String>Eten</x:String>
+                <x:String>Drinken</x:String>
+
+
+               
+
+
         </Picker.Items>
     </Picker> 
     </StackLayout>
