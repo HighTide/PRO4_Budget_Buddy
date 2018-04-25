@@ -11,7 +11,7 @@ namespace BudgetBuddy
 
         void Handle_Clicked(object sender, System.EventArgs e)
         {
-            DisplayAlert("Welcome", "This is Budget Buddy", "OK");
+            DisplayAlert("Budget Buddy", "Test", "OK");
         }
     }
 }
