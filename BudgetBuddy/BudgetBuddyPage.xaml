@@ -7,12 +7,19 @@
                 Text="Welcome to Budget Buddy!"
                 TextColor="Lime">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Text_Click}" />
+                        <TapGestureRecognizer Command="{Binding Text_Click}"  />
                     </Label.GestureRecognizers>
         </Label>
 
         
         <Label Text="Hou Je Bek, Rene! Het is een goede naam!" x:Name="Rene" />
         <Slider ValueChanged="Handle_ValueChanged" Maximum="100"/>
+        <Picker x:Name="IndustryTypePicker1" SelectedIndex="{Binding Industry}" HorizontalOptions="FillAndExpand">
+        <Picker.Items>
+                <x:String>"Rood"</x:String> 
+                <x:String>"Wit"</x:String>
+                <x:String>"Blauw"</x:String>
+        </Picker.Items>
+    </Picker> 
     </StackLayout>
 </ContentPage>
