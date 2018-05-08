@@ -8,7 +8,7 @@ namespace BudgetBuddy
         {
             InitializeComponent();
 
-            MainPage = new BudgetBuddyPage();
+            MainPage = new NavigationPage(new BudgetBuddyPage());
         }
 
         protected override void OnStart()
