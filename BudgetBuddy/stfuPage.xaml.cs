@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using SQLite;
 
 namespace BudgetBuddy
 {
@@ -11,5 +12,10 @@ namespace BudgetBuddy
         {
             InitializeComponent();
         }
+
+        async void Handle_Clicked(object sender, System.EventArgs e)
+		{
+			await Navigation.PushAsync(new SQL());
+		}
     }
 }
