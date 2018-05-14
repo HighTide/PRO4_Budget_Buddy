@@ -12,7 +12,7 @@
         </Label>
 
         
-        <Label Text="Hou Je Bek, Rene! Het is een goede naam!" x:Name="Rene" />
+        <Label Text="Dit is een label" x:Name="Rene" />
         <Slider ValueChanged="Handle_ValueChanged" Maximum="100"/>
         <Picker x:Name="IndustryTypePicker1" SelectedIndex="{Binding Industry}" HorizontalOptions="FillAndExpand">
         <Picker.Items>
@@ -51,6 +51,6 @@
                 <x:String>Drinken</x:String>
         </Picker.Items>
     </Picker> 
-    <Button Text="STFU!" Clicked="Handle_Clicked"/>
+    <Button Text="Volgende Pagina" Clicked="Handle_Clicked"/>
     </StackLayout>
 </ContentPage>

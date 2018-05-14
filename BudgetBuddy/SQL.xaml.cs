@@ -6,14 +6,6 @@ using Xamarin.Forms;
 
 namespace BudgetBuddy
 {
-	public class Settings
-    {
-        [PrimaryKey]
-        public string Name { get; set; }
-
-        [MaxLength(255)]
-        public string Value { get; set; }
-    }
 
     public partial class SQL : ContentPage
     {
@@ -22,25 +14,37 @@ namespace BudgetBuddy
 
         public SQL()
         {
-            InitializeComponent();
-           
+            InitializeComponent();           
 
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
         }
 
 		protected override async void OnAppearing()
         {
-            await _connection.CreateTableAsync<Settings>();
+            
+       
 
-            var settings_name = new Settings { Name = "Name", Value = "Jurre" };
-            await _connection.InsertAsync(settings_name);
-
-
-            var settings = await _connection.Table<Settings>().ToListAsync();
+            
+			var settings = await _connection.Table<Settings>().OrderByDescending(x => x.Value).ToListAsync();
 			_settings = new ObservableCollection<Settings>(settings);
 			ListView.ItemsSource = _settings;
 
 			base.OnAppearing();
         }
+
+		void MyItemTapped (object sender, SelectedItemChangedEventArgs e)
+        {
+			var selected = e.SelectedItem as Settings;
+            DisplayAlert("Alert", selected.Value, "OK");
+        }
+
+		//void MyItemSelected (object sender, System.EventArgs e)
+		//{
+		//	DisplayAlert("Alert", "You Selected Something!", "OK");
+		//}
+
+
     }
+
+
 }
