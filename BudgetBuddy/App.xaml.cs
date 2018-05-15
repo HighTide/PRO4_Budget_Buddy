@@ -19,7 +19,7 @@ namespace BudgetBuddy
         public App()
         {
             InitializeComponent();
-			MainPage = new NavigationPage(new BudgetBuddyPage());
+            MainPage = new MainPage();
 
             
 			_connection = DependencyService.Get<ISQLiteDb>().GetConnection();

@@ -45,6 +45,10 @@
     <Compile Include="BudgetBuddyPage.xaml.cs">
       <DependentUpon>BudgetBuddyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuItems\MasterPageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="stfuPage.xaml.cs">
       <DependentUpon>stfuPage.xaml</DependentUpon>
@@ -52,6 +56,12 @@
     <Compile Include="Persistence\ISQLiteDb.cs" />
     <Compile Include="SQL.xaml.cs">
       <DependentUpon>SQL.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Uitgaven.xaml.cs">
+      <DependentUpon>Uitgaven.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\View2.xaml.cs">
+      <DependentUpon>View2.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -81,8 +91,24 @@
     <None Include="packages.config" />
     <None Include="db.sqlite" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Persistence\" />
+    <EmbeddedResource Include="MainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Uitgaven.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\View2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
