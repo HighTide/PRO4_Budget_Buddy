@@ -45,7 +45,6 @@
     <Compile Include="BudgetBuddyPage.xaml.cs">
       <DependentUpon>BudgetBuddyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControls\ExtendedViewCell.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
