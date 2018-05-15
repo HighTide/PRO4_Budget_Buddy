@@ -32,10 +32,10 @@ namespace BudgetBuddy
 			base.OnAppearing();
         }
 
-		void MyItemTapped (object sender, SelectedItemChangedEventArgs e)
+		void MyItemSelected(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-			var selected = e.SelectedItem as Settings;
-            DisplayAlert("Alert", selected.Value, "OK");
+            var settings = e.Item as Settings;
+            DisplayAlert("Alert", settings.Value, "OK");
         }
 
 		//void MyItemSelected (object sender, System.EventArgs e)
