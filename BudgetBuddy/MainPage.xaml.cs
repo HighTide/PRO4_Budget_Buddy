@@ -38,7 +38,7 @@ namespace BudgetBuddy
             {
                 Title = "Spaardoelen",
                 Icon = "contacticon.png",
-                TargetType = typeof(View2)
+                TargetType = typeof(Spaardoelen)
             });
 			MenuList.Add(new MasterPageItem()
             {

@@ -57,8 +57,8 @@
     <Compile Include="Views\Uitgaven.xaml.cs">
       <DependentUpon>Uitgaven.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\View2.xaml.cs">
-      <DependentUpon>View2.xaml</DependentUpon>
+    <Compile Include="Views\Spaardoelen.xaml.cs">
+      <DependentUpon>Spaardoelen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SQL.xaml.cs">
       <DependentUpon>SQL.xaml</DependentUpon>
@@ -105,7 +105,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\View2.xaml">
+    <EmbeddedResource Include="Views\Spaardoelen.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

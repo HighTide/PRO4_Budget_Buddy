@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace BudgetBuddy.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class View2 : ContentPage
+	public partial class Spaardoelen : ContentPage
 	{
-		public View2 ()
+		public Spaardoelen ()
 		{
 			InitializeComponent ();
 		}
