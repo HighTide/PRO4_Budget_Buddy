@@ -33,7 +33,7 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SQL.xaml">
+    <EmbeddedResource Include="Views\SQL.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -54,14 +54,14 @@
       <DependentUpon>stfuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Persistence\ISQLiteDb.cs" />
-    <Compile Include="SQL.xaml.cs">
-      <DependentUpon>SQL.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Uitgaven.xaml.cs">
       <DependentUpon>Uitgaven.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Spaardoelen.xaml.cs">
       <DependentUpon>Spaardoelen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SQL.xaml.cs">
+      <DependentUpon>SQL.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

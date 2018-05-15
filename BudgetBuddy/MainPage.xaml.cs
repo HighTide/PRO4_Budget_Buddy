@@ -40,6 +40,18 @@ namespace BudgetBuddy
                 Icon = "contacticon.png",
                 TargetType = typeof(Spaardoelen)
             });
+			MenuList.Add(new MasterPageItem()
+            {
+                Title = "-----Debug-----",
+                Icon = "contacticon.png",
+                //TargetType = typeof(View2)
+            });
+			MenuList.Add(new MasterPageItem()
+            {
+                Title = "-----SQL-----",
+                Icon = "contacticon.png",
+                TargetType = typeof(SQL)
+            });
 
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml  
