@@ -1,15 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BudgetBuddy.Views.Inkomsten"
-             Title="Inkomsten"
-             BackgroundColor="{StaticResource backgroundColor}">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                   TextColor="{StaticResource textColor}"/>
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BudgetBuddy.Views.Inkomsten" Title="Inkomsten">
+    <StackLayout Orientation="Vertical" Padding="20">
+        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" />
+        <Label Text="" />
+        <StackLayout Orientation="Horizontal">
+            <Label VerticalOptions="End" Text="Bedrag" />
+            <Entry VerticalOptions="End" Placeholder="Bedrag" Keyboard="Numeric" />
         </StackLayout>
-    </ContentPage.Content>
+        <BoxView x:Name="Ruimte" HeightRequest="20" />
+        <Label Text="" />
+        <StackLayout Orientation="Horizontal">
+            <Label VerticalOptions="Center" Text="Categorie" />
+            <Picker Title="Categorie" VerticalOptions="Center">
+                <Picker.Items>
+                    <x:String>Loon</x:String>
+                    <x:String>Investering</x:String>
+                    <x:String>Cadeau</x:String>
+                    <x:String>Lening</x:String>
+                    <x:String>Winst</x:String>
+                    <x:String>Rente</x:String>
+                    <x:String>Uitkering</x:String>
+                    <x:String>Terugbetaling</x:String>
+                    <x:String>Overig</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Voeg Toe" VerticalOptions="CenterAndExpand">
+            </Button>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

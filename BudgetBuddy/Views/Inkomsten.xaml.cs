@@ -16,5 +16,10 @@ namespace BudgetBuddy.Views
 		{
 			InitializeComponent ();
 		}
+
+        void Entry_Completed(object sender, EventArgs e)
+        {
+            var text = ((Entry)sender).Text; //cast sender to access the properties of the Entry
+        }
 	}
 }
