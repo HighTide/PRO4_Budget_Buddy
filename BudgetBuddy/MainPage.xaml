@@ -5,7 +5,8 @@
                   x:Class="BudgetBuddy.MainPage"
                   xmlns:customControls="clr-namespace:BudgetBuddy.CustomControls;assembly=BudgetBuddy">
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu">
+        <ContentPage Title="Menu"                   BackgroundColor="{DynamicResource backgroundColor}"
+                  Style="{DynamicResource backgroundStyle}">
             <Grid BackgroundColor="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20" />

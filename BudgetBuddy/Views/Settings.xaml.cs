@@ -16,5 +16,16 @@ namespace BudgetBuddy.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void doneButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            App.Current.Resources["backgroundColor"] = Color.FromHex(backgroundColorEntry.Text);
+            App.Current.Resources["textColor"] = Color.FromHex(textColorEntry.Text);
+        }
+    }
 }
