@@ -5,13 +5,12 @@
                   x:Class="BudgetBuddy.MainPage"
                   xmlns:customControls="clr-namespace:BudgetBuddy.CustomControls;assembly=BudgetBuddy">
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu"                   BackgroundColor="{DynamicResource backgroundColor}"
-                  Style="{DynamicResource backgroundStyle}">
-            <Grid BackgroundColor="Transparent">
+        <ContentPage Title="Menu" BackgroundColor="{DynamicResource backgroundColor}" Style="{DynamicResource backgroundStyle}">
+            <!--<Grid BackgroundColor="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20" />
                     <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+                </Grid.RowDefinitions>-->
                 <!--<Grid>
                     <Image Source="bg.png" Aspect="AspectFill" />
                     <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
@@ -19,7 +18,7 @@
                         <Label Text="Jurre sucks Monkey Balls" TextColor="Black" FontSize="Large" BackgroundColor="Black"/>
                     </StackLayout>
                 </Grid>-->
-                <StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
+                <StackLayout Margin="0,30,0,0" Grid.Row="1" Spacing="15">
                     <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="None"  ItemSelected="OnMenuItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -28,7 +27,7 @@
                                     <!-- Main design for our menu items -->
                                     <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10">
                                         <Image Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
-                                        <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="Black" />
+                                        <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}" />
                                     </StackLayout>
                                 </ViewCell.View>
                                  </customControls:ExtendedViewCell>
@@ -36,7 +35,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-            </Grid>
+            <!--</Grid>-->
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
