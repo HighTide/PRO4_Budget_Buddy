@@ -48,15 +48,9 @@ namespace BudgetBuddy
             });
             MenuList.Add(new MasterPageItem()
             {
-                Title = "Totaal overzicht",
+                Title = "-----Debug-----",
                 Icon = "contacticon.png",
-                TargetType = typeof(Overzicht)
-            });
-            MenuList.Add(new MasterPageItem()
-            {
-                Title = "Settings",
-                Icon = "contacticon.png",
-                TargetType = typeof(Settings)
+                //TargetType = typeof(View2)
             });
 			MenuList.Add(new MasterPageItem()
             {
