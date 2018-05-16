@@ -42,12 +42,6 @@ namespace BudgetBuddy
             });
 			MenuList.Add(new MasterPageItem()
             {
-                Title = "-----Debug-----",
-                Icon = "contacticon.png",
-                //TargetType = typeof(View2)
-            });
-			MenuList.Add(new MasterPageItem()
-            {
                 Title = "-----SQL-----",
                 Icon = "contacticon.png",
                 TargetType = typeof(SQL)
