@@ -2,12 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.Inkomsten"
-             Title="Inkomsten">
+             Title="Inkomsten"
+             BackgroundColor="{StaticResource backgroundColor}">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                   TextColor="{StaticResource textColor}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
