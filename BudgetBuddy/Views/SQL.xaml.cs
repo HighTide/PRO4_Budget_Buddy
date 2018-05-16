@@ -32,9 +32,9 @@ namespace BudgetBuddy
 			base.OnAppearing();
         }
 
-		void MyItemTapped (object sender, SelectedItemChangedEventArgs e)
+		private void MyItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-			var selected = e.SelectedItem as Settings;
+            var selected = e.SelectedItem as Settings;
             DisplayAlert("Alert", selected.Value, "OK");
         }
 
