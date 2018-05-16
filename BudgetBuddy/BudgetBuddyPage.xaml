@@ -11,7 +11,7 @@
                     </Label.GestureRecognizers>
         </Label>
 
-        
+        <Entry></Entry>
         <Label Text="Dit is een label" x:Name="Rene" />
         <Slider ValueChanged="Handle_ValueChanged" Maximum="100"/>
         <Picker x:Name="IndustryTypePicker1" SelectedIndex="{Binding Industry}" HorizontalOptions="FillAndExpand">
