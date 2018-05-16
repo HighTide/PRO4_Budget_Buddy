@@ -73,6 +73,7 @@
     <Compile Include="Views\SQL.xaml.cs">
       <DependentUpon>SQL.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Table.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

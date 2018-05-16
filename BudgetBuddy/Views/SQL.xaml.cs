@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using BudgetBuddy.Properties;
 using SQLite;
 using Xamarin.Forms;
 
@@ -10,7 +11,7 @@ namespace BudgetBuddy
     public partial class SQL : ContentPage
     {
 		private SQLiteAsyncConnection _connection;
-		private ObservableCollection<Settings> _settings;
+		private ObservableCollection<SQLSettings> _settings;
 
         public SQL()
         {
@@ -25,8 +26,8 @@ namespace BudgetBuddy
        
 
             
-			var settings = await _connection.Table<Settings>().OrderByDescending(x => x.Value).ToListAsync();
-			_settings = new ObservableCollection<Settings>(settings);
+			var settings = await _connection.Table<SQLSettings>().OrderByDescending(x => x.Value).ToListAsync();
+			_settings = new ObservableCollection<SQLSettings>(settings);
 			ListView.ItemsSource = _settings;
 
 			base.OnAppearing();
@@ -34,7 +35,7 @@ namespace BudgetBuddy
 
 		private void MyItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var selected = e.SelectedItem as Settings;
+            var selected = e.SelectedItem as SQLSettings;
             DisplayAlert("Alert", selected.Value, "OK");
         }
 
