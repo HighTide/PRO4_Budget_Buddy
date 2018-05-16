@@ -22,18 +22,18 @@ namespace BudgetBuddy
 
         protected async override void OnStart()
         {
-			await _connection.CreateTableAsync<SQLSettings>();
+			await _connection.CreateTableAsync<SQL_Settings>();
 
-			var settings_name = new SQLSettings { Name = "Name123", Value = "Jurre123" };
+			var settings_name = new SQL_Settings { Name = "Name123", Value = "Jurre123" };
             await _connection.InsertAsync(settings_name);
 
-			var settings_Lastname = new SQLSettings { Name = "Lastname", Value = "Koetse" };
+			var settings_Lastname = new SQL_Settings { Name = "Lastname", Value = "Koetse" };
             await _connection.InsertAsync(settings_Lastname);
 
-			var settings_Age = new SQLSettings { Name = "BirthYear", Value = "1996" };
+			var settings_Age = new SQL_Settings { Name = "BirthYear", Value = "1996" };
             await _connection.InsertAsync(settings_Age);
 
-			var settings_Hungry = new SQLSettings { Name = "Hungry", Value = "Yes" };
+			var settings_Hungry = new SQL_Settings { Name = "Hungry", Value = "Yes" };
             await _connection.InsertAsync(settings_Hungry);
 
             
