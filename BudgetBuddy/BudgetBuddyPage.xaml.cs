@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using BudgetBuddy.Views;
 
 namespace BudgetBuddy
 {
@@ -24,7 +25,7 @@ namespace BudgetBuddy
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new stfuPage());
+            await Navigation.PushAsync(new Inkomsten());
         }
     }
 }
