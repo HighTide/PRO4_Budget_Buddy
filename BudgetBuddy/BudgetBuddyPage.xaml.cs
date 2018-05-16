@@ -24,7 +24,7 @@ namespace BudgetBuddy
 
         async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new stfuPage());
+            await Navigation.PushAsync(new sqlPage());
         }
     }
 }
