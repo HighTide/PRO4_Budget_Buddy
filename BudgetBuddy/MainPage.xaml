@@ -11,13 +11,13 @@
                     <RowDefinition Height="10" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Grid>
+                <!--<Grid>
                     <Image Source="bg.png" Aspect="AspectFill" />
                     <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Image Source="64_spaceship.png" Aspect="AspectFill" WidthRequest="85" HeightRequest="85" />
                         <Label Text="Jurre sucks Monkey Balls" TextColor="Black" FontSize="Large" BackgroundColor="Black"/>
                     </StackLayout>
-                </Grid>
+                </Grid>-->
                 <StackLayout Margin="0,30,0,0" Grid.Row="1" Spacing="15">
                     <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="None"  ItemSelected="OnMenuItemSelected" BackgroundColor="{DynamicResource backgroundColor}">
                         <ListView.ItemTemplate>
