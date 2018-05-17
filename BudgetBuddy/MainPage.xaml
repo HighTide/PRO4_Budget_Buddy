@@ -6,7 +6,7 @@
                   xmlns:customControls="clr-namespace:BudgetBuddy.CustomControls;assembly=BudgetBuddy">
     <MasterDetailPage.Master>
         <ContentPage Title="Menu" BackgroundColor="{DynamicResource backgroundColor}">
-            <Grid BackgroundColor="Transparent">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10" />
                     <RowDefinition Height="*" />
@@ -19,7 +19,7 @@
                     </StackLayout>
                 </Grid>
                 <StackLayout Margin="0,30,0,0" Grid.Row="1" Spacing="15">
-                    <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="None"  ItemSelected="OnMenuItemSelected">
+                    <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="None"  ItemSelected="OnMenuItemSelected" BackgroundColor="{DynamicResource backgroundColor}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <customControls:ExtendedViewCell SelectedBackgroundColor="Teal">
@@ -27,7 +27,7 @@
                                         <!-- Main design for our menu items -->
                                         <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10">
                                             <Image Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
-                                            <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}" />
+                                            <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"  />
                                         </StackLayout>
                                     </ViewCell.View>
                                 </customControls:ExtendedViewCell>

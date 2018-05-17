@@ -22,22 +22,32 @@ namespace BudgetBuddy
 
         protected async override void OnStart()
         {
-			await _connection.CreateTableAsync<SQL_Settings>();
+            //Create SQL Connection
+            await _connection.CreateTableAsync<SQL_Settings>();
 
-			var settings_name = new SQL_Settings { Name = "Name123", Value = "Jurre123" };
-            await _connection.InsertAsync(settings_name);
+            int allItems = await _connection.Table<SQL_Settings>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems);
 
-			var settings_Lastname = new SQL_Settings { Name = "Lastname", Value = "Koetse" };
-            await _connection.InsertAsync(settings_Lastname);
+            if (allItems == 0)
+            {
+                // only insert the data if it doesn't already exist
+                var settings = new SQL_Settings { };
+                settings.Name = "DB_Version"; settings.Value = "1";
+                await _connection.InsertAsync(settings);
 
-			var settings_Age = new SQL_Settings { Name = "BirthYear", Value = "1996" };
-            await _connection.InsertAsync(settings_Age);
+                settings.Name = "Name"; settings.Value = "Jurre";
+                await _connection.InsertAsync(settings);
 
-			var settings_Hungry = new SQL_Settings { Name = "Hungry", Value = "Yes" };
-            await _connection.InsertAsync(settings_Hungry);
+                settings.Name = "Lastname"; settings.Value = "Koetse";
+                await _connection.InsertAsync(settings);
 
-            
-                          
+                settings.Name = "BirthYear"; settings.Value = "1996";
+                await _connection.InsertAsync(settings);
+
+                settings.Name = "Hungry"; settings.Value = "Yes";
+                await _connection.InsertAsync(settings);
+            }
+
         }
 
         protected override void OnSleep()
