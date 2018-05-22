@@ -5,7 +5,7 @@
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
-                AnchorX="20"
+                AnchorX="5"
                 AnchorY="40"/>
 
         <Label  HorizontalOptions="Center"
