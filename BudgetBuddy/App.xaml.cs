@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using SQLite;
 using BudgetBuddy.Properties;
 
@@ -32,22 +33,50 @@ namespace BudgetBuddy
             {
                 // only insert the data if it doesn't already exist
                 var settings = new SQL_Settings { };
-                settings.Name = "DB_Version"; settings.Value = "1";
+                settings.Name = "DB_Version";
+                settings.Value = "1";
                 await _connection.InsertAsync(settings);
 
-                settings.Name = "Name"; settings.Value = "Jurre";
+                settings.Name = "Name";
+                settings.Value = "Jurre";
                 await _connection.InsertAsync(settings);
 
-                settings.Name = "Lastname"; settings.Value = "Koetse";
+                settings.Name = "Lastname";
+                settings.Value = "Koetse";
                 await _connection.InsertAsync(settings);
 
-                settings.Name = "BirthYear"; settings.Value = "1996";
+                settings.Name = "BirthYear";
+                settings.Value = "1996";
                 await _connection.InsertAsync(settings);
 
-                settings.Name = "Hungry"; settings.Value = "Yes";
+                settings.Name = "Hungry";
+                settings.Value = "Yes";
                 await _connection.InsertAsync(settings);
+
             }
 
+            //Create SQL Connection
+            await _connection.CreateTableAsync<SQL_Uitgaven>();
+
+            int allItems_Uitgaven = await _connection.Table<SQL_Uitgaven>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems);
+
+            if (allItems_Uitgaven == 0)
+            {
+                var uitgaven = new SQL_Uitgaven { };
+                uitgaven.Date = DateTime.Now;
+                uitgaven.Value = 23.10;
+                uitgaven.Category = "Kleding";
+                uitgaven.Name = "Blauwe Jas bij de Hennes und Maurits van het Merk: Armoeni";
+                await _connection.InsertAsync(uitgaven);
+
+
+                uitgaven.Date = DateTime.Now;
+                uitgaven.Value = 30.10;
+                uitgaven.Category = "Drinken";
+                uitgaven.Name = "Cola bij de mac";
+                await _connection.InsertAsync(uitgaven);
+            }
         }
 
         protected override void OnSleep()

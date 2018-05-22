@@ -3,11 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.Uitgaven"
              Title="Uitgaven">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <StackLayout Orientation="Vertical" Padding="20">
+        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" />
+        <Label Text="" />
+        <StackLayout Orientation="Horizontal">
+            <Label VerticalOptions="End" Text="Bedrag" />
+            <Entry VerticalOptions="End" Placeholder="Wat heb je aangeschaft?" x:Name="Naam"/>
+            <Entry VerticalOptions="End" Placeholder="Bedrag" Keyboard="Numeric" x:Name="Bedrag"/>
         </StackLayout>
-    </ContentPage.Content>
+        <BoxView x:Name="Ruimte" HeightRequest="20" />
+        <Label Text="" />
+        <StackLayout Orientation="Horizontal">
+            <Label VerticalOptions="Center" Text="Categorie" />
+            <Picker Title="Categorie" VerticalOptions="Center" x:Name="Category">
+                <Picker.Items>
+                    <x:String>Kleding</x:String>
+                    <x:String>Drinken</x:String>
+                    <x:String>Eten</x:String>
+                    <x:String>Boodschappen</x:String>
+                    <x:String>Amusement</x:String>
+                    <x:String>Abonnementen</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Voeg Toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"> 
+            </Button>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

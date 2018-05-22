@@ -29,32 +29,27 @@ namespace BudgetBuddy.Views
             });
             MenuList.Add(new Category()
             {
-                Title = "Uitgaven toevoegen",
+                Title = "Drinken",
                 Icon = "Uitgaven.png",
             });
             MenuList.Add(new Category()
             {
-                Title = "Inkomsten toevoegen",
+                Title = "Eten",
                 Icon = "Inkomsten.png",
             });
             MenuList.Add(new Category()
             {
-                Title = "Spaardoelen",
+                Title = "Boodschappen",
                 Icon = "Piggy.png",
             });
             MenuList.Add(new Category()
             {
-                Title = "Totaal overzicht",
+                Title = "Amusement",
                 Icon = "Overzicht.png",
             });
             MenuList.Add(new Category()
             {
-                Title = "Settings",
-                Icon = "Settings.png",
-            });
-            MenuList.Add(new Category()
-            {
-                Title = "-----SQL-----",
+                Title = "Abonnementen",
                 Icon = "Jurre.jpg",
             });
 
