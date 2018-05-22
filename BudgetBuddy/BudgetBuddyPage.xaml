@@ -5,8 +5,8 @@
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"/>
+                AnchorX="20"
+                AnchorY="40"/>
 
         <Label  HorizontalOptions="Center"
                 Text="Welcome to Budget Buddy!"
