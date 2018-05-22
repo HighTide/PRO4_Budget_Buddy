@@ -9,7 +9,9 @@ namespace BudgetBuddy
     public class Category
     {
         public string Title { get; set; }
-        public bool IsVisible { get; set;}
-        public string Background { get; set; }
+
+        public string Icon { get; set; }
+
+        public Type TargetType { get; set; }
     }
 }

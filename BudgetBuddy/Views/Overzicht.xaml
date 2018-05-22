@@ -5,22 +5,20 @@
              x:Class="BudgetBuddy.Views.Overzicht"
              Title="Totaal overzicht"
              BackgroundColor="{DynamicResource backgroundColor}">
-    <ContentPage.BindingContext>
-        <local:MainViewModel/>
-    </ContentPage.BindingContext>
+
 
     <ListView ItemsSource="{Binding Products}"
+              x:Name="Categories"
               HasUnevenRows="True"
               Margin="0,40"
-              ItemTapped="ListView_ItemTapped">
+              ItemSelected="Categories_OnItemSelected"
+              >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding Title}" FontSize="Large" BackgroundColor="{Binding Background}" HorizontalTextAlignment="Center"/>
-                        <Button Text="Details"
-                                IsVisible="{Binding IsVisible}"/>
-                        <Label Text ="Hello" IsVisible="{Binding IsVisible}"></Label>
+                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10">
+                        <Image Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+                        <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"  />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
