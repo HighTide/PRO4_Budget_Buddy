@@ -18,11 +18,20 @@ namespace BudgetBuddy.Views
 		public Inkomsten ()
 		{
 			InitializeComponent ();
+
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 		}
 
         void Entry_Completed(object sender, EventArgs e)
         {
             var text = ((Entry)sender).Text; //cast sender to access the properties of the Entry
+        }
+
+        private void Button_OnClicked(object sender, EventArgs e)
+        {
+
+            var inkomsten = new SQL_Inkomsten { }; //link with table
+
         }
 	}
 }
