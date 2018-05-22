@@ -25,32 +25,26 @@ namespace BudgetBuddy.Views
             MenuList.Add(new Category()
             {
                 Title = "Kleding",
-                Icon = "Home.png",
             });
             MenuList.Add(new Category()
             {
                 Title = "Drinken",
-                Icon = "Uitgaven.png",
             });
             MenuList.Add(new Category()
             {
                 Title = "Eten",
-                Icon = "Inkomsten.png",
             });
             MenuList.Add(new Category()
             {
                 Title = "Boodschappen",
-                Icon = "Piggy.png",
             });
             MenuList.Add(new Category()
             {
                 Title = "Amusement",
-                Icon = "Overzicht.png",
             });
             MenuList.Add(new Category()
             {
                 Title = "Abonnementen",
-                Icon = "Jurre.jpg",
             });
 
 
