@@ -5,9 +5,7 @@
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
-                WidthRequest="20"
-                HeightRequest="20"
-                AbsoluteLayout.LayoutBounds="20,20,50,60"/>
+                AbsoluteLayout.LayoutBounds="100,100,50,60"/>
 
         <Label  HorizontalOptions="Center"
                 Text="Welcome to Budget Buddy!"
