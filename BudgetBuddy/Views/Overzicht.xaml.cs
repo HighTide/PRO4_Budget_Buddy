@@ -24,45 +24,38 @@ namespace BudgetBuddy.Views
             // Adding menu items to menuList and you can define title ,page and icon  
             MenuList.Add(new Category()
             {
-                Title = "Home",
+                Title = "Kleding",
                 Icon = "Home.png",
-                TargetType = typeof(BudgetBuddyPage)
             });
             MenuList.Add(new Category()
             {
                 Title = "Uitgaven toevoegen",
                 Icon = "Uitgaven.png",
-                TargetType = typeof(Uitgaven)
             });
             MenuList.Add(new Category()
             {
                 Title = "Inkomsten toevoegen",
                 Icon = "Inkomsten.png",
-                TargetType = typeof(Inkomsten)
             });
             MenuList.Add(new Category()
             {
                 Title = "Spaardoelen",
                 Icon = "Piggy.png",
-                TargetType = typeof(Spaardoelen)
             });
             MenuList.Add(new Category()
             {
                 Title = "Totaal overzicht",
                 Icon = "Overzicht.png",
-                TargetType = typeof(Overzicht)
             });
             MenuList.Add(new Category()
             {
                 Title = "Settings",
                 Icon = "Settings.png",
-                TargetType = typeof(Settings)
             });
             MenuList.Add(new Category()
             {
                 Title = "-----SQL-----",
                 Icon = "Jurre.jpg",
-                TargetType = typeof(Settings),
             });
 
 
@@ -74,9 +67,10 @@ namespace BudgetBuddy.Views
         // on user selection in menu ListView  
 
 
-	    private void Categories_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+	    private async void Categories_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
 	    {
-	        
-	    }
+            var selected = e.SelectedItem as Category;
+            await Navigation.PushAsync(new Overzicht_Detail(selected.Title.ToString()));
+        }
 	}
 }

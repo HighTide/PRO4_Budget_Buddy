@@ -56,6 +56,9 @@
     <Compile Include="Views\Overzicht.xaml.cs">
       <DependentUpon>Overzicht.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Overzicht_Detail.xaml.cs">
+      <DependentUpon>Overzicht_Detail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Settings.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Overzicht_Detail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
