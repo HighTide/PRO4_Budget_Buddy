@@ -33,8 +33,5 @@ namespace BudgetBuddy.Properties
         [PrimaryKey]
         public string Name { get; set; }
     }
-
-
-
 }
 
