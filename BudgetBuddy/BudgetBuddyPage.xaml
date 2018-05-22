@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage NavigationPage.HasNavigationBar="true" Title="Overview" BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BudgetBuddy" x:Class="BudgetBuddy.BudgetBuddyPage">
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+    <AbsoluteLayout>
         <Button Text="Last expense"
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds="100,100,50,60"/>
+                AbsoluteLayout.LayoutBounds=".25,.25,50,70"/>
 
         <Label  HorizontalOptions="Center"
                 Text="Welcome to Budget Buddy!"
@@ -19,5 +19,5 @@
         <Label Text="Dit is een label" x:Name="Rene" />
         
     <Button Text="Volgende Pagina" Clicked="Handle_Clicked"/>
-    </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>
