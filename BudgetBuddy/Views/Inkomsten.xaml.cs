@@ -29,9 +29,10 @@ namespace BudgetBuddy.Views
 
         private void Button_OnClicked(object sender, EventArgs e)
         {
-
             var inkomsten = new SQL_Inkomsten { }; //link with table
-
+            inkomsten.Date = DateTime.Now;
+            inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+            inkomsten.Category = Category.SelectedItem.ToString();
         }
 	}
 }

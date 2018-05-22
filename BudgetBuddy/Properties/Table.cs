@@ -38,9 +38,6 @@ namespace BudgetBuddy.Properties
 
         [MaxLength(255)]
         public string Category { get; set; }
-
-        [MaxLength(255)]
-        public string Name { get; set; }
     }
 
 	public class SQL_Category 
