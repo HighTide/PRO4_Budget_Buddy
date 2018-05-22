@@ -16,13 +16,13 @@ namespace BudgetBuddy.Properties
 	public class SQL_Uitgaven
     {
         [PrimaryKey]
-		public float Date { get; set; }
+		public DateTime Date { get; set; }
 
         [MaxLength(255)]
         public double Value { get; set; }
 
 		[MaxLength(255)]
-		public string CatCategory { get; set; }
+		public string Category { get; set; }
 
 		[MaxLength(255)]
         public string Name { get; set; }

@@ -29,7 +29,7 @@ namespace BudgetBuddy.Views
             });
             MenuList.Add(new Category()
             {
-                Title = "Uitgaven toevoegen",
+                Title = "Drinken",
                 Icon = "Uitgaven.png",
             });
             MenuList.Add(new Category()
