@@ -28,6 +28,21 @@ namespace BudgetBuddy.Properties
         public string Name { get; set; }
     }
 
+    public class SQL_Inkomsten
+    {
+        [PrimaryKey]
+        public DateTime Date { get; set; }
+
+        [MaxLength(255)]
+        public double Value { get; set; }
+
+        [MaxLength(255)]
+        public string Category { get; set; }
+
+        [MaxLength(255)]
+        public string Name { get; set; }
+    }
+
 	public class SQL_Category 
 	{
         [PrimaryKey]
