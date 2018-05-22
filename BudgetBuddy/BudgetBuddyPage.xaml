@@ -7,17 +7,6 @@
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds=".25,.25,50,70"/>
 
-        <Label  HorizontalOptions="Center"
-                Text="Welcome to Budget Buddy!"
-                TextColor="Orange">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Text_Click}"  />
-                    </Label.GestureRecognizers>
-        </Label>
-
-        <Entry></Entry>
-        <Label Text="Dit is een label" x:Name="Rene" />
-        
-    <Button Text="Volgende Pagina" Clicked="Handle_Clicked"/>
+       
     </AbsoluteLayout>
 </ContentPage>
