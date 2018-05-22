@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using BudgetBuddy.Properties;
+using SQLite;
 
 namespace BudgetBuddy.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Inkomsten : ContentPage
 	{
+        private SQLiteAsyncConnection _connection;
+
 		public Inkomsten ()
 		{
 			InitializeComponent ();

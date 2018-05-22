@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BudgetBuddy.Views.Inkomsten" Title="Inkomsten">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="BudgetBuddy.Views.Inkomsten" 
+             Title="Inkomsten">
     <StackLayout Orientation="Vertical" Padding="20">
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" />
         <Label Text="" />
         <StackLayout Orientation="Horizontal">
             <Label VerticalOptions="End" Text="Bedrag" />
-            <Entry VerticalOptions="End" Placeholder="Bedrag" Keyboard="Numeric" />
+            <Entry VerticalOptions="End" Placeholder="Bedrag" Keyboard="Numeric" x:Name="Bedrag"/>
         </StackLayout>
         <BoxView x:Name="Ruimte" HeightRequest="20" />
         <Label Text="" />
         <StackLayout Orientation="Horizontal">
             <Label VerticalOptions="Center" Text="Categorie" />
-            <Picker Title="Categorie" VerticalOptions="Center">
+            <Picker Title="Categorie" VerticalOptions="Center" x:Name="Category">
                 <Picker.Items>
                     <x:String>Loon</x:String>
                     <x:String>Investering</x:String>
@@ -26,7 +29,7 @@
             </Picker>
         </StackLayout>
         <StackLayout>
-            <Button Text="Voeg Toe" VerticalOptions="CenterAndExpand">
+            <Button Text="Voeg Toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked">
             </Button>
         </StackLayout>
     </StackLayout>
