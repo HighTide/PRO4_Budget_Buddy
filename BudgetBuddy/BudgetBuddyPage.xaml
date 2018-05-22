@@ -7,8 +7,8 @@
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds=".5,.5,75,75"/>
     </AbsoluteLayout>
-    
-    <AbsoluteLayout
+
+    <AbsoluteLayout>
         <Button Text="Expenditure input"
                 Clicked="Handle_Clicked"
                 BackgroundColor="OrangeRed"
