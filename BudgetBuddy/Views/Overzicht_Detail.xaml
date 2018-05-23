@@ -11,8 +11,8 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="5">
                             <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap"/>
-                            <StackLayout HorizontalOptions="StartAndExpand">
-                                <Label Text="{Binding Name}" LineBreakMode="NoWrap"/>
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="250"/>
                             </StackLayout>
                             <StackLayout HorizontalOptions="Start">
                                 <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" LineBreakMode="NoWrap"/>

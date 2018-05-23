@@ -17,6 +17,7 @@ namespace BudgetBuddy.Views
         private SQLiteAsyncConnection _connection;
         private ObservableCollection<SQL_Uitgaven> _uitgaven;
         private String category = "";
+        private String uitgavenDescr = "";
 
         public Overzicht_Detail(string data)
         {
@@ -25,18 +26,16 @@ namespace BudgetBuddy.Views
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 
             category = data;
+            
         }
         protected override async void OnAppearing()
         {
-
-
-
+            Title = category;
 
             var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Category == category).ToListAsync();
             _uitgaven = new ObservableCollection<SQL_Uitgaven>(uitgaven);
-
             ListView.ItemsSource = _uitgaven;
-
+            
             base.OnAppearing();
         }
 
