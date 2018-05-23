@@ -79,6 +79,21 @@ namespace BudgetBuddy
             }
 
             await _connection.CreateTableAsync<SQL_Inkomsten>();
+
+			int allItems_Inkomsten = await _connection.Table<SQL_Inkomsten>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems);
+
+            if (allItems_Inkomsten == 0)
+            {
+                var uitgaven = new SQL_Uitgaven { };
+                uitgaven.Date = DateTime.Now;
+                uitgaven.Value = 300;
+                uitgaven.Category = "Salaris";
+				uitgaven.Name = "Salaris CocaCola Coke Plantage";
+                await _connection.InsertAsync(uitgaven);
+
+                
+            }
         }
 
         protected override void OnSleep()

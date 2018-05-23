@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.Settings"
@@ -8,6 +8,8 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="doneButton" Text="Name" Clicked="doneButton_Clicked" />
     </ContentPage.ToolbarItems>
+
+    
     <ContentPage.Content>
         <StackLayout Spacing="20">
             <Label Style="{DynamicResource labelStyle}" Text = "Background Color:" />
