@@ -3,9 +3,9 @@
     <AbsoluteLayout>
         <Button Text="Last expense"
                 Clicked="Handle_Clicked"
-                BackgroundColor="WhiteSmoke"
+                BackgroundColor="Bisque"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds=".5,.7,1,.6"
+                AbsoluteLayout.LayoutBounds=".5,.7,1,.35"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
     
         <Button Text="Expenditure input"
