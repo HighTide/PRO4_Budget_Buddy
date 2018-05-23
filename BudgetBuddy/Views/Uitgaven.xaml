@@ -6,25 +6,27 @@
     <StackLayout Orientation="Vertical" Padding="20">
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Uitgaven toevoegen" />
         <Label Text="" />
-        <StackLayout Orientation="Horizontal">
-            <Label VerticalOptions="End" Text="Bedrag" />
+        <StackLayout Orientation="Vertical">
+            <Label VerticalOptions="End" Text="Aankoop:" />
             <Entry VerticalOptions="End" Placeholder="Wat heb je aangeschaft?" x:Name="Naam" TextChanged="Naam_OnTextChanged"/>
-            <Entry VerticalOptions="End" Placeholder="Bedrag" Keyboard="Numeric" x:Name="Bedrag"/>
+            <Label VerticalOptions="End" Text="Bedrag:" />
+            <Entry VerticalOptions="End"  Keyboard="Numeric" Placeholder="Wat kostte het?" x:Name="Bedrag" TextChanged="Bedrag_OnTextChanged"/>
         </StackLayout>
         <BoxView x:Name="Ruimte" HeightRequest="20" />
-        <Label Text="" />
-        <StackLayout Orientation="Horizontal">
-            <Label VerticalOptions="Center" Text="Categorie" />
-            <Picker Title="Selecteer Category" VerticalOptions="Center" x:Name="Category">
-                <Picker.Items>
-                    <x:String>Kleding</x:String>
-                    <x:String>Drinken</x:String>
-                    <x:String>Eten</x:String>
-                    <x:String>Boodschappen</x:String>
-                    <x:String>Amusement</x:String>
-                    <x:String>Abonnementen</x:String>
-                </Picker.Items>
-            </Picker>
+        <StackLayout Orientation="Vertical">
+            <Label HorizontalOptions="Center" Text="Categorie:" />
+            <StackLayout Orientation="Horizontal">
+                <Picker Title="Selecteer Category" HorizontalOptions="CenterAndExpand" x:Name="Category">
+                    <Picker.Items>
+                        <x:String>Kleding</x:String>
+                        <x:String>Drinken</x:String>
+                        <x:String>Eten</x:String>
+                        <x:String>Boodschappen</x:String>
+                        <x:String>Amusement</x:String>
+                        <x:String>Abonnementen</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
         </StackLayout>
         <StackLayout>
             <Button Text="Voeg Toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"> 

@@ -14,6 +14,7 @@ namespace BudgetBuddy.Views
 	public partial class Uitgaven : ContentPage
 	{
 	    private SQLiteAsyncConnection _connection;
+	    private double _Bedrag;
         
         public Uitgaven ()
 		{
@@ -25,7 +26,8 @@ namespace BudgetBuddy.Views
 
 	    private async void Button_OnClicked(object sender, EventArgs e)
 	    {
-	        if (Category.SelectedItem == null)
+            _Bedrag = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+            if (Category.SelectedItem == null)
 	        {
 	            await DisplayAlert("Alert", "Kies een geldige categorie", "OK");
             }
@@ -33,13 +35,24 @@ namespace BudgetBuddy.Views
 	        {
 	            await DisplayAlert("Alert", "Voer een bedrag in", "OK");
             }
+            else if (_Bedrag > 9999999.99)
+            {
+
+            }
             else
 	        {
 	            var uitgaven = new SQL_Uitgaven { };
 	            uitgaven.Date = DateTime.Now;
 	            uitgaven.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
 	            uitgaven.Category = Category.SelectedItem.ToString();
-	            uitgaven.Name = Naam.Text;
+	            if (Naam.Text == null)
+	            {
+	                uitgaven.Name = Category.SelectedItem.ToString();
+	            }
+	            else
+	            {
+	                uitgaven.Name = Naam.Text;
+                }
 	            await _connection.InsertAsync(uitgaven);
 	            await DisplayAlert("Alert", "Uitgaven succesvol toegevoegd", "OK");
 	            await Navigation.PushAsync(new BudgetBuddyPage());
@@ -62,6 +75,26 @@ namespace BudgetBuddy.Views
 	                entry.TextChanged -= Naam_OnTextChanged;
 	                entry.Text = e.OldTextValue;
 	                entry.TextChanged += Naam_OnTextChanged;
+	            }
+	        }
+        }
+
+	    private void Bedrag_OnTextChanged(object sender, TextChangedEventArgs e)
+	    {
+	        {
+	            
+	            var entry = e.NewTextValue;
+	            var MaxLength = 9999999.99;
+	            if (entry != "")
+	            {
+	                double _entry = Convert.ToDouble(entry);
+	                if (_entry > MaxLength)
+	                {
+	                    DisplayAlert("Alert", "Max bedrag in één transactie is 9999999.99", "OK");
+                        Bedrag.Text = "";
+	                    
+
+	                }
 	            }
 	        }
         }
