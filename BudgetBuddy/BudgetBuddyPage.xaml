@@ -12,29 +12,29 @@
                 Clicked="Handle_Clicked"
                 BackgroundColor="OrangeRed"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds="0,1,100,100"
-                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                AbsoluteLayout.LayoutBounds="0,1,.25,.15"
+                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Main menu"
                 Clicked="Handle_Clicked"
                 BackgroundColor="PapayaWhip"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds=".25,1,100,100"
-                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                AbsoluteLayout.LayoutBounds=".25,1,.25,.15"
+                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Fast access buttons"
                 Clicked="Handle_Clicked"
                 BackgroundColor="OrangeRed"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds=".5,1,100,100"
-                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                AbsoluteLayout.LayoutBounds=".5,1,.25,.15"
+                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Settings"
                 Clicked="Handle_Clicked"
                 BackgroundColor="OrangeRed"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds="1,1,200,100"
-                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                AbsoluteLayout.LayoutBounds="1,1,.25,.15"
+                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
 
 
