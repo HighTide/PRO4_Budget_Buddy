@@ -13,7 +13,8 @@
         
         <Label Text="€"
                FontSize="Large"
-               AbsoluteLayout.LayoutBounds=".335,.7,AutoSize,AutoSize"
+               FontAttributes="Bold"
+               AbsoluteLayout.LayoutBounds=".335,.65,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
 
