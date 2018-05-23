@@ -8,8 +8,6 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="doneButton" Text="Name" Clicked="doneButton_Clicked" />
     </ContentPage.ToolbarItems>
-
-    
     <ContentPage.Content>
         <StackLayout Spacing="20">
             <Label Style="{DynamicResource labelStyle}" Text = "Background Color:" />

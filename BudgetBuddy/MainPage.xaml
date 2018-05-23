@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
                   xmlns:local="clr-namespace:XFMasterDetailPageNavigation" 
@@ -26,7 +26,7 @@
                                     <ViewCell.View>
                                         <!-- Main design for our menu items -->
                                         <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10">
-                                            <Image Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+                                            <Image Source="{Binding Icon}"  WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
                                             <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"  />
                                         </StackLayout>
                                     </ViewCell.View>

@@ -12,14 +12,8 @@
               HasUnevenRows="True"
               Margin="0,40"
               ItemSelected="Categories_OnItemSelected"
-<<<<<<< HEAD
               BackgroundColor="{DynamicResource backgroundColor}">
         <ListView.ItemTemplate>
-=======
-              BackgroundColor="{DynamicResource backgroundColor}"
-              >
-        <ListView.ItemTemplate >
->>>>>>> e6ce789... * App.xaml.cs: Added Spaardoel
             <DataTemplate>
                 <ViewCell>
                     <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10" >
