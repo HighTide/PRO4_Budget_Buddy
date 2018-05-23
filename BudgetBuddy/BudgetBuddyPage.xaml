@@ -10,28 +10,28 @@
     
         <Button Text="Expenditure input"
                 Clicked="Handle_Clicked"
-                BackgroundColor="OrangeRed"
+                BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds="0,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Main menu"
                 Clicked="Handle_Clicked"
-                BackgroundColor="PapayaWhip"
+                BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds=".34,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Fast access buttons"
                 Clicked="Handle_Clicked"
-                BackgroundColor="OrangeRed"
+                BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds=".67,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Settings"
                 Clicked="Handle_Clicked"
-                BackgroundColor="OrangeRed"
+                BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds="1,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
