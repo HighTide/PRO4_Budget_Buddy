@@ -19,14 +19,14 @@
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds=".34,1,.25,.15"
+                AbsoluteLayout.LayoutBounds=".335,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Fast access buttons"
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds=".67,1,.25,.15"
+                AbsoluteLayout.LayoutBounds=".665,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Settings"
