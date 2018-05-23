@@ -5,7 +5,7 @@
                 Clicked="Handle_Clicked"
                 BackgroundColor="Bisque"
                 TextColor="White"
-                AbsoluteLayout.LayoutBounds=".5,.7,1,.275"
+                AbsoluteLayout.LayoutBounds=".5,.75,1,.25"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
     
         <Button Text="Expenditure input"
