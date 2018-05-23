@@ -16,8 +16,15 @@ namespace BudgetBuddy.Views
     {
         private SQLiteAsyncConnection _connection;
         private ObservableCollection<SQL_Uitgaven> _uitgaven;
-        private String category = "";
-        private String uitgavenDescr = "";
+        private String category;
+        List<double> results = new List<double>();
+
+        public double total;
+        //private DateTime _datum = DateTime.UtcNow.AddDays(-4);
+
+
+
+
 
         public Overzicht_Detail(string data)
         {
@@ -26,6 +33,7 @@ namespace BudgetBuddy.Views
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 
             category = data;
+
             
         }
         protected override async void OnAppearing()
@@ -35,7 +43,15 @@ namespace BudgetBuddy.Views
             var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Category == category).ToListAsync();
             _uitgaven = new ObservableCollection<SQL_Uitgaven>(uitgaven);
             ListView.ItemsSource = _uitgaven;
-            
+
+            foreach (var item in uitgaven)
+            {
+                results.Add(item.Value);
+                total += item.Value;
+            }
+
+            Total.Text = total.ToString("0.00");
+            System.Diagnostics.Debug.WriteLine(total);
             base.OnAppearing();
         }
 
