@@ -33,7 +33,10 @@ namespace BudgetBuddy.Views
             inkomsten.Date = DateTime.Now;
             inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
             inkomsten.Category = Category.SelectedItem.ToString();
-            await _connection.InsertAsync(inkomsten);             await DisplayAlert("Alert", "Inkomsten succesvol toegevoegd", "OK");             await Navigation.PushAsync(new BudgetBuddyPage());             Navigation.RemovePage(this);
+            await _connection.InsertAsync(inkomsten);
+            await DisplayAlert("Alert", "Inkomsten succesvol toegevoegd", "OK");
+            await Navigation.PushAsync(new BudgetBuddyPage());
+            Navigation.RemovePage(this);
         }
     }
 }
