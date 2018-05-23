@@ -4,9 +4,13 @@
         <BoxView Color="Bisque"
                  AbsoluteLayout.LayoutBounds=".5,.75,1,.25"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-        
-       
-    
+
+        <Label Text="Last expense:"
+               FontSize="Default"
+               AbsoluteLayout.LayoutBounds=".5,.75,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+
         <Button Text="Expenditure input"
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
