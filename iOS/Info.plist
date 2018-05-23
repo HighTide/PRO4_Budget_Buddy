@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>Budget Buddy</string>
 	<key>CFBundleIdentifier</key>
-	<string>NL.HR.INF1J.Floor.Budget-Buddy</string>
+	<string>NL.HR.INF1J.Budget-Buddy</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

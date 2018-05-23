@@ -38,6 +38,9 @@ namespace BudgetBuddy.Properties
 
         [MaxLength(255)]
         public string Category { get; set; }
+
+		[MaxLength(255)]
+        public string Name { get; set; }
     }
 
 	public class SQL_Category 
@@ -45,5 +48,20 @@ namespace BudgetBuddy.Properties
         [PrimaryKey]
         public string Name { get; set; }
     }
+
+	public class SQL_SpaarDoelen
+    {
+		[PrimaryKey]
+        public DateTime Date { get; set; }
+
+        public string Name { get; set; }
+       
+        public double Value { get; set; }
+
+		public double Goal { get; set; }
+
+    }
+
+
 }
 
