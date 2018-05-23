@@ -34,6 +34,7 @@ namespace BudgetBuddy.Views
 
             var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Category == category).ToListAsync();
             _uitgaven = new ObservableCollection<SQL_Uitgaven>(uitgaven);
+
             ListView.ItemsSource = _uitgaven;
 
             base.OnAppearing();

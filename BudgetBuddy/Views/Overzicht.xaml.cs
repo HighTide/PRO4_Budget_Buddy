@@ -46,6 +46,26 @@ namespace BudgetBuddy.Views
             {
                 Title = "Abonnementen",
             });
+            MenuList.Add(new Category()
+            {
+                Title = "Loon",
+            });
+            MenuList.Add(new Category()
+            {
+                Title = "Cadeau",
+            });
+            MenuList.Add(new Category()
+            {
+                Title = "Winst",
+            });
+            MenuList.Add(new Category()
+            {
+                Title = "Uitkering",
+            });
+            MenuList.Add(new Category()
+            {
+                Title = "Creditering",
+            });
 
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml  

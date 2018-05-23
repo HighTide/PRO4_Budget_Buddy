@@ -17,14 +17,10 @@
             <Picker Title="Categorie" VerticalOptions="Center" x:Name="Category">
                 <Picker.Items>
                     <x:String>Loon</x:String>
-                    <x:String>Investering</x:String>
                     <x:String>Cadeau</x:String>
-                    <x:String>Lening</x:String>
                     <x:String>Winst</x:String>
-                    <x:String>Rente</x:String>
                     <x:String>Uitkering</x:String>
-                    <x:String>Terugbetaling</x:String>
-                    <x:String>Overig</x:String>
+                    <x:String>Creditering</x:String>
                 </Picker.Items>
             </Picker>
         </StackLayout>
