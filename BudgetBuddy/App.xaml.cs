@@ -77,6 +77,8 @@ namespace BudgetBuddy
                 uitgaven.Name = "Cola bij de mac";
                 await _connection.InsertAsync(uitgaven);
             }
+
+            await _connection.CreateTableAsync<SQL_Inkomsten>();
         }
 
         protected override void OnSleep()

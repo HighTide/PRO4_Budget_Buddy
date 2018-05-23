@@ -42,7 +42,7 @@ namespace BudgetBuddy.Views
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var selected = e.SelectedItem as SQL_Uitgaven;
-            DisplayAlert("Alert", selected.Name, "OK");
+            DisplayAlert("Alert", selected.Value.ToString(), "OK");
         }
     }
 }
