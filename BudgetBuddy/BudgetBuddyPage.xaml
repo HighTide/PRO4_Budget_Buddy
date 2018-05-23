@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage NavigationPage.HasNavigationBar="true" Title="Overview" BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BudgetBuddy" x:Class="BudgetBuddy.BudgetBuddyPage">
     <AbsoluteLayout>
-        <Button Text="Last expense"
-                Clicked="Handle_Clicked"
-                BackgroundColor="Bisque"
-                TextColor="White"
-                AbsoluteLayout.LayoutBounds=".5,.75,1,.25"
-                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
+        <BoxView Color="Bisque"
+                 AbsoluteLayout.LayoutBounds=".5,.75,1,.25"
+                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
+        
+       
     
         <Button Text="Expenditure input"
                 Clicked="Handle_Clicked"
