@@ -6,13 +6,13 @@
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Label Text="Last expense:"
-               FontSize="Default"
+               FontSize="Medium"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.6,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
         
         <Label Text="€"
-               FontSize="18"
+               FontSize="Large"
                AbsoluteLayout.LayoutBounds=".335,.7,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
