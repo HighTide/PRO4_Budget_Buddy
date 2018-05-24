@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.Overzicht_Detail">
     <ContentPage.Content>
-        <StackLayout Padding="5" Orientation="Vertical">
+        <StackLayout Orientation="Vertical" BackgroundColor="Gray">
             <Label Text="Je totale uitgaven zijn:" HorizontalOptions="Center"/>
             <Label x:Name="Total" HorizontalOptions="Center" FontSize="Large" TextColor="Red" FontAttributes="Bold"></Label>
             <ListView x:Name="ListView" 
@@ -11,8 +11,8 @@
                       HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="5">
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal" BackgroundColor="DarkOliveGreen">
                                 <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="50"/>
                                 <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
                                     <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="250"/>
