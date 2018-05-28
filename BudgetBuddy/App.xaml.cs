@@ -83,6 +83,7 @@ namespace BudgetBuddy
 			int allItems_Inkomsten = await _connection.Table<SQL_Inkomsten>().CountAsync();
             System.Diagnostics.Debug.WriteLine(allItems);
 
+   
             if (allItems_Inkomsten == 0)
             {
                 var uitgaven = new SQL_Uitgaven { };
@@ -93,6 +94,60 @@ namespace BudgetBuddy
                 await _connection.InsertAsync(uitgaven);
 
                 
+            }
+
+            await _connection.CreateTableAsync<SQL_Category>();
+
+            int allItems_Category = await _connection.Table<SQL_Category>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems);
+
+            if (allItems_Category == 0)
+            {
+                var Category = new SQL_Category { };
+                Category.Name = "Kleding";
+                Category.Income = false;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Drinken";
+                Category.Income = false;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Eten";
+                Category.Income = false;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Boodschappen";
+                Category.Income = false;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Amusement";
+                Category.Income = false;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Abonnementen";
+                Category.Income = true;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Loon";
+                Category.Income = true;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Cadeau";
+                Category.Income = true;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Winst";
+                Category.Income = true;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Uitkering";
+                Category.Income = true;
+                await _connection.InsertAsync(Category);
+
+                Category.Name = "Creditering";
+                Category.Income = true;
+                await _connection.InsertAsync(Category);
+
             }
         }
 

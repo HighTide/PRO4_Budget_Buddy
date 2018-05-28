@@ -5,23 +5,43 @@
              x:Class="BudgetBuddy.Views.Overzicht"
              Title="Totaal overzicht"
              BackgroundColor="{DynamicResource backgroundColor}">
+    <StackLayout>
+        <StackLayout>
+            <Label Text="Uitgaven" TextColor="{DynamicResource textColor}" FontSize="Large" HorizontalOptions="Center"/>
+        </StackLayout>
+        <ListView x:Name="Categories"
+                  HasUnevenRows="True"
+                  Margin="0,20"
+                  ItemSelected="Categories_OnItemSelected"
+                  BackgroundColor="{DynamicResource backgroundColor}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10" >
+                            <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"  />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout>
+            <Label Text="Inkomen" TextColor="{DynamicResource textColor}" FontSize="Large" HorizontalOptions="Center"/>
+        </StackLayout>
+        <ListView x:Name="Categories2"
+                  HasUnevenRows="True"
+                  Margin="0,40"
+                  ItemSelected="Categories_OnItemSelected"
+                  BackgroundColor="{DynamicResource backgroundColor}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10" >
+                            <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"  />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 
-
-    <ListView ItemsSource="{Binding Products}"
-              x:Name="Categories"
-              HasUnevenRows="True"
-              Margin="0,40"
-              ItemSelected="Categories_OnItemSelected"
-              BackgroundColor="{DynamicResource backgroundColor}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10" >
-                        <Image Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
-                        <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"  />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
 </ContentPage>

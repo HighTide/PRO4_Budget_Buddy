@@ -47,6 +47,8 @@ namespace BudgetBuddy.Properties
 	{
         [PrimaryKey]
         public string Name { get; set; }
+
+        public bool Income { get; set; }
     }
 
 	public class SQL_SpaarDoelen
