@@ -12,20 +12,23 @@ namespace BudgetBuddy.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Settings : ContentPage
 	{
+        string hex1 = "#303030";
+
 		public Settings ()
 		{
 			InitializeComponent ();
 		}
 
-        private void doneButton_Clicked(object sender, EventArgs e)
+        private void Button_Clicked1(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync();
+            App.Current.Resources["backgroundColor"] = Color.White;
+            App.Current.Resources["textColor"] = Color.FromHex(hex1);
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked2(object sender, EventArgs e)
         {
-            App.Current.Resources["backgroundColor"] = Color.FromHex(backgroundColorEntry.Text);
-            App.Current.Resources["textColor"] = Color.FromHex(textColorEntry.Text);
+            App.Current.Resources["backgroundColor"] = Color.FromHex(hex1);
+            App.Current.Resources["textColor"] = Color.White;
         }
     }
 }

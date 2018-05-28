@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.Spaardoelen"
-             Title="Spaardoelen">
+             Title="Spaardoelen"
+             BackgroundColor="{DynamicResource backgroundColor}">
+    
      <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="Toevoegen" Text="Toevoegen" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListView">
+            <ListView x:Name="ListView" BackgroundColor="{DynamicResource backgroundColor}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Name}" />

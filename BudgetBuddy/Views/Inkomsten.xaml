@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="BudgetBuddy.Views.Inkomsten" 
-             Title="Inkomsten">
+             Title="Inkomsten"
+             BackgroundColor="{DynamicResource backgroundColor}">
+    
     <StackLayout Orientation="Vertical" Padding="20">
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" />
         <Label Text="" />
