@@ -6,16 +6,16 @@
              BackgroundColor="{DynamicResource backgroundColor}">
     
     <StackLayout Orientation="Vertical" Padding="20">
-        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" />
-        <Label Text="" />
+        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" TextColor="{DynamicResource textColor}"/>
+        <Label Text=""/>
         <StackLayout Orientation="Horizontal">
-            <Label VerticalOptions="End" Text="Bedrag" />
+            <Label VerticalOptions="End" Text="Bedrag" TextColor="{DynamicResource textColor}"/>
             <Entry VerticalOptions="End" Placeholder="Bedrag" Keyboard="Numeric" x:Name="Bedrag"/>
         </StackLayout>
-        <BoxView x:Name="Ruimte" HeightRequest="20" />
+        <BoxView x:Name="Ruimte" HeightRequest="20"/>
         <Label Text="" />
         <StackLayout Orientation="Horizontal">
-            <Label VerticalOptions="Center" Text="Categorie" />
+            <Label VerticalOptions="Center" Text="Categorie" TextColor="{DynamicResource textColor}"/>
             <Picker Title="Categorie" VerticalOptions="Center" x:Name="Category">
                 <Picker.Items>
                     <x:String>Loon</x:String>
