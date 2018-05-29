@@ -12,7 +12,7 @@
                  AbsoluteLayout.LayoutBounds=".5,.1,.975,.46"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <BoxView Color="DimGray"
+        <BoxView Color="SlateGray"
                  AbsoluteLayout.LayoutBounds=".5,.2,.8,.01"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
