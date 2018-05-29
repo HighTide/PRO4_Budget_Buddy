@@ -61,7 +61,7 @@
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Totaal overzicht"
-                FontSize="13"
+                FontSize="12"
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
