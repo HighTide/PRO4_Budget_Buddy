@@ -50,7 +50,7 @@ namespace BudgetBuddy.Views
                 total += item.Value;
             }
 
-            Total.Text = total.ToString("0.00");
+            Total.Text = "€ " + total.ToString("0.00");
             System.Diagnostics.Debug.WriteLine(total);
             base.OnAppearing();
         }
