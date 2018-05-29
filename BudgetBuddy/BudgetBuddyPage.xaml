@@ -9,11 +9,11 @@
     
     <AbsoluteLayout>
         <BoxView Color="Orange"
-                 AbsoluteLayout.LayoutBounds=".5,.3,95,.4"
+                 AbsoluteLayout.LayoutBounds=".5,.25,.95,.3"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <BoxView Color="Bisque"
-                 AbsoluteLayout.LayoutBounds=".5,.75,9,.25"
+                 AbsoluteLayout.LayoutBounds=".5,.75,.9,.25"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Label Text="Last expense:"
