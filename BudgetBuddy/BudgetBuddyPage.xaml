@@ -8,7 +8,9 @@
              x:Class="BudgetBuddy.BudgetBuddyPage">
     
     <AbsoluteLayout>
-        <ProgressBar BackgroundColor="AliceBlue"/>
+        <BoxView Color="Orange"
+                 AbsoluteLayout.LayoutBounds=".5,.4,1,.4"
+                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <BoxView Color="Bisque"
                  AbsoluteLayout.LayoutBounds=".5,.75,1,.25"
