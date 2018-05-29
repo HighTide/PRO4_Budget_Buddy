@@ -45,7 +45,7 @@
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".525,.7,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds=".53,.7,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Categorie: "
