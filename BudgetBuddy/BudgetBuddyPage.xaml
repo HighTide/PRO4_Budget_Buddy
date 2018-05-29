@@ -14,7 +14,7 @@
 
         <Label Text="€ 9,- /d"
                Style="{DynamicResource TitleStyle}"
-               FontSize="30"
+               FontSize="50"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.2,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
@@ -25,7 +25,7 @@
 
         <Label Text="Last expense:"
                Style="{DynamicResource TitleStyle}"
-               FontSize="Medium"
+               FontSize="Large"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.6,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
@@ -33,21 +33,21 @@
         <Label Text="€"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Large"
-               FontAttributes="Bold"
+               FontAttributes="None"
                AbsoluteLayout.LayoutBounds=".335,.65,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Name_given_by_user"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
-               FontAttributes="Bold"
+               FontAttributes="None"
                AbsoluteLayout.LayoutBounds=".335,.7,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Categorie: "
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
-               FontAttributes="Bold"
+               FontAttributes="None"
                AbsoluteLayout.LayoutBounds=".335,.75,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
