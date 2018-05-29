@@ -53,7 +53,7 @@
 
 
         <Button Text="Uitgave invoeren"
-                FontSize="Small"
+                FontSize="Micro"
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
