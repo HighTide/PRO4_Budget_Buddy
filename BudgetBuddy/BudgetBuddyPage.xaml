@@ -38,21 +38,21 @@
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Large"
                FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".2,.65,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds=".17,.65,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Gegeven_naam_door_gebruiker"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".5,.7,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds=".525,.7,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Categorie: "
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".25,.75,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds=".22,.75,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
 
