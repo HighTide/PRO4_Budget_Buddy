@@ -13,6 +13,7 @@
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Label Text="Last expense:"
+               Style="{DynamicResource TitleStyle}"
                FontSize="Medium"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.6,AutoSize,AutoSize"
