@@ -9,7 +9,7 @@
     
     <AbsoluteLayout>
         <BoxView Color="Orange"
-                 AbsoluteLayout.LayoutBounds=".5,.1,.975,.45"
+                 AbsoluteLayout.LayoutBounds=".5,.1,.975,.475"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <BoxView Color="Bisque"
