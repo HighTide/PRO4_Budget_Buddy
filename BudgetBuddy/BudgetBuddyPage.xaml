@@ -12,11 +12,11 @@
                  AbsoluteLayout.LayoutBounds=".5,.1,.975,.46"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <BoxView AbsoluteLayout.LayoutBounds=".5,.2,.8,.01"
+        <BoxView Color="#303030"
+                 AbsoluteLayout.LayoutBounds=".5,.2,.8,.01"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Label Text="€ 9,- /d"
-               TextColor="Black"
                Style="{DynamicResource TitleStyle}"
                FontSize="50"
                FontAttributes="Bold"
@@ -28,7 +28,6 @@
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Label Text="Laatste uitgave:"
-               TextColor="Black"
                Style="{DynamicResource TitleStyle}"
                FontSize="25"
                FontAttributes="Bold"
@@ -36,7 +35,6 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
         
         <Label Text="€"
-               TextColor="Black"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Large"
                FontAttributes="None"
@@ -44,7 +42,6 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Gegeven_naam_door_gebruiker"
-               TextColor="Black"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="None"
@@ -52,7 +49,6 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Categorie: "
-               TextColor="Black"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="None"
