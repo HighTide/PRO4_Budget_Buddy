@@ -14,7 +14,7 @@
 
         <Label Text="€ 9,- /d"
                Style="{DynamicResource TitleStyle}"
-               FontSize="Large"
+               FontSize="30"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.2,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
