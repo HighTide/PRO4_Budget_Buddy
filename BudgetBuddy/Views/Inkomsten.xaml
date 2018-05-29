@@ -10,7 +10,7 @@
         <Label Text=""/>
         <StackLayout Orientation="Horizontal">
             <Label VerticalOptions="End" Text="Bedrag" TextColor="{DynamicResource textColor}"/>
-            <Entry VerticalOptions="End" Placeholder="Bedrag" Keyboard="Numeric" x:Name="Bedrag"/>
+            <Entry VerticalOptions="End" Placeholder="Bedrag" Keyboard="Numeric" x:Name="Bedrag" TextChanged="Bedrag_OnTextChanged"/>
         </StackLayout>
         <BoxView x:Name="Ruimte" HeightRequest="20"/>
         <Label Text="" />
