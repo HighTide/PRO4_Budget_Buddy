@@ -16,16 +16,16 @@
                Style="{DynamicResource TitleStyle}"
                FontSize="50"
                FontAttributes="Bold"
-               AbsoluteLayout.LayoutBounds=".335,.2,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds=".335,.1,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <BoxView Color="Bisque"
                  AbsoluteLayout.LayoutBounds=".5,.75,.975,.25"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <Label Text="Last expense:"
+        <Label Text="Laatste uitgave:"
                Style="{DynamicResource TitleStyle}"
-               FontSize="Large"
+               FontSize="25"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.6,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
@@ -37,7 +37,7 @@
                AbsoluteLayout.LayoutBounds=".335,.65,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
-        <Label Text="Name_given_by_user"
+        <Label Text="Gegeven_naam_door_gebruiker"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="None"
@@ -52,21 +52,21 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
 
-        <Button Text="Expenditure input"
+        <Button Text="Uitgave invoeren"
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds="0,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <Button Text="Main menu"
+        <Button Text="Totaal overzicht"
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds=".335,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <Button Text="Fast access buttons"
+        <Button Text="Snelle toegang knoppen"
                 Clicked="Handle_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
