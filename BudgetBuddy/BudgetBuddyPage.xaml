@@ -12,6 +12,13 @@
                  AbsoluteLayout.LayoutBounds=".5,.1,.975,.46"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
+        <Label Text="€ 9,- /d"
+               Style="{DynamicResource TitleStyle}"
+               FontSize="Large"
+               FontAttributes="Bold"
+               AbsoluteLayout.LayoutBounds=".335,.2,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
         <BoxView Color="Bisque"
                  AbsoluteLayout.LayoutBounds=".5,.75,.975,.25"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
