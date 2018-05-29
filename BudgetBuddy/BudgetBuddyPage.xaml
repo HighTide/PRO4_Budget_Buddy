@@ -12,7 +12,7 @@
                  AbsoluteLayout.LayoutBounds=".5,.1,.975,.46"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <BoxView Color="#383838"
+        <BoxView Color="#303030"
                  AbsoluteLayout.LayoutBounds=".5,.2,.8,.01"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
@@ -38,21 +38,21 @@
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Large"
                FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".335,.65,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds=".2,.65,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Gegeven_naam_door_gebruiker"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".335,.7,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds=".5,.7,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Categorie: "
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".335,.75,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds=".25,.75,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
 
