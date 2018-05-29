@@ -20,18 +20,21 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
         
         <Label Text="€"
+               Style="{DynamicResource SubtitleStyle}"
                FontSize="Large"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".25,.65,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Name_given_by_user"
+               Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.7,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
         <Label Text="Categorie: "
+               Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.75,AutoSize,AutoSize"
