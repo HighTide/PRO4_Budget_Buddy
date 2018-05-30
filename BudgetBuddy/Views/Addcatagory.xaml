@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.Addcatagory"             
@@ -13,7 +13,7 @@
             </StackLayout>
             <BoxView x:Name="Ruimte" HeightRequest="20" />
             <StackLayout Orientation="Vertical">
-                <Label HorizontalOptions="Center" Text="Soort categrie:" TextColor="{DynamicResource textColor}"/>
+                <Label HorizontalOptions="Center" Text="Inkomsten/uitgaven" TextColor="{DynamicResource textColor}"/>
                 <StackLayout Orientation="Horizontal">
                     <Picker Title="Selecteer Categorie" HorizontalOptions="CenterAndExpand" x:Name="Category">
                         <Picker.Items>
@@ -24,7 +24,7 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout>
-                <Button Text="Voeg Toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked">
+                <Button Text="Voeg Toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}" BorderColor="Bisque" Margin="20" BorderWidth="2">
                 </Button>
             </StackLayout>
         </StackLayout>

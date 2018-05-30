@@ -5,7 +5,8 @@
         <ResourceDictionary>
             <Color x:Key="backgroundColor">#303030</Color>
             <Color x:Key="textColor">White</Color>
-            <Color x:Key="headerColor">Bisque</Color>
+            <Color x:Key="entryColor">Bisque</Color>
+            <Color x:Key="buttonColor">Orange</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
