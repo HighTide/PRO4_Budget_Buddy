@@ -30,5 +30,10 @@ namespace BudgetBuddy.Views
             App.Current.Resources["backgroundColor"] = Color.FromHex(hex1);
             App.Current.Resources["textColor"] = Color.White;
         }
-    }
+
+	    private void Button_OnClicked(object sender, EventArgs e)
+	    {
+	        Navigation.PushAsync(new Addcatagory());
+        }
+	}
 }

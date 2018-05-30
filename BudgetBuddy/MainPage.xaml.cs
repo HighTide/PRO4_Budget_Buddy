@@ -12,6 +12,9 @@ namespace BudgetBuddy
 {
     public partial class MainPage : MasterDetailPage
     {
+
+        string hex1 = "#303030";
+
         public List<MasterPageItem> MenuList
         {
             get;
@@ -21,7 +24,7 @@ namespace BudgetBuddy
         {
             InitializeComponent();
             MenuList = new List<MasterPageItem>();
-            // Adding menu items to menuList and you can define title ,page and icon  
+            // Adding menu items to menuList and you can define title, page and icon  
             MenuList.Add(new MasterPageItem()
             {
                 Title = "Home",
@@ -66,10 +69,15 @@ namespace BudgetBuddy
             });
 
 
+
             // Setting our list to be ItemSource for ListView in MainPage.xaml  
             navigationDrawerList.ItemsSource = MenuList;
             // Initial navigation, this can be used for our home page  
-            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(BudgetBuddyPage)));
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(BudgetBuddyPage)))
+            {
+                BarBackgroundColor = Color.FromHex(hex1),
+                BarTextColor = Color.White
+            };
         }
         // Event for Menu Item selection, here we are going to handle navigation based  
         // on user selection in menu ListView  
@@ -77,8 +85,13 @@ namespace BudgetBuddy
         {
             var item = (MasterPageItem)e.SelectedItem;
             Type page = item.TargetType;
-            Detail = new NavigationPage((Page)Activator.CreateInstance(page));
+            Detail = new NavigationPage((Page)Activator.CreateInstance(page))
+            {
+                BarBackgroundColor = Color.FromHex(hex1),
+                BarTextColor = Color.White
+            };
             IsPresented = false;
         }
+
     }
 }
