@@ -7,7 +7,7 @@
              BackgroundColor="{DynamicResource backgroundColor}">
     <StackLayout>
         <StackLayout>
-            <Label Text="Uitgaven" TextColor="{DynamicResource textColor}" FontSize="Large" HorizontalOptions="Center"/>
+            <Label Text="Uitgaven" TextColor="{DynamicResource textColor}" FontSize="Large" HorizontalOptions="Center" Margin="20"/>
         </StackLayout>
         <ListView x:Name="Categories"
                   HasUnevenRows="True"
