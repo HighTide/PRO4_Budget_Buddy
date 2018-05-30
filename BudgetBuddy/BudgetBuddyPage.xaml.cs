@@ -64,17 +64,17 @@ namespace BudgetBuddy
 
         async void Naar_Uitgaven(object sender, System.EventArgs e)
         {
-            await Uitgaven.PushAsync(new SQL());
+            await Navigation.PushAsync(new Uitgaven());
         }
 
         async void Overzicht(object sender, System.EventArgs e)
         {
-            await Overzicht.PushAsync(new SQL());
+			await Navigation.PushAsync(new Overzicht());
         }
 
-        private void Button_Clicked(object sender, System.EventArgs e)
+        async void Button_Clicked(object sender, System.EventArgs e)
         {
-            await Settings.PushAsync(new SQL());
+            await Navigation.PushAsync(new Settings());
         }
     }
 }

@@ -41,6 +41,10 @@
     <EmbeddedResource Include="Resources\Piggy.png" />
     <EmbeddedResource Include="Resources\Settings.png" />
     <EmbeddedResource Include="Resources\Uitgaven.png" />
+    <EmbeddedResource Include="Views\Spaardoelen_Toevoegen.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -83,7 +87,9 @@
       <DependentUpon>SQL.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Table.cs" />
-    <Compile Include="Views\Spaardoelen_Toevoegen.xaml.cs" />
+    <Compile Include="Views\Spaardoelen_Toevoegen.xaml.cs">
+      <DependentUpon>Spaardoelen_Toevoegen.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -110,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Views\Spaardoelen_Toevoegen.xaml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Overzicht.xaml">
