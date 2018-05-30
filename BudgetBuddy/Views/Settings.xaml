@@ -6,7 +6,7 @@
              BackgroundColor="{DynamicResource backgroundColor}"
              Style="{DynamicResource backgroundStyle}">
     <ContentPage.ToolbarItems>
-       <!--<ToolbarItem x:Name="doneButton" Text="Name" Clicked="doneButton_Clicked" />-->
+        <!--<ToolbarItem x:Name="doneButton" Text="Name" Clicked="doneButton_Clicked" />-->
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

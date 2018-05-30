@@ -78,6 +78,32 @@ namespace BudgetBuddy
                 await _connection.InsertAsync(uitgaven);
             }
 
+            await _connection.CreateTableAsync<SQL_Buttons>();
+
+            int allItems_Buttons = await _connection.Table<SQL_Buttons>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems);
+
+            if (allItems_Buttons == 0)
+            {
+                var buttons = new SQL_Buttons { };
+                buttons.Value = "Inkomsten";
+                buttons.Name = "Button1";
+                await _connection.InsertAsync(buttons);
+
+                buttons.Value = "Uitgaven";
+                buttons.Name = "Button2";
+                await _connection.InsertAsync(buttons);
+
+                buttons.Value = "Spaardoelen";
+                buttons.Name = "Button3";
+                await _connection.InsertAsync(buttons);
+
+                buttons.Value = "Overzicht";
+                buttons.Name = "Button4";
+                await _connection.InsertAsync(buttons);
+            }
+
+
             await _connection.CreateTableAsync<SQL_Inkomsten>();
 
 			int allItems_Inkomsten = await _connection.Table<SQL_Inkomsten>().CountAsync();
@@ -149,6 +175,8 @@ namespace BudgetBuddy
                 await _connection.InsertAsync(Category);
 
             }
+
+
         }
 
         protected override void OnSleep()
