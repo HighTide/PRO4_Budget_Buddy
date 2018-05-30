@@ -79,7 +79,8 @@
                 BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds=".665,1,.25,.15"
-                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
+                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"
+                />
 
         <Button Text="Settings"
                 FontSize="12"

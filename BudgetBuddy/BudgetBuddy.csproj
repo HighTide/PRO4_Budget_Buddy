@@ -83,6 +83,7 @@
       <DependentUpon>SQL.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Table.cs" />
+    <Compile Include="Views\Spaardoelen_Toevoegen.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -109,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Views\Spaardoelen_Toevoegen.xaml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Overzicht.xaml">
