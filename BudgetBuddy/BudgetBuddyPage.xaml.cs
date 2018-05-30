@@ -23,5 +23,20 @@ namespace BudgetBuddy
         {
             await Navigation.PushAsync(new SQL());
         }
+
+        async void Naar_Uitgaven(object sender, System.EventArgs e)
+        {
+            await Uitgaven.PushAsync(new SQL());
+        }
+
+        async void Overzicht(object sender, System.EventArgs e)
+        {
+            await Overzicht.PushAsync(new SQL());
+        }
+
+        private void Button_Clicked(object sender, System.EventArgs e)
+        {
+            await Settings.PushAsync(new SQL());
+        }
     }
 }
