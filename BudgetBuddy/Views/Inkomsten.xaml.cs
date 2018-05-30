@@ -66,7 +66,7 @@ namespace BudgetBuddy.Views
 
                 }
 
-                else if (entry != "" && Bedrag.Text.IndexOf('.') == 0 || Bedrag.Text.IndexOf(',') == 0)
+                else if (entry != "")
                 {
                     double _entry = Convert.ToDouble(entry);
                     if (_entry > MaxLength)

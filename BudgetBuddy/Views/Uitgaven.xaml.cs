@@ -86,13 +86,13 @@ namespace BudgetBuddy.Views
                 var entry = e.NewTextValue;
                 var MaxLength = 9999999.99;
                 var MinimumLength = 0;
-                if (Bedrag.Text.IndexOf('.') == 0)
+                if (Bedrag.Text.IndexOf('.') == 0 || Bedrag.Text.IndexOf(',') == 0)
                 {
                     DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
                     Bedrag.Text = "";
 
                 }
-                else if (entry != "" && Bedrag.Text.IndexOf('.') == 0)
+                else if (entry != "")
                 {
                     double _entry = Convert.ToDouble(entry);
                     if (_entry > MaxLength)
@@ -107,7 +107,6 @@ namespace BudgetBuddy.Views
                         Bedrag.Text = "";
                     }
                 }
-
             }
         }
     }
