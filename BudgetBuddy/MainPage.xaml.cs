@@ -12,9 +12,6 @@ namespace BudgetBuddy
 {
     public partial class MainPage : MasterDetailPage
     {
-
-        string hex1 = "#303030";
-
         public List<MasterPageItem> MenuList
         {
             get;
@@ -75,7 +72,7 @@ namespace BudgetBuddy
             // Initial navigation, this can be used for our home page  
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(BudgetBuddyPage)))
             {
-                BarBackgroundColor = Color.FromHex(hex1),
+                BarBackgroundColor = Color.Orange,
                 BarTextColor = Color.White
             };
         }
@@ -87,7 +84,7 @@ namespace BudgetBuddy
             Type page = item.TargetType;
             Detail = new NavigationPage((Page)Activator.CreateInstance(page))
             {
-                BarBackgroundColor = Color.FromHex(hex1),
+                BarBackgroundColor = Color.Orange,
                 BarTextColor = Color.White
             };
             IsPresented = false;

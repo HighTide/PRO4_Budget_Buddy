@@ -10,12 +10,12 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout >
-                <Button TextColor="{DynamicResource textColor}" Text="Light Theme" Clicked="Button_Clicked1" />
-                <Button TextColor="{DynamicResource textColor}" Text="Dark Theme" Clicked="Button_Clicked2" />
+            <StackLayout>
+                <Button BorderColor="Bisque" Margin="20" WidthRequest="2" BorderWidth="2" Text="Light Theme" Clicked="Button_Clicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
+                <Button BorderColor="Bisque" Margin="20" WidthRequest="2" BorderWidth="2" Text="Dark Theme" Clicked="Button_Clicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
             </StackLayout>
             <StackLayout>
-                <Button Text="Voeg categorie toe" Clicked="Button_OnClicked"></Button>
+                <Button BorderColor="Bisque" Margin="20" BorderWidth="2" Text="Voeg categorie toe" Clicked="Button_OnClicked" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
             </StackLayout>
 
         </StackLayout>
