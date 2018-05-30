@@ -56,7 +56,7 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
 
-        <Button 
+        <Button Text="Totaal overzicht"
                 x:Name="Button1"
                 FontSize="12"
                 Clicked="Handle_Clicked"

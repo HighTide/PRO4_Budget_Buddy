@@ -24,6 +24,7 @@ namespace BudgetBuddy
         protected async override void OnStart()
         {
             //Create SQL Connection
+            await _connection.CreateTableAsync<SQL_Buttons>();
             await _connection.CreateTableAsync<SQL_Settings>();
 
             int allItems = await _connection.Table<SQL_Settings>().CountAsync();
@@ -78,7 +79,7 @@ namespace BudgetBuddy
                 await _connection.InsertAsync(uitgaven);
             }
 
-            await _connection.CreateTableAsync<SQL_Buttons>();
+            
 
             int allItems_Buttons = await _connection.Table<SQL_Buttons>().CountAsync();
             System.Diagnostics.Debug.WriteLine(allItems);

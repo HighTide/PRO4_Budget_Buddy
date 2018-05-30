@@ -63,7 +63,6 @@ namespace BudgetBuddy.Properties
 		public double Goal { get; set; }
 
     }
-
     public class SQL_Buttons
     {
         [PrimaryKey]

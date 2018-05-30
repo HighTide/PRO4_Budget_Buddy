@@ -18,6 +18,9 @@ namespace BudgetBuddy
             InitializeComponent();
 
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            Button1.Text = Button1Val;
+            
+            
         }
 
         protected override async void OnAppearing()
@@ -44,7 +47,7 @@ namespace BudgetBuddy
                     var Button4Val = item.Value;
                 }
             }
-            Button1.Text = Button1Val;
+            
             base.OnAppearing();
         }
 
