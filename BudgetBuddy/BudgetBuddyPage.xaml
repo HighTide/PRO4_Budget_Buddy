@@ -56,7 +56,8 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
 
-        <Button Text="Uitgave invoeren"
+        <Button Text="Totaal overzicht"
+                x:Name="Button1"
                 FontSize="12"
                 Clicked="Naar_Uitgaven"
                 BackgroundColor="Orange"
