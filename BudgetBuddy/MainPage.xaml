@@ -39,6 +39,6 @@
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage></NavigationPage>
+        <NavigationPage BarBackgroundColor="Red" BarTextColor="White"></NavigationPage>
     </MasterDetailPage.Detail>
 </MasterDetailPage> 
