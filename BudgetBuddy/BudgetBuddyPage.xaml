@@ -58,7 +58,7 @@
 
         <Button Text="Uitgave invoeren"
                 FontSize="12"
-                Clicked="Handle_Clicked"
+                Clicked="Naar_Uitgaven"
                 BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds="0,1,.25,.15"
@@ -66,24 +66,24 @@
 
         <Button Text="Totaal overzicht"
                 FontSize="12"
-                Clicked="Handle_Clicked"
-                BackgroundColor="Orange"
-                TextColor="White"
-                AbsoluteLayout.LayoutBounds=".335,1,.25,.15"
-                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-
-        <Button Text="Snelle toegang knoppen"
-                FontSize="12"
-                Clicked="Handle_Clicked"
+                Clicked="Overzicht"
                 BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds=".665,1,.25,.15"
+                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
+
+        <Button Text="Inkomen invoeren"
+                FontSize="12"
+                Clicked="Naar_Inkomen"
+                BackgroundColor="Orange"
+                TextColor="White"
+                AbsoluteLayout.LayoutBounds=".335,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"
                 />
 
         <Button Text="Settings"
                 FontSize="12"
-                Clicked="Handle_Clicked"
+                Clicked="Button_Clicked"
                 BackgroundColor="Orange"
                 TextColor="White"
                 AbsoluteLayout.LayoutBounds="1,1,.25,.15"

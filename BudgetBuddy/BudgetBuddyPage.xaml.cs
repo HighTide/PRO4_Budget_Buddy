@@ -18,9 +18,9 @@ namespace BudgetBuddy
 
 
 
-        async void Handle_Clicked(object sender, System.EventArgs e)
+        async void Naar_Inkomen(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new SQL());
+            await Navigation.PushAsync(new Inkomsten());
         }
 
         async void Naar_Uitgaven(object sender, System.EventArgs e)
