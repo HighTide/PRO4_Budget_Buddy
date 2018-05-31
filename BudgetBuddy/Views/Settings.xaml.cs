@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BudgetBuddy.Properties;
+using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,12 +13,16 @@ namespace BudgetBuddy.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Settings : ContentPage
 	{
+	    private SQLiteAsyncConnection _connection;
         string hex1 = "#303030";
 
 		public Settings ()
 		{
-			InitializeComponent ();
+		    _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            InitializeComponent ();
+
 		}
+
 
         private void Button_Clicked1(object sender, EventArgs e)
         {
@@ -35,5 +40,13 @@ namespace BudgetBuddy.Views
 	    {
 	        Navigation.PushAsync(new Addcatagory());
         }
-	}
+
+	    private async void Button_OnClicked3(object sender, EventArgs e)
+	    {
+	        await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Tazer", "Button1");
+
+	    }
+
+
+    }
 }

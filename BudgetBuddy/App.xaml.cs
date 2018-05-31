@@ -13,11 +13,16 @@ namespace BudgetBuddy
 
         public App()
         {
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+
+            //don't delete this line
+            _connection.CreateTableAsync<SQL_Buttons>();
+
+
             InitializeComponent();
             MainPage = new MainPage();
 
-            
-			_connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+
         }
 
 
@@ -25,6 +30,30 @@ namespace BudgetBuddy
         {
             //Create SQL Connection
             await _connection.CreateTableAsync<SQL_Buttons>();
+
+            int allItems_Buttons = await _connection.Table<SQL_Buttons>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems_Buttons);
+
+            if (allItems_Buttons == 0)
+            {
+                var buttons = new SQL_Buttons { };
+                buttons.Value = "Inkomsten";
+                buttons.Name = "Button1";
+                await _connection.InsertAsync(buttons);
+
+                buttons.Value = "Uitgaven";
+                buttons.Name = "Button2";
+                await _connection.InsertAsync(buttons);
+
+                buttons.Value = "Spaardoelen";
+                buttons.Name = "Button3";
+                await _connection.InsertAsync(buttons);
+
+                buttons.Value = "Overzicht";
+                buttons.Name = "Button4";
+                await _connection.InsertAsync(buttons);
+            }
+
             await _connection.CreateTableAsync<SQL_Settings>();
 
             int allItems = await _connection.Table<SQL_Settings>().CountAsync();
@@ -80,31 +109,6 @@ namespace BudgetBuddy
             }
 
             
-
-            int allItems_Buttons = await _connection.Table<SQL_Buttons>().CountAsync();
-            System.Diagnostics.Debug.WriteLine(allItems);
-
-            if (allItems_Buttons == 0)
-            {
-                var buttons = new SQL_Buttons { };
-                buttons.Value = "Inkomsten";
-                buttons.Name = "Button1";
-                await _connection.InsertAsync(buttons);
-
-                buttons.Value = "Uitgaven";
-                buttons.Name = "Button2";
-                await _connection.InsertAsync(buttons);
-
-                buttons.Value = "Spaardoelen";
-                buttons.Name = "Button3";
-                await _connection.InsertAsync(buttons);
-
-                buttons.Value = "Overzicht";
-                buttons.Name = "Button4";
-                await _connection.InsertAsync(buttons);
-            }
-
-
             await _connection.CreateTableAsync<SQL_Inkomsten>();
 
 			int allItems_Inkomsten = await _connection.Table<SQL_Inkomsten>().CountAsync();

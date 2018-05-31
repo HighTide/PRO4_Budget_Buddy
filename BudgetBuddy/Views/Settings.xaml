@@ -11,11 +11,14 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Button BorderColor="Bisque" Margin="20" WidthRequest="2" BorderWidth="2" Text="Light Theme" Clicked="Button_Clicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
-                <Button BorderColor="Bisque" Margin="20" WidthRequest="2" BorderWidth="2" Text="Dark Theme" Clicked="Button_Clicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
+                <Button BorderColor="Bisque" Margin="5,10,5,5" WidthRequest="2" BorderWidth="2" Text="Light Theme" Clicked="Button_Clicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
+                <Button BorderColor="Bisque" Margin="5" WidthRequest="2" BorderWidth="2" Text="Dark Theme" Clicked="Button_Clicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
             </StackLayout>
             <StackLayout>
-                <Button BorderColor="Bisque" Margin="20" BorderWidth="2" Text="Voeg categorie toe" Clicked="Button_OnClicked" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Voeg categorie toe" Clicked="Button_OnClicked" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Button1_Change" Clicked="Button_OnClicked3" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
             </StackLayout>
 
         </StackLayout>

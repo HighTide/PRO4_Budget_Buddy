@@ -66,6 +66,7 @@
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Totaal overzicht"
+                x:Name="Button3"
                 FontSize="12"
                 Clicked="Overzicht"
                 BackgroundColor="Orange"
@@ -74,6 +75,7 @@
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Button Text="Inkomen invoeren"
+                x:Name="Button2"
                 FontSize="12"
                 Clicked="Naar_Inkomen"
                 BackgroundColor="Orange"
@@ -83,6 +85,7 @@
                 />
 
         <Button Text="Settings"
+                x:Name="Button4"
                 FontSize="12"
                 Clicked="Button_Clicked"
                 BackgroundColor="Orange"
