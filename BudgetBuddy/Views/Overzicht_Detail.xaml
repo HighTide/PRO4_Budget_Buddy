@@ -4,7 +4,7 @@
              x:Class="BudgetBuddy.Views.Overzicht_Detail">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" BackgroundColor="Gray">
-            <Label Text="Je totale uitgaven zijn:" HorizontalOptions="Center"/>
+            <Label HorizontalOptions="Center" x:Name="Soort_label"/>
             <Label x:Name="Total" HorizontalOptions="Center" FontSize="Large" TextColor="Red" FontAttributes="Bold"></Label>
             <ListView x:Name="ListView" 
                       ItemSelected="ListView_OnItemSelected"

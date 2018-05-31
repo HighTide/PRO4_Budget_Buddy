@@ -16,8 +16,12 @@ namespace BudgetBuddy.Views
     {
         private SQLiteAsyncConnection _connection;
         private ObservableCollection<SQL_Uitgaven> _uitgaven;
+        private ObservableCollection<SQL_Inkomsten> _inkomsten;
         private String category;
         List<double> results = new List<double>();
+        List<string> cat_list = new List<string>();
+        List<string> cat_list2 = new List<string>();
+
 
         public double total;
         //private DateTime _datum = DateTime.UtcNow.AddDays(-4);
@@ -39,15 +43,52 @@ namespace BudgetBuddy.Views
         protected override async void OnAppearing()
         {
             Title = category;
-
+            Soort_label.IsVisible = false;
+            Total.IsVisible = false;
             var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Category == category).ToListAsync();
-            _uitgaven = new ObservableCollection<SQL_Uitgaven>(uitgaven);
-            ListView.ItemsSource = _uitgaven;
-
+            var inkomsten = await _connection.Table<SQL_Inkomsten>().Where(x => x.Category == category).ToListAsync();
             foreach (var item in uitgaven)
             {
-                results.Add(item.Value);
-                total += item.Value;
+                cat_list.Add(item.Category);
+            }
+            foreach (var item in inkomsten)
+            {
+                cat_list2.Add(item.Category);
+            }
+            if (cat_list.Contains(Title))
+            {
+                _uitgaven = new ObservableCollection<SQL_Uitgaven>(uitgaven);
+                ListView.ItemsSource = _uitgaven;
+
+                foreach (var item in uitgaven)
+                {
+                    results.Add(item.Value);
+                    total += item.Value;
+                }
+                Soort_label.IsVisible = true;
+                Total.IsVisible = true;
+                Soort_label.Text = "Je totale uitgaven zijn:";
+            }
+            else if (cat_list2.Contains(Title))
+            {
+                
+                _inkomsten = new ObservableCollection<SQL_Inkomsten>(inkomsten);
+                ListView.ItemsSource = _inkomsten;
+
+                foreach (var item in inkomsten)
+                {
+                    results.Add(item.Value);
+                    total += item.Value;
+                }
+                Soort_label.IsVisible = true;
+                Total.IsVisible = true;
+                Soort_label.Text = "Je totale inkomsten zijn:";
+
+            }
+            else
+            {
+                Soort_label.IsVisible = true;
+                Soort_label.Text = "Nog geen transacties in deze categorie";
             }
 
             Total.Text = "€ " + total.ToString("0.00");
