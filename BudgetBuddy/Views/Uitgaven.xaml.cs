@@ -15,6 +15,7 @@ namespace BudgetBuddy.Views
     {
         private SQLiteAsyncConnection _connection;
         private double _Bedrag;
+        List<string> _cats = new List<string>();
 
         public Uitgaven()
         {
@@ -24,10 +25,22 @@ namespace BudgetBuddy.Views
 
         }
 
+        protected override async void OnAppearing()
+        {
+            var cats = await _connection.Table<SQL_Category>().Where(x => x.Income == false).ToListAsync();
+            foreach (var item in cats)
+            {
+                _cats.Add(item.Name);
+            }
+
+            Pick_cat.ItemsSource = _cats;
+
+        }
+
         private async void Button_OnClicked(object sender, EventArgs e)
         {
             _Bedrag = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
-            if (Category.SelectedItem == null)
+            if (Pick_cat.SelectedItem == null)
             {
                 await DisplayAlert("Alert", "Kies een geldige categorie", "OK");
             }
@@ -44,10 +57,10 @@ namespace BudgetBuddy.Views
                 var uitgaven = new SQL_Uitgaven { };
                 uitgaven.Date = DateTime.Now;
                 uitgaven.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
-                uitgaven.Category = Category.SelectedItem.ToString();
+                uitgaven.Category = Pick_cat.SelectedItem.ToString();
                 if (Naam.Text == null)
                 {
-                    uitgaven.Name = Category.SelectedItem.ToString();
+                    uitgaven.Name = Pick_cat.SelectedItem.ToString();
                 }
                 else
                 {

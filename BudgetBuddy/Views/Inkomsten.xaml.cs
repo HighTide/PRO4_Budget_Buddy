@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,9 @@ namespace BudgetBuddy.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Inkomsten : ContentPage
     {
+        //private ObservableCollection<SQL_Category> _cats;
         private SQLiteAsyncConnection _connection;
-        private double _Bedrag;
+        List<string> _cats = new List<string>();
 
         public Inkomsten()
         {
@@ -23,15 +25,28 @@ namespace BudgetBuddy.Views
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
         }
 
+        protected override async void OnAppearing()
+        {
+            var cats = await _connection.Table<SQL_Category>().Where(x => x.Income == true).ToListAsync();
+            foreach (var item in cats)
+            {
+                _cats.Add(item.Name);
+            }
+
+            Pick_cat.ItemsSource = _cats;
+            
+        }
+
+
         void Entry_Completed(object sender, EventArgs e)
         {
             var text = ((Entry)sender).Text; //cast sender to access the properties of the Entry
         }
 
+
         private async void Button_OnClicked(object sender, EventArgs e)
         {
-            _Bedrag = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
-            if (Category.SelectedItem == null)
+            if (Pick_cat.SelectedItem == null)
             {
                 await DisplayAlert("Alert", "Kies een geldige categorie", "OK");
             }
@@ -44,7 +59,7 @@ namespace BudgetBuddy.Views
                 var inkomsten = new SQL_Inkomsten { }; //link with table
                 inkomsten.Date = DateTime.Now;
                 inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
-                inkomsten.Category = Category.SelectedItem.ToString();
+                inkomsten.Category = Pick_cat.SelectedItem.ToString();
                 await _connection.InsertAsync(inkomsten);
                 await DisplayAlert("Alert", "Inkomsten succesvol toegevoegd", "OK");
                 await Navigation.PushAsync(new BudgetBuddyPage());

@@ -19,15 +19,8 @@
         <StackLayout Orientation="Vertical">
             <Label HorizontalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
             <StackLayout Orientation="Horizontal">
-                <Picker Title="Selecteer Categorie" HorizontalOptions="CenterAndExpand" x:Name="Category" BackgroundColor="{DynamicResource entryColor}">
-                    <Picker.Items>
-                        <x:String>Kleding</x:String>
-                        <x:String>Drinken</x:String>
-                        <x:String>Eten</x:String>
-                        <x:String>Boodschappen</x:String>
-                        <x:String>Amusement</x:String>
-                        <x:String>Abonnementen</x:String>
-                    </Picker.Items>
+                <Picker Title="Selecteer Categorie" HorizontalOptions="CenterAndExpand" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}">
+
                 </Picker>
             </StackLayout>
         </StackLayout>
