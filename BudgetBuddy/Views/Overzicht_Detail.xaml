@@ -8,7 +8,8 @@
             <Label x:Name="Total" HorizontalOptions="Center" FontSize="Large" TextColor="Red" FontAttributes="Bold"></Label>
             <ListView x:Name="ListView" 
                       ItemSelected="ListView_OnItemSelected"
-                      HasUnevenRows="True">
+                      HasUnevenRows="True"
+                      SeparatorColor="Orange">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >

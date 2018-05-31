@@ -13,7 +13,8 @@
                   HasUnevenRows="True"
                   Margin="0,20"
                   ItemSelected="Categories_OnItemSelected"
-                  BackgroundColor="{DynamicResource backgroundColor}">
+                  BackgroundColor="{DynamicResource backgroundColor}"
+                  SeparatorColor="Orange">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -31,7 +32,8 @@
                   HasUnevenRows="True"
                   Margin="0,40"
                   ItemSelected="Categories_OnItemSelected"
-                  BackgroundColor="{DynamicResource backgroundColor}">
+                  BackgroundColor="{DynamicResource backgroundColor}"
+                  SeparatorColor="Orange">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
