@@ -117,13 +117,6 @@ namespace BudgetBuddy
    
             if (allItems_Inkomsten == 0)
             {
-                var uitgaven = new SQL_Uitgaven { };
-                uitgaven.Date = DateTime.Now;
-                uitgaven.Value = 300;
-                uitgaven.Category = "Salaris";
-				uitgaven.Name = "Salaris CocaCola Coke Plantage";
-                await _connection.InsertAsync(uitgaven);
-
                 
             }
 
