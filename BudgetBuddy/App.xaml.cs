@@ -108,6 +108,17 @@ namespace BudgetBuddy
                 
             }
 
+            await _connection.CreateTableAsync<SQL_SpaarDoelen>();
+
+            int allItems_SpaarDoelen = await _connection.Table<SQL_SpaarDoelen>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems);
+
+
+            if (allItems_Inkomsten == 0)
+            {
+
+            }
+
             await _connection.CreateTableAsync<SQL_Category>();
 
             int allItems_Category = await _connection.Table<SQL_Category>().CountAsync();

@@ -28,7 +28,7 @@
 
         </StackLayout>
         <StackLayout>
-            <Button BorderColor="Bisque" Margin="50" BorderWidth="2" Text="Voeg Toe" VerticalOptions="CenterAndExpand"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}">
+            <Button BorderColor="Bisque" Margin="50" BorderWidth="2" Text="Voeg Toe" VerticalOptions="CenterAndExpand" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}" Clicked="Button_OnClicked">
             </Button>
         </StackLayout>
     </StackLayout>
