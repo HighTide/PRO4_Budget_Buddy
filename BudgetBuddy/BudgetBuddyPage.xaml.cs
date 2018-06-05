@@ -43,7 +43,7 @@ namespace BudgetBuddy
                              DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
 
             _uitgavenfilter = new ObservableCollection<SQL_Uitgaven>(uitgaven);
-            ListView.ItemsSource = _uitgavenfilter;
+            dataView.ItemsSource = _uitgavenfilter; 
 
 
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();
