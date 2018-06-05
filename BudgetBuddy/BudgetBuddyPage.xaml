@@ -12,7 +12,8 @@
                  AbsoluteLayout.LayoutBounds=".5,.1,.975,.46"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <Label Text="€ 9,- /d"
+        <Label Text="{Binding days_left}"
+               x:Name="days_left"
                Style="{DynamicResource TitleStyle}"
                FontSize="50"
                FontAttributes="Bold"
