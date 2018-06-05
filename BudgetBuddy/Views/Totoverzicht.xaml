@@ -15,7 +15,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
                                 <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="50" TextColor="{DynamicResource textColor}"/>
                                 <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
                                     <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="250" TextColor="{DynamicResource textColor}"/>
