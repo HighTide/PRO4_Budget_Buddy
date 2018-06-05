@@ -7,8 +7,7 @@
         <StackLayout Orientation="Vertical">
             <SearchBar x:Name="MainSearchBar" TextChanged="MainSearchBar_OnTextChanged" BackgroundColor="{DynamicResource entryColor}"></SearchBar>
             <Label HorizontalOptions="Center" x:Name="Soort_label" TextColor="{DynamicResource textColor}"/>
-            <Label x:Name="Total" HorizontalOptions="Center" FontSize="Large" TextColor="Red" FontAttributes="Bold"></Label>
-            <StackLayout Orientation="Horizontal"></StackLayout>
+            <Label x:Name="Total" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"></Label>
             <ListView x:Name="ListView" 
                       ItemSelected="ListView_OnItemSelected"
                       HasUnevenRows="True"

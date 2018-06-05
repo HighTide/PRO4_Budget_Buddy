@@ -83,14 +83,14 @@ namespace BudgetBuddy
             {
                 var uitgaven = new SQL_Uitgaven { };
                 uitgaven.Date = DateTime.Now;
-                uitgaven.Value = 230.10;
+                uitgaven.Value = -230.10;
                 uitgaven.Category = "Kleding";
                 uitgaven.Name = "Blauwe Jas bij de Hennes und Maurits van het Merk: Armoeni";
                 await _connection.InsertAsync(uitgaven);
 
 
                 uitgaven.Date = DateTime.Now;
-                uitgaven.Value = 30.10;
+                uitgaven.Value = -30.10;
                 uitgaven.Category = "Drinken";
                 uitgaven.Name = "Cola bij de mac";
                 await _connection.InsertAsync(uitgaven);

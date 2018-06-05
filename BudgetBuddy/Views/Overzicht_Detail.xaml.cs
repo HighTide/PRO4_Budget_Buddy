@@ -68,6 +68,7 @@ namespace BudgetBuddy.Views
                 }
                 Soort_label.IsVisible = true;
                 Total.IsVisible = true;
+                Total.TextColor = Color.Red;
                 Soort_label.Text = "Je totale uitgaven zijn:";
             }
             else if (cat_list2.Contains(Title))
@@ -83,6 +84,7 @@ namespace BudgetBuddy.Views
                 }
                 Soort_label.IsVisible = true;
                 Total.IsVisible = true;
+                Total.TextColor = Color.LawnGreen;
                 Soort_label.Text = "Je totale inkomsten zijn:";
 
             }

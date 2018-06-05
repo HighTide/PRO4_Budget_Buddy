@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:BudgetBuddy"
              x:Class="BudgetBuddy.Views.Overzicht"
-             Title="Totaal overzicht"
+             Title="Categorie overzicht"
              BackgroundColor="{DynamicResource backgroundColor}">
     <StackLayout>
         <StackLayout>
