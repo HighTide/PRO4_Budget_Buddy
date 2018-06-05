@@ -19,18 +19,23 @@ namespace BudgetBuddy
         {
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             InitializeComponent();
-
-            int month = System.DateTime.Now.Month;
-            int year = System.DateTime.Now.Year;
-            int days_this_month = System.DateTime.DaysInMonth(year, month);
-            int days_left = days_this_month - System.DateTime.Now.Day;
             
         }
 
         protected override async void OnAppearing()
         {
+            int month = System.DateTime.Now.Month;
+            int year = System.DateTime.Now.Year;
+            int days_this_month = System.DateTime.DaysInMonth(year, month);
+            int days_left = days_this_month - System.DateTime.Now.Day;
 
-            
+            int centuryBegin = System.DateTime(2001, 1, 1);
+            var spending = await _connection.Table<SQL_Uitgaven>().ToListAsync();
+            foreach (var item in spending){
+                if (item.Date == System.DateTime.Now.Month)
+                { }
+
+            }
 
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();
             foreach (var item in buttons){
