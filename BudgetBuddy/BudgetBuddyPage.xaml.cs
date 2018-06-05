@@ -10,8 +10,8 @@ namespace BudgetBuddy
         private SQLiteAsyncConnection _connection;
         public string Button1Val = "Inkomsten";
         public string Button2Val = "Uitgaven";
-        public string Button3Val = "Overzicht";
-        public string Button4Val = "Settings";
+        public string Button3Val = "Spaardoelen";
+        public string Button4Val = "Overzicht";
 
 
         public BudgetBuddyPage()
@@ -63,24 +63,84 @@ namespace BudgetBuddy
 
 
 
-        async void Naar_Inkomen(object sender, System.EventArgs e)
+        async void Button_Pressed1(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Inkomsten());
+            if (Button1.Text == "Uitgaven")
+            {
+                await Navigation.PushAsync(new Uitgaven());
+            }
+            if (Button1.Text == "Inkomsten")
+            {
+                await Navigation.PushAsync(new Inkomsten());
+            }
+            if (Button1.Text == "Spaardoelen")
+            {
+                await Navigation.PushAsync(new Spaardoelen());
+            }
+            if (Button1.Text == "Overzicht")
+            {
+                await Navigation.PushAsync(new Overzicht());
+            }
+        }   
+
+        async void Button_Pressed2(object sender, System.EventArgs e)
+        {
+            if (Button2.Text == "Uitgaven")
+            {
+                await Navigation.PushAsync(new Uitgaven());
+            }
+            if (Button2.Text == "Inkomsten")
+            {
+                await Navigation.PushAsync(new Inkomsten());
+            }
+            if (Button2.Text == "Spaardoelen")
+            {
+                await Navigation.PushAsync(new Spaardoelen());
+            }
+            if (Button2.Text == "Overzicht")
+            {
+                await Navigation.PushAsync(new Overzicht());
+            }
         }
 
-        async void Naar_Uitgaven(object sender, System.EventArgs e)
+        async void Button_Pressed3(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Uitgaven());
+            if (Button3.Text == "Uitgaven")
+            {
+                await Navigation.PushAsync(new Uitgaven());
+            }
+            if (Button3.Text == "Inkomsten")
+            {
+                await Navigation.PushAsync(new Inkomsten());
+            }
+            if (Button3.Text == "Spaardoelen")
+            {
+                await Navigation.PushAsync(new Spaardoelen());
+            }
+            if (Button3.Text == "Overzicht")
+            {
+                await Navigation.PushAsync(new Overzicht());
+            }
         }
 
-        async void Overzicht(object sender, System.EventArgs e)
+        async void Button_Pressed4(object sender, System.EventArgs e)
         {
-			await Navigation.PushAsync(new Overzicht());
-        }
-
-        async void Button_Clicked(object sender, System.EventArgs e)
-        {
-            await Navigation.PushAsync(new Settings());
+            if (Button4.Text == "Uitgaven")
+            {
+                await Navigation.PushAsync(new Uitgaven());
+            }
+            if (Button4.Text == "Inkomsten")
+            {
+                await Navigation.PushAsync(new Inkomsten());
+            }
+            if (Button4.Text == "Spaardoelen")
+            {
+                await Navigation.PushAsync(new Spaardoelen());
+            }
+            if (Button4.Text == "Overzicht")
+            {
+                await Navigation.PushAsync(new Overzicht());
+            }
         }
     }
 }

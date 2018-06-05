@@ -65,6 +65,9 @@
     <Compile Include="Views\Addcatagory.xaml.cs">
       <DependentUpon>Addcatagory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ButtonChange.xaml.cs">
+      <DependentUpon>ButtonChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Inkomsten.xaml.cs">
       <DependentUpon>Inkomsten.xaml</DependentUpon>
     </Compile>
@@ -159,7 +162,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ButtonChange.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Addcatagory.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
