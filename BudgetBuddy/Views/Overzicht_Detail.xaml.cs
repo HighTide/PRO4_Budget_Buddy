@@ -16,12 +16,13 @@ namespace BudgetBuddy.Views
     {
         private SQLiteAsyncConnection _connection;
         private ObservableCollection<SQL_Uitgaven> _uitgaven;
+        private ObservableCollection<SQL_Uitgaven> _uitgavenfilter;
         private ObservableCollection<SQL_Inkomsten> _inkomsten;
+        private ObservableCollection<SQL_Inkomsten> _inkomstenfilter;
         private String category;
         List<double> results = new List<double>();
         List<string> cat_list = new List<string>();
         List<string> cat_list2 = new List<string>();
-
 
         public double total;
         //private DateTime _datum = DateTime.UtcNow.AddDays(-4);
@@ -100,6 +101,34 @@ namespace BudgetBuddy.Views
         {
             var selected = e.SelectedItem as SQL_Uitgaven;
             DisplayAlert("Alert", selected.Value.ToString(), "OK");
+        }
+
+        private async void MainSearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            string keyword = e.NewTextValue;
+            if (keyword == "")
+            {
+                if (cat_list.Contains(category))
+                {
+                    ListView.ItemsSource = _uitgaven;
+                }
+                else if (cat_list2.Contains(category))
+                {
+                    ListView.ItemsSource = _inkomsten;
+                }
+            }
+            else if (cat_list.Contains(category))
+            {
+                var uitgaven = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven WHERE Name COLLATE SQL_Latin1_General_CP1_CI_AS LIKE '%" + keyword + "%' AND Category = '" + category + "'");
+                _uitgavenfilter = new ObservableCollection<SQL_Uitgaven>(uitgaven);
+                ListView.ItemsSource = _uitgavenfilter;
+            }
+            else if (cat_list2.Contains(category))
+            {
+                var inkomsten = await _connection.QueryAsync<SQL_Inkomsten>("SELECT * FROM SQL_Uitgaven WHERE Name COLLATE SQL_Latin1_General_CP1_CI_AS LIKE '%" + keyword + "%' AND Category = '" + category + "'");
+                _inkomstenfilter = new ObservableCollection<SQL_Inkomsten>(inkomsten);
+                ListView.ItemsSource = _inkomstenfilter;
+            }
         }
     }
 }
