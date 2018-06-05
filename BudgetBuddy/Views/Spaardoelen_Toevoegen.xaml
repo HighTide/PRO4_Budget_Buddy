@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
              x:Class="BudgetBuddy.Views.Spaardoelen_Toevoegen"
              BackgroundColor="{DynamicResource backgroundColor}"
              Style="{DynamicResource backgroundStyle}">
@@ -15,7 +16,10 @@
             <Entry VerticalOptions="End"  Keyboard="Numeric" Placeholder="€4500" x:Name="SpaardoelBedrag" BackgroundColor="{DynamicResource entryColor}"/>
 
             <Label VerticalOptions="End" Text="Wanneer wil je klaar zijn met sparen?" TextColor="{DynamicResource textColor}"/>
-            <DatePicker MinimumDate="01/01/2018" MaximumDate="12/31/2020" Date="06/21/2018" />
+            <DatePicker MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2020" Date="{x:Static system:DateTime.Today}" x:Name="DatePickerSpaardoel" DateSelected="DatePicker_OnDateSelected" BackgroundColor="{DynamicResource entryColor}"  />
+
+            <Label VerticalOptions="End" Text="0 Dagen" TextColor="{DynamicResource textColor}" x:Name="DaysLeft"/>
+
 
         </StackLayout>
         <BoxView x:Name="Ruimte" HeightRequest="20" />
