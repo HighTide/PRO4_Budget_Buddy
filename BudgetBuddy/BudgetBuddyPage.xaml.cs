@@ -2,6 +2,7 @@
 using BudgetBuddy.Views;
 using SQLite;
 using BudgetBuddy.Properties;
+using System;
 
 namespace BudgetBuddy
 {
@@ -19,12 +20,23 @@ namespace BudgetBuddy
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             InitializeComponent();
 
-
+            int month = System.DateTime.Now.Month;
+            int year = System.DateTime.Now.Year;
+            int days_this_month = System.DateTime.DaysInMonth(year, month);
+            int days_left = days_this_month - System.DateTime.Now.Day;
             
         }
 
         protected override async void OnAppearing()
-        {           
+        {
+
+            var spending = await _connection.Table<SQL_Uitgaven>().Where(x => x.Value > 0).ToListDesc();
+            foreach (var item in spending)
+            {
+                _spending.Add(item.Name);
+            }
+            
+
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();
             foreach (var item in buttons){
                 if (item.Name == "Button1")
