@@ -43,7 +43,7 @@ namespace BudgetBuddy.Views
 
 	    private async void Button_OnClicked3(object sender, EventArgs e)
 	    {
-	        await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Tazer", "Button1");
+	        await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Overzicht", "Button1");
 
 	    }
 
