@@ -23,21 +23,21 @@ namespace BudgetBuddy.Views
             InitializeComponent();
         }
 
-        private async void Button_OnClicked1(object sender, EventArgs e)
+        private void Button_OnClicked1(object sender, EventArgs e)
         {
-            await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Overzicht", "Button1");
+            Navigation.PushAsync(new ButtonChange1());
         }
-        private async void Button_OnClicked2(object sender, EventArgs e)
+        private void Button_OnClicked2(object sender, EventArgs e)
         {
-            await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Inkomsten", "Button2");
+            Navigation.PushAsync(new ButtonChange2());
         }
-        private async void Button_OnClicked3(object sender, EventArgs e)
+        private void Button_OnClicked3(object sender, EventArgs e)
         {
-            await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Uitgaven", "Button3");
+            Navigation.PushAsync(new ButtonChange3());
         }
-        private async void Button_OnClicked4(object sender, EventArgs e)
+        private void Button_OnClicked4(object sender, EventArgs e)
         {
-            await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Spaardoelen", "Button4");
+            Navigation.PushAsync(new ButtonChange4());
         }
     }
 }

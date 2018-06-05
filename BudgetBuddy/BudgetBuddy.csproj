@@ -68,6 +68,18 @@
     <Compile Include="Views\ButtonChange.xaml.cs">
       <DependentUpon>ButtonChange.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ButtonChange1.xaml.cs">
+      <DependentUpon>ButtonChange1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ButtonChange2.xaml.cs">
+      <DependentUpon>ButtonChange2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ButtonChange3.xaml.cs">
+      <DependentUpon>ButtonChange3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ButtonChange4.xaml.cs">
+      <DependentUpon>ButtonChange4.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Inkomsten.xaml.cs">
       <DependentUpon>Inkomsten.xaml</DependentUpon>
     </Compile>
@@ -170,6 +182,30 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Addcatagory.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ButtonChange1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ButtonChange2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ButtonChange3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ButtonChange4.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
