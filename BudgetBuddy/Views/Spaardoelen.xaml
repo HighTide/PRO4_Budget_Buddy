@@ -6,7 +6,7 @@
              BackgroundColor="{DynamicResource backgroundColor}">
     
      <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Toevoegen" Text="Toevoegen" />
+        <ToolbarItem x:Name="Toevoegen" Text="Toevoegen" Clicked="Handle_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

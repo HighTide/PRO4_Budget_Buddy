@@ -17,9 +17,9 @@ namespace BudgetBuddy.Views
 			InitializeComponent ();
 		}
 
-		async void Handle_Clicked(object sender, System.EventArgs e)
+		private void Handle_Clicked(object sender, System.EventArgs e)
 		{
-			await Navigation.PushAsync(new Spaardoelen_Toevoegen());
+			Navigation.PushAsync(new Spaardoelen_Toevoegen());
 		}
 	}
 }
