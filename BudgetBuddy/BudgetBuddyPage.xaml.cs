@@ -30,11 +30,6 @@ namespace BudgetBuddy
         protected override async void OnAppearing()
         {
 
-            var spending = await _connection.Table<SQL_Uitgaven>().Where(x => x.Value > 0).ToListDesc();
-            foreach (var item in spending)
-            {
-                _spending.Add(item.Name);
-            }
             
 
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();
