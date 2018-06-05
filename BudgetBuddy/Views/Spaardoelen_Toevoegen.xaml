@@ -19,6 +19,7 @@
             <DatePicker MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2020" Date="{x:Static system:DateTime.Today}" x:Name="DatePickerSpaardoel" DateSelected="DatePicker_OnDateSelected" BackgroundColor="{DynamicResource entryColor}"  />
 
             <Label VerticalOptions="End" Text="0 Dagen" TextColor="{DynamicResource textColor}" x:Name="DaysLeft"/>
+            <Label VerticalOptions="End" Text="0 Euro per dag" TextColor="{DynamicResource textColor}" x:Name="EuroPerDag"/>
 
 
         </StackLayout>

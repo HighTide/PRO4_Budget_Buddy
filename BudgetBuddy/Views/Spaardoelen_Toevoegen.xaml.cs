@@ -21,10 +21,21 @@ namespace BudgetBuddy.Views
 
 
             DateTime daysLeft = DatePickerSpaardoel.Date;
+            double goal = Convert.ToDouble(SpaardoelBedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+
 
             daysLeft.Subtract(DateTime.Today);
+            double days = Convert.ToDouble(daysLeft.Day.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            
 
-            DaysLeft.Text = "U heeft nog: " + daysLeft.Day.ToString() + " dagen om u doel te bereiken.";
+            
+
+            DaysLeft.Text = "U heeft nog " + daysLeft.Day.ToString() + " dagen om uw doel te bereiken.";
+
+            //Calculate Daily Input
+            double InputDay = ((double) goal / (double) days);
+
+            EuroPerDag.Text = "U moet hiervoor dagelijks " + InputDay.ToString("0.00") + " Euro Inleggen.";
 
 
 
