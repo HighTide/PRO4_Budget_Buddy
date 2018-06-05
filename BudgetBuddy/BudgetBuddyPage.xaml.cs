@@ -3,6 +3,7 @@ using BudgetBuddy.Views;
 using SQLite;
 using BudgetBuddy.Properties;
 using System;
+using System.Collections.ObjectModel;
 
 namespace BudgetBuddy
 {
@@ -13,7 +14,7 @@ namespace BudgetBuddy
         public string Button2Val = "Uitgaven";
         public string Button3Val = "Overzicht";
         public string Button4Val = "Settings";
-
+        private ObservableCollection<SQL_Uitgaven> _uitgavenfilter;
 
         public BudgetBuddyPage()
         {
@@ -33,14 +34,14 @@ namespace BudgetBuddy
             // int monthBegin = System.DateTime(year, month, 1);
             // int monthEnd = System.DateTime(year, month, days_this_month);
 
-            int vorige_maand = new DateTime(DateTime.Now.Year,DateTime.Now.Month - 1, DateTime.DaysInMonth(DateTime.Now.Month - 1)).Ticks;
-            int volgende_maand = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 1).Ticks;
-
             //var spending = await _connection.Table<SQL_Uitgaven>().OrderByDescending(x => x.Value).Where(
             //    SQL_Uitgaven.Date < new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month + 1, 1).Ticks and
             //    SQL_Uitgaven.Date > new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month - 1, System.DateTime.DaysInMonth(System.DateTime.Now.Month - 1)).Ticks;
 
-            var uitgaven = await _connection.QueryAsync<SQL_Uitgaven>("SELECT Date, Value FROM SQL_Uitgaven WHERE Date < volgende_maand AND Date > vorige_maand);
+            var uitgaven = await _connection.QueryAsync<SQL_Uitgaven>("SELECT SUM(Value) FROM SQL_Uitgaven WHERE Date <= ? AND Date >= ?", 
+                new DateTime(DateTime.Now.Year, DateTime.Now.Month,1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+                             DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
+
             _uitgavenfilter = new ObservableCollection<SQL_Uitgaven>(uitgaven);
             ListView.ItemsSource = _uitgavenfilter;
 
