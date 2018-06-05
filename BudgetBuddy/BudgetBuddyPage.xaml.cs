@@ -30,9 +30,12 @@ namespace BudgetBuddy
             int days_left = days_this_month - System.DateTime.Now.Day;
 
             int centuryBegin = System.DateTime(2001, 1, 1);
+            int monthBegin = System.DateTime(year, month, 1);
+            int monthEnd = System.DateTime(year, month, days_this_month);
+
             var spending = await _connection.Table<SQL_Uitgaven>().ToListAsync();
             foreach (var item in spending){
-                if (item.Date == System.DateTime.Now.Month)
+                if (item.Date >= (monthBegin.Ticks - ceturyBegin.Ticks) and item.Date =< (monthEnd.Ticks - )
                 { }
 
             }
