@@ -41,9 +41,10 @@ namespace BudgetBuddy.Views
 	        Navigation.PushAsync(new Addcatagory());
         }
 
-	    private async void Button_OnClicked3(object sender, EventArgs e)
+	    private void Button_OnClicked3(object sender, EventArgs e)
 	    {
-	        await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Overzicht", "Button1");
+            Navigation.PushAsync(new ButtonChange());
+	        //await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Overzicht", "Button1");
 
 	    }
 
