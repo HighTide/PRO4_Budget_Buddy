@@ -24,21 +24,26 @@ namespace BudgetBuddy
 
         protected override async void OnAppearing()
         {
-            int month = System.DateTime.Now.Month;
-            int year = System.DateTime.Now.Year;
-            int days_this_month = System.DateTime.DaysInMonth(year, month);
-            int days_left = days_this_month - System.DateTime.Now.Day;
+            // int month = System.DateTime.Now.Month;
+            // int year = System.DateTime.Now.Year;
+            // int days_this_month = System.DateTime.DaysInMonth(year, month);
+            // int days_left = days_this_month - System.DateTime.Now.Day;
 
-            int centuryBegin = System.DateTime(2001, 1, 1);
-            int monthBegin = System.DateTime(year, month, 1);
-            int monthEnd = System.DateTime(year, month, days_this_month);
+            // int centuryBegin = System.DateTime(2001, 1, 1);
+            // int monthBegin = System.DateTime(year, month, 1);
+            // int monthEnd = System.DateTime(year, month, days_this_month);
 
-            var spending = await _connection.Table<SQL_Uitgaven>().ToListAsync();
-            foreach (var item in spending){
-                if (item.Date >= (monthBegin.Ticks - ceturyBegin.Ticks) and item.Date =< (monthEnd.Ticks - )
-                { }
+            int vorige_maand = new DateTime(DateTime.Now.Year,DateTime.Now.Month - 1, DateTime.DaysInMonth(DateTime.Now.Month - 1)).Ticks;
+            int volgende_maand = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 1).Ticks;
 
-            }
+            //var spending = await _connection.Table<SQL_Uitgaven>().OrderByDescending(x => x.Value).Where(
+            //    SQL_Uitgaven.Date < new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month + 1, 1).Ticks and
+            //    SQL_Uitgaven.Date > new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month - 1, System.DateTime.DaysInMonth(System.DateTime.Now.Month - 1)).Ticks;
+
+            var uitgaven = await _connection.QueryAsync<SQL_Uitgaven>("SELECT Date, Value FROM SQL_Uitgaven WHERE Date < volgende_maand AND Date > vorige_maand);
+            _uitgavenfilter = new ObservableCollection<SQL_Uitgaven>(uitgaven);
+            ListView.ItemsSource = _uitgavenfilter;
+
 
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();
             foreach (var item in buttons){
