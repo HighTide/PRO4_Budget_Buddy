@@ -4,6 +4,27 @@
              x:Class="BudgetBuddy.Views.Spaardoelen_Toevoegen"
              BackgroundColor="{DynamicResource backgroundColor}"
              Style="{DynamicResource backgroundStyle}">
-    <ContentPage.Content>
-    </ContentPage.Content>
+    <StackLayout Orientation="Vertical" Padding="20">
+        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Spaardoel Toevoegen" TextColor="{DynamicResource textColor}"/>
+        <Label Text=""/>
+        <StackLayout Orientation="Vertical">
+            <Label VerticalOptions="End" Text="Waarvoor wil je sparen?" TextColor="{DynamicResource textColor}"/>
+            <Entry VerticalOptions="End" Placeholder="Vakantie Bangkok" x:Name="SpaardoelNaam"  BackgroundColor="{DynamicResource entryColor}"/>
+
+            <Label VerticalOptions="End" Text="Hoeveel wil je sparen?" TextColor="{DynamicResource textColor}"/>
+            <Entry VerticalOptions="End"  Keyboard="Numeric" Placeholder="€4500" x:Name="SpaardoelBedrag" BackgroundColor="{DynamicResource entryColor}"/>
+
+            <Label VerticalOptions="End" Text="Wanneer wil je klaar zijn met sparen?" TextColor="{DynamicResource textColor}"/>
+            <DatePicker MinimumDate="01/01/2018" MaximumDate="12/31/2020" Date="06/21/2018" />
+
+        </StackLayout>
+        <BoxView x:Name="Ruimte" HeightRequest="20" />
+        <StackLayout Orientation="Vertical">
+
+        </StackLayout>
+        <StackLayout>
+            <Button BorderColor="Bisque" Margin="50" BorderWidth="2" Text="Voeg Toe" VerticalOptions="CenterAndExpand"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}">
+            </Button>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

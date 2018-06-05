@@ -10,6 +10,8 @@ namespace BudgetBuddy.Views
         public Spaardoelen_Toevoegen()
         {
             InitializeComponent();
+
+            //WHY U MERGE NO RIGHT VISUAL STUDIO?
         }
     }
 }
