@@ -18,6 +18,7 @@ namespace BudgetBuddy.Views
         private SQLiteAsyncConnection _connection;
         List<string> _cats = new List<string>();
 
+
         public Inkomsten()
         {
             InitializeComponent();
@@ -56,6 +57,11 @@ namespace BudgetBuddy.Views
             }
             else
             {
+                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                player.Load("cash.wav");
+
+                player.Play();
+
                 var inkomsten = new SQL_Inkomsten { }; //link with table
                 inkomsten.Date = DateTime.Now;
                 inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
