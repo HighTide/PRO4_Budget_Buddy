@@ -95,28 +95,36 @@ namespace BudgetBuddy
             Button2.Text = Button2Val;
             Button3.Text = Button3Val;
             Button4.Text = Button4Val;
-            BudgetDag();
+            Budgetdag2();
             base.OnAppearing();
         }
 
-        private async void BudgetDag()
-        {
-            int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-            var recur = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
-            var one_time = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE NOT Recurring");
+        //private async void BudgetDag()
+        //{
+        //    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+        //    var recur = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
+        //    var one_time = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE NOT Recurring");
 
+        //    foreach (var item in recur)
+        //    {
+        //        total2 += item.Value;
+        //    }
+        //    total2 /= s;
+        //    foreach (var item in one_time)
+        //    {
+        //        total2 += item.Value;
+        //    }
+        //    days_left.Text = "€ " + total2.ToString("0.00");
+        //}
+
+        private async void Budgetdag2()
+        {
+            var recur = await _connection.QueryAsync<SQL_Budget>("SELECT Value FROM SQL_Budget WHERE NAME = 'Budget'");
             foreach (var item in recur)
             {
-                total2 += item.Value;
+                days_left.Text = "€ " + item.Value.ToString("0.00");
             }
-            total2 /= s;
-            foreach (var item in one_time)
-            {
-                total2 += item.Value;
-            }
-            days_left.Text = "€ " + total2.ToString("0.00");
         }
-
 
         void Text_Click(object sender, System.EventArgs e)
         {

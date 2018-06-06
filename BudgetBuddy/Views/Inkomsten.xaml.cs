@@ -17,6 +17,7 @@ namespace BudgetBuddy.Views
         //private ObservableCollection<SQL_Category> _cats;
         private SQLiteAsyncConnection _connection;
         List<string> _cats = new List<string>();
+        private double _budget;
 
 
         public Inkomsten()
@@ -63,7 +64,7 @@ namespace BudgetBuddy.Views
                 player.Play();
 
                 
-                var inkomsten = new SQL_Transacties { }; //link with table
+                var inkomsten = new SQL_Transacties(); //link with table
                 inkomsten.Date = DateTime.Now;
                 inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
                 inkomsten.Category = Pick_cat.SelectedItem.ToString();
@@ -71,6 +72,18 @@ namespace BudgetBuddy.Views
                 inkomsten.Recurring = Maand_Inkomst.IsToggled;
                 await _connection.InsertAsync(inkomsten);
 
+                if (Maand_Inkomst.IsToggled)
+                {
+                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                    _budget += inkomsten.Value / s;
+                    var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
+                    foreach (var item in list_budget)
+                    {
+                        _budget += item.Value;
+                    }
+
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                }
                 await DisplayAlert("Gelukt", "Inkomsten succesvol toegevoegd", "OK");
                 await Navigation.PushAsync(new BudgetBuddyPage());
                 Navigation.RemovePage(this);

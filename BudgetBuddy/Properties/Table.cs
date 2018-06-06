@@ -62,6 +62,10 @@ namespace BudgetBuddy.Properties
     public class SQL_Budget
     {
         public double Value { get; set; }
+
+        public DateTime Date { get; set; }
+        [PrimaryKey]
+        public string Name { get; set; }
     }
 }
 

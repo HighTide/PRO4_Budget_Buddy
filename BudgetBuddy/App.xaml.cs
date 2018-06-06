@@ -10,6 +10,7 @@ namespace BudgetBuddy
     public partial class App : Application
     {
 		private SQLiteAsyncConnection _connection;
+        private DateTime Datum;
 
         public App()
         {
@@ -18,6 +19,7 @@ namespace BudgetBuddy
             //don't delete this line
             _connection.CreateTableAsync<SQL_Buttons>();
             _connection.CreateTableAsync<SQL_Transacties>();
+            _connection.CreateTableAsync<SQL_Budget>();
 
 
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace BudgetBuddy
 
         protected async override void OnStart()
         {
+            DailyBudgetAdd();
             //Create SQL Connection
             await _connection.CreateTableAsync<SQL_Buttons>();
 
@@ -53,6 +56,20 @@ namespace BudgetBuddy
                 buttons.Value = "Overzicht";
                 buttons.Name = "Button4";
                 await _connection.InsertAsync(buttons);
+            }
+
+
+            int allItems_Budget = await _connection.Table<SQL_Budget>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems_Buttons);
+
+            if (allItems_Budget == 0)
+            {
+                var Budget = new SQL_Budget();
+                Budget.Value = 0.00;
+                Budget.Name = "Budget";
+                Budget.Date = DateTime.Now;
+                await _connection.InsertAsync(Budget);
+
             }
 
             await _connection.CreateTableAsync<SQL_Settings>();
@@ -151,6 +168,29 @@ namespace BudgetBuddy
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        private async void DailyBudgetAdd()
+        {
+            double total = 0.00;
+            var recur = await _connection.QueryAsync<SQL_Budget>("SELECT * FROM SQL_Budget WHERE NAME = 'Budget'");
+            foreach (var item in recur)
+            {
+                Datum = item.Date;
+                total += item.Value;
+
+            }
+
+            if ((DateTime.Now.Date - Datum.Date).TotalDays >= 1)
+            {
+                int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                var recurring = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
+                foreach (var item in recurring)
+                {
+                    total += item.Value / s;
+                }
+                await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", total, "Budget");
+            }
         }
     }
 }
