@@ -48,5 +48,22 @@ namespace BudgetBuddy.Views
             var selected = e.SelectedItem as SQL_Category;
             await Navigation.PushAsync(new Overzicht_Detail(selected.Name.ToString()));
         }
-	}
+
+        async void MenuItem_Clicked(object sender, System.EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            var viewCellSelected = sender as MenuItem;
+            var calculationToDelete = viewCellSelected?.BindingContext;
+
+            await _connection.DeleteAsync(calculationToDelete);
+
+            var settings = await _connection.Table<SQL_Category>().Where(x => x.Income == false).ToListAsync();
+            _Categories = new ObservableCollection<SQL_Category>(settings);
+            Categories.ItemsSource = _Categories;
+
+            var _settings = await _connection.Table<SQL_Category>().Where(x => x.Income == true).ToListAsync();
+            _Categories2 = new ObservableCollection<SQL_Category>(_settings);
+            Categories2.ItemsSource = _Categories2;
+        }
+    }
 }

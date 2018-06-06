@@ -18,6 +18,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding Name}"  Text="Delete" IsDestructive="True"/>
+                            <!--<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />-->
+                        </ViewCell.ContextActions>
                         <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10" >
                             <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"  />
                         </StackLayout>
@@ -37,6 +41,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding Name}"  Text="Delete" IsDestructive="True"/>
+                            <!--<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />-->
+                        </ViewCell.ContextActions>
                         <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10" >
                             <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"  />
                         </StackLayout>

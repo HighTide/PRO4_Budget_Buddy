@@ -15,7 +15,6 @@ namespace BudgetBuddy.Views
     public partial class Totoverzicht : ContentPage
     {
         private SQLiteAsyncConnection _connection;
-        private ObservableCollection<SQL_Transacties> _Tots;
         List<double> results = new List<double>();
         private double totalis;
         private double totalis2;
