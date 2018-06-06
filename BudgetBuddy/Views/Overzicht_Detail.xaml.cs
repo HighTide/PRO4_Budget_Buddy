@@ -52,10 +52,6 @@ namespace BudgetBuddy.Views
             {
                 cat_list.Add(item.Category);
             }
-            foreach (var item in inkomsten)
-            {
-                cat_list2.Add(item.Category);
-            }
             if (cat_list.Contains(Title))
             {
                 _uitgaven = new ObservableCollection<SQL_Uitgaven>(uitgaven);
@@ -68,25 +64,18 @@ namespace BudgetBuddy.Views
                 }
                 Soort_label.IsVisible = true;
                 Total.IsVisible = true;
-                Total.TextColor = Color.Red;
-                Soort_label.Text = "Je totale uitgaven zijn:";
-            }
-            else if (cat_list2.Contains(Title))
-            {
-                
-                _inkomsten = new ObservableCollection<SQL_Inkomsten>(inkomsten);
-                ListView.ItemsSource = _inkomsten;
-
-                foreach (var item in inkomsten)
+                if(total > 0)
                 {
-                    results.Add(item.Value);
-                    total += item.Value;
+                    Soort_label.Text = "Je totale inkomsten zijn:";
+                    Total.TextColor = Color.LawnGreen;
                 }
-                Soort_label.IsVisible = true;
-                Total.IsVisible = true;
-                Total.TextColor = Color.LawnGreen;
-                Soort_label.Text = "Je totale inkomsten zijn:";
+                else
+                {
+                    Soort_label.Text = "Je totale uitgaven zijn:";
+                    Total.TextColor = Color.Red;
+                }
 
+                
             }
             else
             {

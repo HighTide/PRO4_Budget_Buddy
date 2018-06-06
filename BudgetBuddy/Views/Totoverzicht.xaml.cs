@@ -18,6 +18,7 @@ namespace BudgetBuddy.Views
         private ObservableCollection<SQL_Uitgaven> _Tots;
         List<double> results = new List<double>();
         private double totalis;
+        private double totalis2;
         public Totoverzicht()
         {
             InitializeComponent();
@@ -32,7 +33,6 @@ namespace BudgetBuddy.Views
 
             foreach (var item in Tots)
             {
-                results.Add(item.Value);
                 totalis += item.Value;
             }
             if (totalis > 0)
@@ -46,5 +46,22 @@ namespace BudgetBuddy.Views
             Totals.Text = "€ " + totalis.ToString("0.00");
 
         }
+
+        async void MenuItem_Clicked(object sender, System.EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            var viewCellSelected = sender as MenuItem;
+            var calculationToDelete = viewCellSelected?.BindingContext;
+
+            await _connection.DeleteAsync(calculationToDelete);
+            var Tots = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven ORDER BY Date DESC");
+            Total.ItemsSource = Tots;
+            foreach (var item in Tots)
+            {
+                totalis2 += item.Value;
+            }
+            Totals.Text = "€ " + totalis2.ToString("0.00");
+        }
+        
     }
 }

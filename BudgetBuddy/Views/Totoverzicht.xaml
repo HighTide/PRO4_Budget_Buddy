@@ -15,6 +15,10 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding Name}"  Text="Delete" IsDestructive="True"/>
+                                <!--<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />-->
+                            </ViewCell.ContextActions>
                             <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
                                 <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="50" TextColor="{DynamicResource textColor}"/>
                                 <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
