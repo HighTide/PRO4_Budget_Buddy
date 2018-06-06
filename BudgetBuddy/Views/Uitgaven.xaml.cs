@@ -59,7 +59,7 @@ namespace BudgetBuddy.Views
 
                 player.Play();
 
-                var uitgaven = new SQL_Uitgaven { };
+                var uitgaven = new SQL_Transacties { };
                 uitgaven.Date = DateTime.Now;
                 uitgaven.Value = -Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
                 uitgaven.Category = Pick_cat.SelectedItem.ToString();

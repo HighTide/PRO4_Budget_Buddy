@@ -17,7 +17,7 @@ namespace BudgetBuddy
 
             //don't delete this line
             _connection.CreateTableAsync<SQL_Buttons>();
-            _connection.CreateTableAsync<SQL_Uitgaven>();
+            _connection.CreateTableAsync<SQL_Transacties>();
 
 
             InitializeComponent();
@@ -75,14 +75,14 @@ namespace BudgetBuddy
             }
 
             //Create SQL Connection
-            await _connection.CreateTableAsync<SQL_Uitgaven>();
+            await _connection.CreateTableAsync<SQL_Transacties>();
 
-            int allItems_Uitgaven = await _connection.Table<SQL_Uitgaven>().CountAsync();
+            int allItems_Uitgaven = await _connection.Table<SQL_Transacties>().CountAsync();
             System.Diagnostics.Debug.WriteLine(allItems);
 
             if (allItems_Uitgaven == 0)
             {
-                var uitgaven = new SQL_Uitgaven { };
+                var uitgaven = new SQL_Transacties { };
                 uitgaven.Date = DateTime.Now;
                 uitgaven.Value = -230.10;
                 uitgaven.Category = "Kleding";
@@ -96,32 +96,15 @@ namespace BudgetBuddy
                 uitgaven.Name = "Cola bij de mac";
                 await _connection.InsertAsync(uitgaven);
             }
-
+                      
             
-            await _connection.CreateTableAsync<SQL_Inkomsten>();
-
-			int allItems_Inkomsten = await _connection.Table<SQL_Inkomsten>().CountAsync();
-            System.Diagnostics.Debug.WriteLine(allItems);
-
-   
-            if (allItems_Inkomsten == 0)
-            {
-                
-            }
-
             await _connection.CreateTableAsync<SQL_SpaarDoelen>();
-
             int allItems_SpaarDoelen = await _connection.Table<SQL_SpaarDoelen>().CountAsync();
             System.Diagnostics.Debug.WriteLine(allItems);
 
 
-            if (allItems_Inkomsten == 0)
-            {
-
-            }
 
             await _connection.CreateTableAsync<SQL_Category>();
-
             int allItems_Category = await _connection.Table<SQL_Category>().CountAsync();
             System.Diagnostics.Debug.WriteLine(allItems);
 
@@ -149,7 +132,7 @@ namespace BudgetBuddy
                 await _connection.InsertAsync(Category);
 
                 Category.Name = "Abonnementen";
-                Category.Income = true;
+                Category.Income = false;
                 await _connection.InsertAsync(Category);
 
                 Category.Name = "Loon";

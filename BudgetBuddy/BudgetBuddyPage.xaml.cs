@@ -14,8 +14,8 @@ namespace BudgetBuddy
         public string Button2Val = "Uitgaven";
         public string Button3Val = "Spaardoelen";
         public string Button4Val = "Overzicht";
-        private ObservableCollection<SQL_Uitgaven> _uitgaven_maand_filter;
-        private ObservableCollection<SQL_Uitgaven> _laatste_uitgave_filter;
+        private ObservableCollection<SQL_Transacties> _uitgaven_maand_filter;
+        private ObservableCollection<SQL_Transacties> _laatste_uitgave_filter;
         private DateTime _datum = DateTime.UtcNow.AddDays(-4);
 
         public BudgetBuddyPage()
@@ -45,15 +45,15 @@ namespace BudgetBuddy
             //    SQL_Uitgaven.Date < new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month + 1, 1).Ticks and
             //    SQL_Uitgaven.Date > new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month - 1, System.DateTime.DaysInMonth(System.DateTime.Now.Month - 1)).Ticks;
 
-            var laatste_uitgave = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven ORDER BY Date DESC LIMIT 1");
-            _laatste_uitgave_filter = new ObservableCollection<SQL_Uitgaven>(laatste_uitgave);
+            var laatste_uitgave = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties ORDER BY Date DESC LIMIT 1");
+            _laatste_uitgave_filter = new ObservableCollection<SQL_Transacties>(laatste_uitgave);
             //uitgaveView.ItemSource = _laatste_uitgave_filter;
 
-            var uitgaven_maand = await _connection.QueryAsync<SQL_Uitgaven>("SELECT SUM(Value) FROM SQL_Uitgaven WHERE Date <= ? AND Date >= ? LIMIT 1", 
+            var uitgaven_maand = await _connection.QueryAsync<SQL_Transacties>("SELECT SUM(Value) FROM SQL_Transacties WHERE Date <= ? AND Date >= ? LIMIT 1", 
                 new DateTime(DateTime.Now.Year, DateTime.Now.Month,1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
                              DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
 
-            var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Date > _datum).ToListAsync();
+            var uitgaven = await _connection.Table<SQL_Transacties>().Where(x => x.Date > _datum).ToListAsync();
             uitgaveView.ItemsSource = _laatste_uitgave_filter;
 
             // var inkomen_maand = await _connection.QueryAsync<SQL_Inkomsten>("SELECT SUM(Value) FROM SQL_Inkomsten WHERE Date <= ? AND Date >= ? LIMIT 1",

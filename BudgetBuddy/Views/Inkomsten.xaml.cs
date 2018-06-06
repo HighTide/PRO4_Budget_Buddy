@@ -62,14 +62,8 @@ namespace BudgetBuddy.Views
 
                 player.Play();
 
-                var inkomsten = new SQL_Inkomsten { }; //link with table
-                inkomsten.Date = DateTime.Now;
-                inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
-                inkomsten.Category = Pick_cat.SelectedItem.ToString();
-                await _connection.InsertAsync(inkomsten);
-
-                // following is bad practice, but it works
-                var uitgaven = new SQL_Uitgaven { }; //link with table
+                
+                var uitgaven = new SQL_Transacties { }; //link with table
                 uitgaven.Date = DateTime.Now;
                 uitgaven.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
                 uitgaven.Category = Pick_cat.SelectedItem.ToString();
@@ -79,7 +73,6 @@ namespace BudgetBuddy.Views
                 await DisplayAlert("Gelukt", "Inkomsten succesvol toegevoegd", "OK");
                 await Navigation.PushAsync(new BudgetBuddyPage());
                 Navigation.RemovePage(this);
-
             }
         }
         private void Bedrag_OnTextChanged(object sender, TextChangedEventArgs e)

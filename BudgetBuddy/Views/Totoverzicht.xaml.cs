@@ -15,7 +15,7 @@ namespace BudgetBuddy.Views
     public partial class Totoverzicht : ContentPage
     {
         private SQLiteAsyncConnection _connection;
-        private ObservableCollection<SQL_Uitgaven> _Tots;
+        private ObservableCollection<SQL_Transacties> _Tots;
         List<double> results = new List<double>();
         private double totalis;
         private double totalis2;
@@ -27,7 +27,7 @@ namespace BudgetBuddy.Views
 
         protected override async void OnAppearing()
         {
-            var Tots = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven ORDER BY Date DESC");
+            var Tots = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties ORDER BY Date DESC");
 
             Total.ItemsSource = Tots;
 
@@ -54,7 +54,7 @@ namespace BudgetBuddy.Views
             var calculationToDelete = viewCellSelected?.BindingContext;
 
             await _connection.DeleteAsync(calculationToDelete);
-            var Tots = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven ORDER BY Date DESC");
+            var Tots = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties ORDER BY Date DESC");
             Total.ItemsSource = Tots;
             foreach (var item in Tots)
             {
