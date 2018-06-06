@@ -12,8 +12,8 @@ namespace BudgetBuddy
         private SQLiteAsyncConnection _connection;
         public string Button1Val = "Inkomsten";
         public string Button2Val = "Uitgaven";
-        public string Button3Val = "Overzicht";
-        public string Button4Val = "Settings";
+        public string Button3Val = "Spaardoelen";
+        public string Button4Val = "Overzicht";
         private ObservableCollection<SQL_Uitgaven> _uitgaven_maand_filter;
         private ObservableCollection<SQL_Uitgaven> _laatste_uitgave_filter;
         private DateTime _datum = DateTime.UtcNow.AddDays(-4);
