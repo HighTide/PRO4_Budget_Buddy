@@ -56,7 +56,7 @@ namespace BudgetBuddy.Views
             {
                 var uitgaven = new SQL_Uitgaven { };
                 uitgaven.Date = DateTime.Now;
-                uitgaven.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+                uitgaven.Value = -Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
                 uitgaven.Category = Pick_cat.SelectedItem.ToString();
                 if (Naam.Text == null)
                 {

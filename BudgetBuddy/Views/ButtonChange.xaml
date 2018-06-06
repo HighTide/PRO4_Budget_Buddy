@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetBuddy.Views.ButtonChange"
+             Title="Button Change">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Change Button1" Clicked="Button_OnClicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Change Button2" Clicked="Button_OnClicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Change Button3" Clicked="Button_OnClicked3" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Change Button4" Clicked="Button_OnClicked4" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

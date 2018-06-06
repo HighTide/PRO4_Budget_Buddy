@@ -64,24 +64,12 @@ namespace BudgetBuddy
                 // only insert the data if it doesn't already exist
                 var settings = new SQL_Settings { };
                 settings.Name = "DB_Version";
-                settings.Value = "1";
+                settings.Value = "2";
                 await _connection.InsertAsync(settings);
 
-                settings.Name = "Name";
-                settings.Value = "Jurre";
-                await _connection.InsertAsync(settings);
-
-                settings.Name = "Lastname";
-                settings.Value = "Koetse";
-                await _connection.InsertAsync(settings);
-
-                settings.Name = "BirthYear";
-                settings.Value = "1996";
-                await _connection.InsertAsync(settings);
-
-                settings.Name = "Hungry";
-                settings.Value = "Yes";
-                await _connection.InsertAsync(settings);
+                settings.Name = "Last_Seen";
+				settings.Value = DateTime.Now.ToString();
+                await _connection.InsertAsync(settings);            
 
             }
 
@@ -95,14 +83,14 @@ namespace BudgetBuddy
             {
                 var uitgaven = new SQL_Uitgaven { };
                 uitgaven.Date = DateTime.Now;
-                uitgaven.Value = 23.10;
+                uitgaven.Value = -230.10;
                 uitgaven.Category = "Kleding";
                 uitgaven.Name = "Blauwe Jas bij de Hennes und Maurits van het Merk: Armoeni";
                 await _connection.InsertAsync(uitgaven);
 
 
                 uitgaven.Date = DateTime.Now;
-                uitgaven.Value = 30.10;
+                uitgaven.Value = -30.10;
                 uitgaven.Category = "Drinken";
                 uitgaven.Name = "Cola bij de mac";
                 await _connection.InsertAsync(uitgaven);
@@ -118,6 +106,17 @@ namespace BudgetBuddy
             if (allItems_Inkomsten == 0)
             {
                 
+            }
+
+            await _connection.CreateTableAsync<SQL_SpaarDoelen>();
+
+            int allItems_SpaarDoelen = await _connection.Table<SQL_SpaarDoelen>().CountAsync();
+            System.Diagnostics.Debug.WriteLine(allItems);
+
+
+            if (allItems_Inkomsten == 0)
+            {
+
             }
 
             await _connection.CreateTableAsync<SQL_Category>();

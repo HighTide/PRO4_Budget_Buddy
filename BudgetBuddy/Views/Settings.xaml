@@ -18,7 +18,7 @@
                 <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Voeg categorie toe" Clicked="Button_OnClicked" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
             </StackLayout>
             <StackLayout>
-                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Button1_Change" Clicked="Button_OnClicked3" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Button_Change" Clicked="Button_OnClicked3" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
             </StackLayout>
 
         </StackLayout>

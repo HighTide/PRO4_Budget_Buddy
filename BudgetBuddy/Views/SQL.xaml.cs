@@ -11,7 +11,7 @@ namespace BudgetBuddy
     public partial class SQL : ContentPage
     {
 		private SQLiteAsyncConnection _connection;
-		private ObservableCollection<SQL_Settings> _settings;
+		private ObservableCollection<SQL_SpaarDoelen> _settings;
 
         public SQL()
         {
@@ -26,8 +26,8 @@ namespace BudgetBuddy
        
 
             
-			var settings = await _connection.Table<SQL_Settings>().OrderByDescending(x => x.Value).ToListAsync();
-			_settings = new ObservableCollection<SQL_Settings>(settings);
+			var settings = await _connection.Table<SQL_SpaarDoelen>().OrderByDescending(x => x.Value).ToListAsync();
+			_settings = new ObservableCollection<SQL_SpaarDoelen>(settings);
 			ListView.ItemsSource = _settings;
 
 			base.OnAppearing();
@@ -35,8 +35,11 @@ namespace BudgetBuddy
 
 		private void MyItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var selected = e.SelectedItem as SQL_Settings;
-            DisplayAlert("Alert", selected.Value, "OK");
+            var selected = e.SelectedItem as SQL_SpaarDoelen;
+            DisplayAlert("Name", selected.Name.ToString(), "OK");
+            DisplayAlert("Value", selected.Value.ToString(), "OK");
+            DisplayAlert("Goal", selected.Goal.ToString(), "OK");
+
         }
 
 		//void MyItemSelected (object sender, System.EventArgs e)

@@ -65,10 +65,10 @@ namespace BudgetBuddy.Properties
     }
     public class SQL_Buttons
     {
-        [PrimaryKey]
-        public string Value { get; set; }
-
         [MaxLength(255)]
+        public string Value { get; set; }
+        
+        [PrimaryKey]
         public string Name { get; set; }
     }
 }
