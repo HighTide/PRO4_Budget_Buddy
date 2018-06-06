@@ -17,6 +17,7 @@ namespace BudgetBuddy
 
             //don't delete this line
             _connection.CreateTableAsync<SQL_Buttons>();
+            _connection.CreateTableAsync<SQL_Uitgaven>();
 
 
             InitializeComponent();

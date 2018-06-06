@@ -6,22 +6,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:BudgetBuddy" 
              x:Class="BudgetBuddy.BudgetBuddyPage">
-    
+
     <AbsoluteLayout>
         <BoxView Color="Orange"
                  AbsoluteLayout.LayoutBounds=".5,.1,.975,.46"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <BoxView Color="#303030"
-                 AbsoluteLayout.LayoutBounds=".5,.2,.8,.01"
-                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-
-        <Label Text="€ 9,- /d"
+        <Label Text="{Binding days_left}"
+               x:Name="days_left"
                Style="{DynamicResource TitleStyle}"
                FontSize="50"
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.1,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+        <BoxView Color="#303030"
+                 AbsoluteLayout.LayoutBounds=".5,.2,.8,.01"
+                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <BoxView Color="Bisque"
                  AbsoluteLayout.LayoutBounds=".5,.75,.975,.25"
@@ -33,7 +34,7 @@
                FontAttributes="Bold"
                AbsoluteLayout.LayoutBounds=".335,.6,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
-        
+
         <Label Text="€"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Large"
@@ -93,7 +94,51 @@
                 AbsoluteLayout.LayoutBounds="1,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
+        <ListView x:Name="dataView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     BackgroundColor="Orange">
+                            <Label Text="{Binding Value}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
+        <ListView x:Name="uitgaveView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" BackgroundColor="DarkOliveGreen">
+                            <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="50"/>
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="250"/>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Start">
+                                <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80"/>
+                            </StackLayout>
 
+                        </StackLayout>
+                        <!--<StackLayout Orientation="Horizontal"
+                                     BackgroundColor="Bisque">
+                            <Label="{Binding Value}"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"
+                                      BackgroundColor="Bisque">
+                            <Label="{Binding Name}"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"
+                                      BackgroundColor="Bisque">
+                            <Label="{Binding Category}"/>
+                        </StackLayout>-->
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </AbsoluteLayout>
 </ContentPage>
