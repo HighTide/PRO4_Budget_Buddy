@@ -9,7 +9,7 @@
 
     <AbsoluteLayout>
         <BoxView Color="Orange"
-                 AbsoluteLayout.LayoutBounds=".5,.1,.975,.46"
+                 AbsoluteLayout.LayoutBounds=".5,.05,.975,.28"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
         <Label Text="{Binding days_left}"
@@ -20,40 +20,29 @@
                AbsoluteLayout.LayoutBounds=".335,.1,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
-        <BoxView Color="#303030"
-                 AbsoluteLayout.LayoutBounds=".5,.2,.8,.01"
-                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-
         <BoxView Color="Bisque"
-                 AbsoluteLayout.LayoutBounds=".5,.75,.975,.25"
+                 AbsoluteLayout.LayoutBounds=".5,.67,.975,.47"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <Label Text="Laatste uitgave:"
+        <Label Text="Datum:"
                Style="{DynamicResource TitleStyle}"
-               FontSize="25"
+               FontSize="Medium"
                FontAttributes="Bold"
-               AbsoluteLayout.LayoutBounds=".335,.6,AutoSize,AutoSize"
+               AbsoluteLayout.LayoutBounds="0.03,.38,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
-        <Label Text="€"
-               Style="{DynamicResource SubtitleStyle}"
-               FontSize="Large"
-               FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".17,.65,AutoSize,AutoSize"
-               AbsoluteLayout.LayoutFlags="PositionProportional"/>
-
-        <Label Text="Gegeven_naam_door_gebruiker"
+        <Label Text="Naam:"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
-               FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".53,.7,AutoSize,AutoSize"
+               FontAttributes="Bold"
+               AbsoluteLayout.LayoutBounds=".315,.38,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
-        <Label Text="Categorie: "
+        <Label Text="Bedrag:"
                Style="{DynamicResource SubtitleStyle}"
                FontSize="Medium"
-               FontAttributes="None"
-               AbsoluteLayout.LayoutBounds=".22,.75,AutoSize,AutoSize"
+               FontAttributes="Bold"
+               AbsoluteLayout.LayoutBounds=".95,.38,AutoSize,AutoSize"
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
 
@@ -111,10 +100,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" BackgroundColor="DarkOliveGreen">
-                            <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="50"/>
+                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+                            <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="105"/>
                             <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                                <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="250"/>
+                                <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="225"/>
                             </StackLayout>
                             <StackLayout HorizontalOptions="Start">
                                 <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80"/>
