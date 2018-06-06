@@ -94,14 +94,39 @@
                 AbsoluteLayout.LayoutBounds="1,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <ListView x:Name="dataView"/>
+        <ListView x:Name="dataView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     BackgroundColor="Orange">
+                            <Label="{Binding Value}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <ListView x:Name="uitgaveView">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Value}" 
-                              Detail="{Binding Name &#x0a; Category}"/>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     BackgroundColor="Bisque">
+                            <Label="{Binding Value}"/>
+                        </StackLayout>
 
+                        <StackLayout Orientation="Horizontal"
+                                      BackgroundColor="Bisque">
+                            <Label="{Binding Name}"/>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"
+                                      BackgroundColor="Bisque">
+                            <Label="{Binding Category}"/>
+                        </StackLayout>
+
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </Listview>
