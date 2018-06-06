@@ -8,7 +8,7 @@
              x:Class="BudgetBuddy.BudgetBuddyPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="help_button.png"/>
+        <ToolbarItem Icon="help_button.png" Clicked="Clicked"/>
     </ContentPage.ToolbarItems>
 
     <AbsoluteLayout>

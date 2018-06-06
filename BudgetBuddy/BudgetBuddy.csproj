@@ -80,6 +80,15 @@
     <Compile Include="Views\ButtonChange4.xaml.cs">
       <DependentUpon>ButtonChange4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\HelpPage.xaml.cs">
+      <DependentUpon>HelpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Information1.xaml.cs">
+      <DependentUpon>Information1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Information2.xaml.cs">
+      <DependentUpon>Information2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Inkomsten.xaml.cs">
       <DependentUpon>Inkomsten.xaml</DependentUpon>
     </Compile>
@@ -220,8 +229,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\help.png" />
     <Content Include="Resources\help_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HelpPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Information1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Information2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

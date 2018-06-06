@@ -25,6 +25,11 @@ namespace BudgetBuddy
 
         }
 
+        private void Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new HelpPage());
+        }
+
         protected override async void OnAppearing()
         {
             // int month = System.DateTime.Now.Month;
