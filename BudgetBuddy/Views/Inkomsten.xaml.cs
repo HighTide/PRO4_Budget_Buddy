@@ -70,7 +70,7 @@ namespace BudgetBuddy.Views
                 uitgaven.Name = Pick_cat.SelectedItem.ToString();
                 await _connection.InsertAsync(uitgaven);
 
-                await DisplayAlert("Alert", "Inkomsten succesvol toegevoegd", "OK");
+                await DisplayAlert("Gelukt", "Inkomsten succesvol toegevoegd", "OK");
                 await Navigation.PushAsync(new BudgetBuddyPage());
                 Navigation.RemovePage(this);
 

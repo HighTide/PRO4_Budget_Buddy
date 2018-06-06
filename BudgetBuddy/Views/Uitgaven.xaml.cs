@@ -67,7 +67,7 @@ namespace BudgetBuddy.Views
                     uitgaven.Name = Naam.Text;
                 }
                 await _connection.InsertAsync(uitgaven);
-                await DisplayAlert("Alert", "Uitgaven succesvol toegevoegd", "OK");
+                await DisplayAlert("Gelukt", "Uitgaven succesvol toegevoegd", "OK");
                 await Navigation.PushAsync(new BudgetBuddyPage());
                 Navigation.RemovePage(this);
             }
