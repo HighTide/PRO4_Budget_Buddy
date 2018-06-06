@@ -2192,26 +2192,26 @@ namespace BudgetBuddy.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020118
-			public const int avd_hide_password_1 = 2130837784;
-			
 			// aapt resource value: 0x7f020119
-			public const int avd_hide_password_2 = 2130837785;
+			public const int avd_hide_password_1 = 2130837785;
 			
 			// aapt resource value: 0x7f02011a
-			public const int avd_hide_password_3 = 2130837786;
+			public const int avd_hide_password_2 = 2130837786;
+			
+			// aapt resource value: 0x7f02011b
+			public const int avd_hide_password_3 = 2130837787;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f02011b
-			public const int avd_show_password_1 = 2130837787;
-			
 			// aapt resource value: 0x7f02011c
-			public const int avd_show_password_2 = 2130837788;
+			public const int avd_show_password_1 = 2130837788;
 			
 			// aapt resource value: 0x7f02011d
-			public const int avd_show_password_3 = 2130837789;
+			public const int avd_show_password_2 = 2130837789;
+			
+			// aapt resource value: 0x7f02011e
+			public const int avd_show_password_3 = 2130837790;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -2771,11 +2771,11 @@ namespace BudgetBuddy.Droid
 			// aapt resource value: 0x7f02010e
 			public const int notification_icon_background = 2130837774;
 			
-			// aapt resource value: 0x7f020116
-			public const int notification_template_icon_bg = 2130837782;
-			
 			// aapt resource value: 0x7f020117
-			public const int notification_template_icon_low_bg = 2130837783;
+			public const int notification_template_icon_bg = 2130837783;
+			
+			// aapt resource value: 0x7f020118
+			public const int notification_template_icon_low_bg = 2130837784;
 			
 			// aapt resource value: 0x7f02010f
 			public const int notification_tile_bg = 2130837775;
@@ -2793,10 +2793,13 @@ namespace BudgetBuddy.Droid
 			public const int Settings = 2130837779;
 			
 			// aapt resource value: 0x7f020114
-			public const int TotOverzicht = 2130837780;
+			public const int splashscreen = 2130837780;
 			
 			// aapt resource value: 0x7f020115
-			public const int Uitgaven = 2130837781;
+			public const int TotOverzicht = 2130837781;
+			
+			// aapt resource value: 0x7f020116
+			public const int Uitgaven = 2130837782;
 			
 			static Drawable()
 			{
@@ -3869,8 +3872,8 @@ namespace BudgetBuddy.Droid
 			// aapt resource value: 0x7f0b0170
 			public const int Animation_Design_BottomSheetDialog = 2131427696;
 			
-			// aapt resource value: 0x7f0b018b
-			public const int AppCompatDialogStyle = 2131427723;
+			// aapt resource value: 0x7f0b018c
+			public const int AppCompatDialogStyle = 2131427724;
 			
 			// aapt resource value: 0x7f0b00b2
 			public const int Base_AlertDialog_AppCompat = 2131427506;
@@ -4346,11 +4349,11 @@ namespace BudgetBuddy.Droid
 			// aapt resource value: 0x7f0b000e
 			public const int CardView_Light = 2131427342;
 			
-			// aapt resource value: 0x7f0b0189
-			public const int MyTheme = 2131427721;
-			
 			// aapt resource value: 0x7f0b018a
-			public const int MyTheme_Base = 2131427722;
+			public const int MyTheme = 2131427722;
+			
+			// aapt resource value: 0x7f0b018b
+			public const int MyTheme_Base = 2131427723;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int Platform_AppCompat = 2131427373;
@@ -4753,6 +4756,9 @@ namespace BudgetBuddy.Droid
 			
 			// aapt resource value: 0x7f0b0006
 			public const int Theme_MediaRouter_LightControlPanel = 2131427334;
+			
+			// aapt resource value: 0x7f0b0189
+			public const int Theme_Splash = 2131427721;
 			
 			// aapt resource value: 0x7f0b011f
 			public const int ThemeOverlay_AppCompat = 2131427615;
