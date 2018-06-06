@@ -25,6 +25,11 @@ namespace BudgetBuddy
             
         }
 
+        private void Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new HelpPage());
+        }
+
         protected override async void OnAppearing()
         {
             // int month = System.DateTime.Now.Month;
@@ -118,7 +123,15 @@ namespace BudgetBuddy
             {
                 await Navigation.PushAsync(new Overzicht());
             }
-        }   
+            if (Button1.Text == "Totaal Overzicht")
+            {
+                await Navigation.PushAsync(new Totoverzicht());
+            }
+            if (Button1.Text == "Settings")
+            {
+                await Navigation.PushAsync(new Settings());
+            }
+        }
 
         async void Button_Pressed2(object sender, System.EventArgs e)
         {
@@ -137,6 +150,14 @@ namespace BudgetBuddy
             if (Button2.Text == "Overzicht")
             {
                 await Navigation.PushAsync(new Overzicht());
+            }
+            if (Button2.Text == "Totaal Overzicht")
+            {
+                await Navigation.PushAsync(new Totoverzicht());
+            }
+            if (Button2.Text == "Settings")
+            {
+                await Navigation.PushAsync(new Settings());
             }
         }
 
@@ -158,6 +179,14 @@ namespace BudgetBuddy
             {
                 await Navigation.PushAsync(new Overzicht());
             }
+            if (Button3.Text == "Totaal Overzicht")
+            {
+                await Navigation.PushAsync(new Totoverzicht());
+            }
+            if (Button3.Text == "Settings")
+            {
+                await Navigation.PushAsync(new Settings());
+            }
         }
 
         async void Button_Pressed4(object sender, System.EventArgs e)
@@ -177,6 +206,14 @@ namespace BudgetBuddy
             if (Button4.Text == "Overzicht")
             {
                 await Navigation.PushAsync(new Overzicht());
+            }
+            if (Button4.Text == "Totaal Overzicht")
+            {
+                await Navigation.PushAsync(new Totoverzicht());
+            }
+            if (Button4.Text == "Settings")
+            {
+                await Navigation.PushAsync(new Settings());
             }
         }
     }
