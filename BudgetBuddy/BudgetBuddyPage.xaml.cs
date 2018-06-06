@@ -14,6 +14,8 @@ namespace BudgetBuddy
         public string Button2Val = "Uitgaven";
         public string Button3Val = "Spaardoelen";
         public string Button4Val = "Overzicht";
+        private double total;
+        private double total2;
         private ObservableCollection<SQL_Transacties> _uitgaven_maand_filter;
         private ObservableCollection<SQL_Transacties> _laatste_uitgave_filter;
         private DateTime _datum = DateTime.UtcNow.AddDays(-4);
@@ -93,7 +95,26 @@ namespace BudgetBuddy
             Button2.Text = Button2Val;
             Button3.Text = Button3Val;
             Button4.Text = Button4Val;
+            BudgetDag();
             base.OnAppearing();
+        }
+
+        private async void BudgetDag()
+        {
+            int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            var recur = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
+            var one_time = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE NOT Recurring");
+
+            foreach (var item in recur)
+            {
+                total2 += item.Value;
+            }
+            total2 /= s;
+            foreach (var item in one_time)
+            {
+                total2 += item.Value;
+            }
+            days_left.Text = "€ " + total2.ToString("0.00");
         }
 
 

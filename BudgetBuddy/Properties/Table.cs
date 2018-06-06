@@ -58,5 +58,10 @@ namespace BudgetBuddy.Properties
         [PrimaryKey]
         public string Name { get; set; }
     }
+
+    public class SQL_Budget
+    {
+        public double Value { get; set; }
+    }
 }
 

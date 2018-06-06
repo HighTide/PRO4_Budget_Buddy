@@ -80,23 +80,6 @@ namespace BudgetBuddy
             int allItems_Uitgaven = await _connection.Table<SQL_Transacties>().CountAsync();
             System.Diagnostics.Debug.WriteLine(allItems);
 
-            if (allItems_Uitgaven == 0)
-            {
-                var uitgaven = new SQL_Transacties { };
-                uitgaven.Date = DateTime.Now;
-                uitgaven.Value = -230.10;
-                uitgaven.Category = "Kleding";
-                uitgaven.Name = "Blauwe Jas bij de Hennes und Maurits van het Merk: Armoeni";
-                await _connection.InsertAsync(uitgaven);
-
-
-                uitgaven.Date = DateTime.Now;
-                uitgaven.Value = -30.10;
-                uitgaven.Category = "Drinken";
-                uitgaven.Name = "Cola bij de mac";
-                await _connection.InsertAsync(uitgaven);
-            }
-                      
             
             await _connection.CreateTableAsync<SQL_SpaarDoelen>();
             int allItems_SpaarDoelen = await _connection.Table<SQL_SpaarDoelen>().CountAsync();
