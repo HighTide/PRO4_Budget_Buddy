@@ -16,6 +16,7 @@ namespace BudgetBuddy
         public string Button4Val = "Settings";
         private ObservableCollection<SQL_Uitgaven> _uitgaven_maand_filter;
         private ObservableCollection<SQL_Uitgaven> _laatste_uitgave_filter;
+        private DateTime _datum = DateTime.UtcNow.AddDays(-4);
 
         public BudgetBuddyPage()
         {
@@ -41,21 +42,24 @@ namespace BudgetBuddy
 
             var laatste_uitgave = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven ORDER BY Date DESC LIMIT 1");
             _laatste_uitgave_filter = new ObservableCollection<SQL_Uitgaven>(laatste_uitgave);
-            uitgaveView.ItemSource = _laatste_uitgave_filter;
+            //uitgaveView.ItemSource = _laatste_uitgave_filter;
 
             var uitgaven_maand = await _connection.QueryAsync<SQL_Uitgaven>("SELECT SUM(Value) FROM SQL_Uitgaven WHERE Date <= ? AND Date >= ? LIMIT 1", 
                 new DateTime(DateTime.Now.Year, DateTime.Now.Month,1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
                              DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
 
-           // var inkomen_maand = await _connection.QueryAsync<SQL_Inkomsten>("SELECT SUM(Value) FROM SQL_Inkomsten WHERE Date <= ? AND Date >= ? LIMIT 1",
-           //     new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
-           //                  DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
+            var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Date > _datum).ToListAsync();
+            uitgaveView.ItemsSource = _laatste_uitgave_filter;
+
+            // var inkomen_maand = await _connection.QueryAsync<SQL_Inkomsten>("SELECT SUM(Value) FROM SQL_Inkomsten WHERE Date <= ? AND Date >= ? LIMIT 1",
+            //     new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+            //                  DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
 
             //var bedrag_per_dag = (inkomen_maand - uitgaven_maand) / (System.DateTime.DaysInMonth(System.DateTime.Now.Year, System.DateTime.Now.Month)
             //                     - System.DateTime.Now.Day);
 
-            _uitgaven_maand_filter = new ObservableCollection<SQL_Uitgaven>(uitgaven_maand);
-            dataView.ItemsSource = _uitgaven_maand_filter; 
+            //_uitgaven_maand_filter = new ObservableCollection<SQL_Uitgaven>(uitgaven_maand);
+            //dataView.ItemsSource = _uitgaven_maand_filter; 
 
 
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();

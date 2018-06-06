@@ -100,7 +100,7 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal"
                                      BackgroundColor="Orange">
-                            <Label="{Binding Value}"/>
+                            <Label Text="{Binding Value}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -111,7 +111,17 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal"
+                        <StackLayout Orientation="Horizontal" BackgroundColor="DarkOliveGreen">
+                            <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="50"/>
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="250"/>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Start">
+                                <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                        <!--<StackLayout Orientation="Horizontal"
                                      BackgroundColor="Bisque">
                             <Label="{Binding Value}"/>
                         </StackLayout>
@@ -124,16 +134,11 @@
                         <StackLayout Orientation="Horizontal"
                                       BackgroundColor="Bisque">
                             <Label="{Binding Category}"/>
-                        </StackLayout>
+                        </StackLayout>-->
 
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </Listview>
-
-
-
-
-
+        </ListView>
     </AbsoluteLayout>
 </ContentPage>
