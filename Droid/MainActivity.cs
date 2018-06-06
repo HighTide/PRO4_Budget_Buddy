@@ -10,7 +10,7 @@ using Android.OS;
 
 namespace BudgetBuddy.Droid
 {
-    [Activity(Label = "Budget Buddy", Icon = "@drawable/icon_android", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Budget Buddy", Icon = "@drawable/icon_android", Theme = "@style/MyTheme", ScreenOrientation = ScreenOrientation.Portrait, MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

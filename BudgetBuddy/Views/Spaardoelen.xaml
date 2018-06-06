@@ -10,7 +10,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListView" BackgroundColor="{DynamicResource backgroundColor}">
+            <ListView x:Name="ListView" BackgroundColor="{DynamicResource backgroundColor}" SeparatorColor="Orange">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Name}" />
