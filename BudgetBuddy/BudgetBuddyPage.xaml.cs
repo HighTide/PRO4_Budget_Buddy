@@ -22,7 +22,7 @@ namespace BudgetBuddy
         {
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             InitializeComponent();
-
+            
         }
 
         private void Clicked(object sender, System.EventArgs e)
@@ -49,8 +49,8 @@ namespace BudgetBuddy
             _laatste_uitgave_filter = new ObservableCollection<SQL_Uitgaven>(laatste_uitgave);
             //uitgaveView.ItemSource = _laatste_uitgave_filter;
 
-            var uitgaven_maand = await _connection.QueryAsync<SQL_Uitgaven>("SELECT SUM(Value) FROM SQL_Uitgaven WHERE Date <= ? AND Date >= ? LIMIT 1",
-                new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+            var uitgaven_maand = await _connection.QueryAsync<SQL_Uitgaven>("SELECT SUM(Value) FROM SQL_Uitgaven WHERE Date <= ? AND Date >= ? LIMIT 1", 
+                new DateTime(DateTime.Now.Year, DateTime.Now.Month,1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
                              DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
 
             var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Date > _datum).ToListAsync();
@@ -68,11 +68,10 @@ namespace BudgetBuddy
 
 
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();
-            foreach (var item in buttons)
-            {
+            foreach (var item in buttons){
                 if (item.Name == "Button1")
                 {
-                    Button1Val = item.Value;
+                    Button1Val = item.Value;            
                 }
 
                 if (item.Name == "Button2")
@@ -101,7 +100,7 @@ namespace BudgetBuddy
         void Text_Click(object sender, System.EventArgs e)
         {
             DisplayAlert("Budget Buddy", "Test", "OK");
-
+            
         }
 
 
