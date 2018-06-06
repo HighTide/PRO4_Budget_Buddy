@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customControls="clr-namespace:BudgetBuddy.CustomControls;assembly=BudgetBuddy"
              x:Class="BudgetBuddy.Views.Spaardoelen"
              Title="Spaardoelen"
              BackgroundColor="{DynamicResource backgroundColor}">
@@ -10,12 +11,24 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListView" BackgroundColor="{DynamicResource backgroundColor}">
+            <ListView x:Name="ListView" BackgroundColor="{DynamicResource backgroundColor}" SeparatorColor="Orange">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" />
+                    <customControls:ExtendedViewCell SelectedBackgroundColor="Orange">
+                        <ViewCell.View>
+                            <!-- Main design for our menu items -->
+                                <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="10">
+                                   
+                                    <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
+                                    <Label Text="-" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
+                                    <Label Text="{Binding Value}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
+                                    <Label Text="-" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
+                                    <Label Text="{Binding Goal}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </customControls:ExtendedViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+                </ListView.ItemTemplate>
         </ListView>
         </StackLayout>
     </ContentPage.Content>
