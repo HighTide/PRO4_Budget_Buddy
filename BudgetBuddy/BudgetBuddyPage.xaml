@@ -96,8 +96,17 @@
 
         <ListView x:Name="dataView"/>
 
-        <ListView x:Name="uitgaveView"/>
-    
+        <ListView x:Name="uitgaveView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Value}" 
+                              Detail="{Binding Name}"/>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </Listview>
+
+
 
 
 

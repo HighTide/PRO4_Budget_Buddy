@@ -47,8 +47,15 @@ namespace BudgetBuddy
                 new DateTime(DateTime.Now.Year, DateTime.Now.Month,1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
                              DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
 
-            _uitgaven_maand_filter = new ObservableCollection<SQL_Uitgaven>(uitgaven_maand);
-            dataView.ItemsSource = _uitgaven_maand_filter; 
+            var inkomen_maand = await _connection.QueryAsync<SQL_Inkomsten>("SELECT SUM(Value) FROM SQL_Inkomsten WHERE Date <= ? AND Date >= ? LIMIT 1",
+                new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+                             DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
+
+            var bedrag_per_dag = (inkomen_maand - uitgaven_maand) / (System.DateTime.DaysInMonth(System.DateTime.Now.Year, System.DateTime.Now.Month)
+                                 - System.DateTime.Now.Day);
+
+            //_uitgaven_maand_filter = new ObservableCollection<SQL_Uitgaven>(uitgaven_maand);
+            //dataView.ItemsSource = _uitgaven_maand_filter; 
 
 
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();
