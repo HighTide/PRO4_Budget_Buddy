@@ -100,7 +100,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Value}" 
-                              Detail="{Binding Name}"/>
+                              Detail="{Binding Name &#x0a; Category}"/>
 
                 </DataTemplate>
             </ListView.ItemTemplate>
