@@ -60,6 +60,14 @@ namespace BudgetBuddy.Views
             {
                 totalis2 += item.Value;
             }
+            if (totalis2 > 0)
+            {
+                Totals.TextColor = Color.LawnGreen;
+            }
+            else
+            {
+                Totals.TextColor = Color.Red;
+            }
             Totals.Text = "€ " + totalis2.ToString("0.00");
         }
         
