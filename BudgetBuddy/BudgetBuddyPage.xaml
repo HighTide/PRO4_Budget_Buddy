@@ -7,6 +7,10 @@
              xmlns:local="clr-namespace:BudgetBuddy" 
              x:Class="BudgetBuddy.BudgetBuddyPage">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="help_button.png"/>
+    </ContentPage.ToolbarItems>
+
     <AbsoluteLayout>
         <BoxView Color="Orange"
                  AbsoluteLayout.LayoutBounds=".5,.1,.975,.46"
