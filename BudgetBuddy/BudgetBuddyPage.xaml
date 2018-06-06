@@ -52,7 +52,7 @@
 
         <Button Text="Totaal overzicht"
                 x:Name="Button1"
-                FontSize="12"
+                FontSize="11"
                 Clicked="Button_Pressed1"
                 BackgroundColor="Orange"
                 TextColor="White"
@@ -61,7 +61,7 @@
 
         <Button Text="Totaal overzicht"
                 x:Name="Button3"
-                FontSize="12"
+                FontSize="11"
                 Clicked="Button_Pressed3"
                 BackgroundColor="Orange"
                 TextColor="White"
@@ -70,7 +70,7 @@
 
         <Button Text="Inkomen invoeren"
                 x:Name="Button2"
-                FontSize="12"
+                FontSize="11"
                 Clicked="Button_Pressed2"
                 BackgroundColor="Orange"
                 TextColor="White"
@@ -80,7 +80,7 @@
 
         <Button Text="Settings"
                 x:Name="Button4"
-                FontSize="12"
+                FontSize="11"
                 Clicked="Button_Pressed4"
                 BackgroundColor="Orange"
                 TextColor="White"
