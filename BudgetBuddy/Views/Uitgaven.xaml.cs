@@ -54,6 +54,11 @@ namespace BudgetBuddy.Views
             }
             else
             {
+                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                player.Load("cash.wav");
+
+                player.Play();
+
                 var uitgaven = new SQL_Uitgaven { };
                 uitgaven.Date = DateTime.Now;
                 uitgaven.Value = -Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
