@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.ButtonChange2"
-             Title="Change button2">
+             Title="Change button2"
+             BackgroundColor="{DynamicResource backgroundColor}">
     <ContentPage.Content>
         <StackLayout>
             <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Button2 to Inkomsten" Clicked="Button_OnClicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
