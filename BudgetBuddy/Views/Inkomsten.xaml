@@ -19,6 +19,10 @@
             <Picker Title="Selecteer Categorie" VerticalOptions="Center" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}">
             </Picker>
         </StackLayout>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Maandelijke Inkomsten?" TextColor="{DynamicResource textColor}"/>
+            <Switch x:Name="Maand_Inkomst" HorizontalOptions="Center"></Switch>
+        </StackLayout>
         <StackLayout>
             <Button BorderColor="Bisque" Margin="50" BorderWidth="2" Text="Voeg Toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}">
             </Button>

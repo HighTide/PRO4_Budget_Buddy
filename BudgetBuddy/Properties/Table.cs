@@ -26,6 +26,8 @@ namespace BudgetBuddy.Properties
 
 		[MaxLength(255)]
         public string Name { get; set; }
+
+        public bool Recurring { get; set; }
     }
 
 	public class SQL_Category 

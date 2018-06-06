@@ -63,6 +63,7 @@ namespace BudgetBuddy.Views
                 uitgaven.Date = DateTime.Now;
                 uitgaven.Value = -Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
                 uitgaven.Category = Pick_cat.SelectedItem.ToString();
+                uitgaven.Recurring = Vaste_Lasten.IsToggled;
                 if (Naam.Text == null)
                 {
                     uitgaven.Name = Pick_cat.SelectedItem.ToString();

@@ -18,10 +18,11 @@
         <BoxView x:Name="Ruimte" HeightRequest="20" />
         <StackLayout Orientation="Vertical">
             <Label HorizontalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
-            <StackLayout Orientation="Horizontal">
-                <Picker Title="Selecteer Categorie" HorizontalOptions="CenterAndExpand" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}">
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <Picker Title="Selecteer Categorie" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}"></Picker>
+                <Label Text="Vaste Lasten?" TextColor="{DynamicResource textColor}"/>
+                <Switch x:Name="Vaste_Lasten" HorizontalOptions="Center"></Switch>
 
-                </Picker>
             </StackLayout>
         </StackLayout>
         <StackLayout>

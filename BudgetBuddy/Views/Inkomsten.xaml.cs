@@ -63,12 +63,13 @@ namespace BudgetBuddy.Views
                 player.Play();
 
                 
-                var uitgaven = new SQL_Transacties { }; //link with table
-                uitgaven.Date = DateTime.Now;
-                uitgaven.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
-                uitgaven.Category = Pick_cat.SelectedItem.ToString();
-                uitgaven.Name = Pick_cat.SelectedItem.ToString();
-                await _connection.InsertAsync(uitgaven);
+                var inkomsten = new SQL_Transacties { }; //link with table
+                inkomsten.Date = DateTime.Now;
+                inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+                inkomsten.Category = Pick_cat.SelectedItem.ToString();
+                inkomsten.Name = Pick_cat.SelectedItem.ToString();
+                inkomsten.Recurring = Maand_Inkomst.IsToggled;
+                await _connection.InsertAsync(inkomsten);
 
                 await DisplayAlert("Gelukt", "Inkomsten succesvol toegevoegd", "OK");
                 await Navigation.PushAsync(new BudgetBuddyPage());
