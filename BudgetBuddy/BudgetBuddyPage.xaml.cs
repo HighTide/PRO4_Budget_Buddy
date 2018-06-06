@@ -14,7 +14,8 @@ namespace BudgetBuddy
         public string Button2Val = "Uitgaven";
         public string Button3Val = "Overzicht";
         public string Button4Val = "Settings";
-        private ObservableCollection<SQL_Uitgaven> _uitgavenfilter;
+        private ObservableCollection<SQL_Uitgaven> _uitgaven_maand_filter;
+        private ObservableCollection<SQL_Uitgaven> _laatste_uitgave_filter;
 
         public BudgetBuddyPage()
         {
@@ -38,12 +39,16 @@ namespace BudgetBuddy
             //    SQL_Uitgaven.Date < new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month + 1, 1).Ticks and
             //    SQL_Uitgaven.Date > new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month - 1, System.DateTime.DaysInMonth(System.DateTime.Now.Month - 1)).Ticks;
 
-            var uitgaven = await _connection.QueryAsync<SQL_Uitgaven>("SELECT SUM(Value) FROM SQL_Uitgaven WHERE Date <= ? AND Date >= ?", 
+            var laatste_uitgave = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven ORDER BY Date DESC LIMIT 1");
+            _laatste_uitgave_filter = new ObservableCollection<SQL_Uitgaven>(laatste_uitgave);
+            uitgaveView.ItemSource = _laatste_uitgave_filter;
+
+            var uitgaven_maand = await _connection.QueryAsync<SQL_Uitgaven>("SELECT SUM(Value) FROM SQL_Uitgaven WHERE Date <= ? AND Date >= ? LIMIT 1", 
                 new DateTime(DateTime.Now.Year, DateTime.Now.Month,1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
                              DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
 
-            _uitgavenfilter = new ObservableCollection<SQL_Uitgaven>(uitgaven);
-            dataView.ItemsSource = _uitgavenfilter; 
+            _uitgaven_maand_filter = new ObservableCollection<SQL_Uitgaven>(uitgaven_maand);
+            dataView.ItemsSource = _uitgaven_maand_filter; 
 
 
             var buttons = await _connection.Table<SQL_Buttons>().ToListAsync();

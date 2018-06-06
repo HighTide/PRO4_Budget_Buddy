@@ -96,7 +96,10 @@
 
         <ListView x:Name="dataView"/>
 
+        <ListView x:Name="uitgaveView"/>
+    
 
-     
+
+
     </AbsoluteLayout>
 </ContentPage>
