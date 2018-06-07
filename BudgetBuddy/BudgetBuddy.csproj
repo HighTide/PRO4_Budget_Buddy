@@ -80,6 +80,9 @@
     <Compile Include="Views\ButtonChange4.xaml.cs">
       <DependentUpon>ButtonChange4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\First_Use.xaml.cs">
+      <DependentUpon>First_Use.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HelpPage.xaml.cs">
       <DependentUpon>HelpPage.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,9 @@
     <Compile Include="Properties\Table.cs" />
     <Compile Include="Views\Spaardoelen_Toevoegen.xaml.cs">
       <DependentUpon>Spaardoelen_Toevoegen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WelcomeBack.xaml.cs">
+      <DependentUpon>WelcomeBack.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +261,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Information2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\First_Use.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\WelcomeBack.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

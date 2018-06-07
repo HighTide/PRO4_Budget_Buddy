@@ -10,10 +10,10 @@ namespace BudgetBuddy
     public partial class BudgetBuddyPage : ContentPage
     {
         private SQLiteAsyncConnection _connection;
-        public string Button1Val = "Inkomsten";
-        public string Button2Val = "Uitgaven";
-        public string Button3Val = "Spaardoelen";
-        public string Button4Val = "Overzicht";
+        public string Button1Val;
+        public string Button2Val;
+        public string Button3Val;
+        public string Button4Val;
         private double total;
         private double total2;
         private ObservableCollection<SQL_Transacties> _uitgaven_maand_filter;

@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using SQLite;
 using BudgetBuddy.Properties;
+using BudgetBuddy.Views;
 
 
 namespace BudgetBuddy
@@ -23,7 +24,17 @@ namespace BudgetBuddy
 
 
             InitializeComponent();
-            MainPage = new MainPage();
+            if (App.Current.Properties.ContainsKey("savedPropA"))
+            {
+                MainPage = new WelcomeBack();
+
+            }
+            else
+            {
+                MainPage = new First_Use();
+
+            }
+            
 
 
         }
@@ -195,6 +206,7 @@ namespace BudgetBuddy
                     }
                     await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", total, "Budget");
                 }
+                await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget");
 
             }
         }
