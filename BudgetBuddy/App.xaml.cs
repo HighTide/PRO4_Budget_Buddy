@@ -184,7 +184,7 @@ namespace BudgetBuddy
             {
                 double days = (DateTime.Now.Date - Datum.Date).TotalDays;
                 int dayss = Convert.ToInt32(Math.Floor(days));
-                if(dayss > 0)
+                while(dayss > 0)
                 {
                     dayss -= 1;
                     int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
