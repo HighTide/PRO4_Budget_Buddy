@@ -66,7 +66,7 @@ namespace BudgetBuddy.Views
                 
                 var inkomsten = new SQL_Transacties(); //link with table
                 inkomsten.Date = DateTime.Now;
-                inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+				inkomsten.Value = double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);    
                 inkomsten.Category = Pick_cat.SelectedItem.ToString();
                 inkomsten.Name = Pick_cat.SelectedItem.ToString();
                 inkomsten.Recurring = Maand_Inkomst.IsToggled;

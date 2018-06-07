@@ -29,13 +29,13 @@ namespace BudgetBuddy.Views
             double goal = Convert.ToDouble(SpaardoelBedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
 
 
-            daysLeft.Subtract(DateTime.Today);
-            double days = Convert.ToDouble(daysLeft.Day.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+			//daysLeft.Subtract(DateTime.Today);
+			//double days = Convert.ToDouble(daysLeft.Day.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            
+			double days = (daysLeft.Date - DateTime.Now.Date).TotalDays;
             
 
-            
-
-            DaysLeft.Text = "U heeft nog " + daysLeft.Day.ToString() + " dagen om uw doel te bereiken.";
+            DaysLeft.Text = "U heeft nog " + days.ToString() + " dagen om uw doel te bereiken.";
 
             //Calculate Daily Input
             InputDay = ((double) goal / (double) days);

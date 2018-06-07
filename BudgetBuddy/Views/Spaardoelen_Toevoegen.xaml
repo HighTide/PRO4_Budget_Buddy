@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
@@ -16,7 +16,7 @@
             <Entry VerticalOptions="End"  Keyboard="Numeric" Placeholder="€4500" x:Name="SpaardoelBedrag" BackgroundColor="{DynamicResource entryColor}"/>
 
             <Label VerticalOptions="End" Text="Wanneer wil je klaar zijn met sparen?" TextColor="{DynamicResource textColor}"/>
-            <DatePicker MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="12/31/2020" Date="{x:Static system:DateTime.Today}" x:Name="DatePickerSpaardoel" DateSelected="DatePicker_OnDateSelected" BackgroundColor="{DynamicResource entryColor}"  />
+            <DatePicker MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="1/1/2200" Date="{x:Static system:DateTime.Today}" x:Name="DatePickerSpaardoel" DateSelected="DatePicker_OnDateSelected" BackgroundColor="{DynamicResource entryColor}"  />
 
             <Label VerticalOptions="End" Text="0 Dagen" TextColor="{DynamicResource textColor}" x:Name="DaysLeft"/>
             <Label VerticalOptions="End" Text="0 Euro per dag" TextColor="{DynamicResource textColor}" x:Name="EuroPerDag"/>

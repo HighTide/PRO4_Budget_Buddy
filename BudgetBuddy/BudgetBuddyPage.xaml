@@ -86,7 +86,7 @@
                 AbsoluteLayout.LayoutBounds="1,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <ListView x:Name="dataView">
+        <ListView x:Name="dataView" IsVisible="false">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -99,7 +99,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView x:Name="uitgaveView">
+        <ListView x:Name="uitgaveView" IsVisible="false">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
