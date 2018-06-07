@@ -59,10 +59,11 @@ namespace BudgetBuddy.Views
                 player.Load("cash.wav");
 
                 player.Play();
+                
 
                 var uitgaven = new SQL_Transacties { };
                 uitgaven.Date = DateTime.Now;
-                uitgaven.Value = -Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+				uitgaven.Value = -double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);            
                 uitgaven.Category = Pick_cat.SelectedItem.ToString();
                 uitgaven.Recurring = Vaste_Lasten.IsToggled;
                 if (Naam.Text == null)
