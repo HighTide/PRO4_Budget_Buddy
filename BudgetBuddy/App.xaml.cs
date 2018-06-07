@@ -186,7 +186,7 @@ namespace BudgetBuddy
                 int dayss = Convert.ToInt32(Math.Floor(days));
                 while(dayss > 0)
                 {
-                    dayss -= 1;
+                    dayss --;
                     int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
                     var recurring = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
                     foreach (var item in recurring)
