@@ -70,18 +70,29 @@ namespace BudgetBuddy.Views
                 inkomsten.Category = Pick_cat.SelectedItem.ToString();
                 inkomsten.Name = Pick_cat.SelectedItem.ToString();
                 inkomsten.Recurring = Maand_Inkomst.IsToggled;
-                await _connection.InsertAsync(inkomsten);
+
+                var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
 
                 if (Maand_Inkomst.IsToggled)
                 {
                     int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
                     _budget += inkomsten.Value / s;
-                    var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
+                    
                     foreach (var item in list_budget)
                     {
                         _budget += item.Value;
                     }
-
+                    await _connection.InsertAsync(inkomsten);
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                }
+                else if (!Maand_Inkomst.IsToggled)
+                {
+                    _budget += inkomsten.Value;
+                    foreach (var item in list_budget)
+                    {
+                        _budget += item.Value;
+                    }
+                    await _connection.InsertAsync(inkomsten);
                     await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
                 }
                 await DisplayAlert("Gelukt", "Inkomsten succesvol toegevoegd", "OK");

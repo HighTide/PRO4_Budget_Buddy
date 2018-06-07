@@ -30,8 +30,7 @@ namespace BudgetBuddy
 
 
         protected async override void OnStart()
-        {
-            DailyBudgetAdd();
+        {            
             //Create SQL Connection
             await _connection.CreateTableAsync<SQL_Buttons>();
 
@@ -157,7 +156,7 @@ namespace BudgetBuddy
 
             }
 
-
+            DailyBudgetAdd();
         }
 
         protected override void OnSleep()
@@ -183,13 +182,20 @@ namespace BudgetBuddy
 
             if ((DateTime.Now.Date - Datum.Date).TotalDays >= 1)
             {
-                int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-                var recurring = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
-                foreach (var item in recurring)
+                double days = (DateTime.Now.Date - Datum.Date).TotalDays;
+                int dayss = Convert.ToInt32(Math.Floor(days));
+                if(dayss > 0)
                 {
-                    total += item.Value / s;
+                    dayss -= 1;
+                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                    var recurring = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
+                    foreach (var item in recurring)
+                    {
+                        total += item.Value / s;
+                    }
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", total, "Budget");
                 }
-                await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", total, "Budget");
+
             }
         }
     }

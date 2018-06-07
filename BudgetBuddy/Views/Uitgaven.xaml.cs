@@ -73,18 +73,32 @@ namespace BudgetBuddy.Views
                 {
                     uitgaven.Name = Naam.Text;
                 }
-                await _connection.InsertAsync(uitgaven);
+                
+
+
+
+                var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
 
                 if (Vaste_Lasten.IsToggled)
                 {
                     int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
                     _budget += uitgaven.Value / s;
-                    var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
+                    
                     foreach (var item in list_budget)
                     {
                         _budget += item.Value;
                     }
-
+                    await _connection.InsertAsync(uitgaven);
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                }
+                else if(!Vaste_Lasten.IsToggled)
+                {
+                    _budget += uitgaven.Value;
+                    foreach (var item in list_budget)
+                    {
+                        _budget += item.Value;
+                    }
+                    await _connection.InsertAsync(uitgaven);
                     await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
                 }
 
