@@ -102,9 +102,16 @@
                         <StackLayout Orientation="Vertical"
                                      BackgroundColor="Red"
                                      HorizontalOptions="FillAndExpand">
-                            <BoxView Color="DarkRed"/>
-                            <BoxView Color="AliceBlue"/>
-                            <BoxView Color="Gainsboro"/>
+                            <StackLayout Orientation="Vertical">
+                                <BoxView Color="DarkRed"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <BoxView Color="AliceBlue"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical">
+                                <BoxView Color="Gainsboro"/>
+                            </StackLayout>
+                            
                             <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
                             <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap"  WidthRequest="105"/>
                             <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
