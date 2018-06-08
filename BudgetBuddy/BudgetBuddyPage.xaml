@@ -95,7 +95,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView x:Name="uitgaveView" IsVisible="false">
+        <ListView x:Name="uitgaveView" IsVisible="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
