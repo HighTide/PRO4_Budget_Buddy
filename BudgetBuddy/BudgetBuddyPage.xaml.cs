@@ -34,6 +34,7 @@ namespace BudgetBuddy
 
         protected override async void OnAppearing()
         {
+            
             // int month = System.DateTime.Now.Month;
             // int year = System.DateTime.Now.Year;
             // int days_this_month = System.DateTime.DaysInMonth(year, month);

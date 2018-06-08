@@ -21,7 +21,7 @@ namespace BudgetBuddy.Views
         {
             base.OnAppearing();
             await Task.Delay(500);
-            await Navigation.PushModalAsync(new MainPage());
+            Application.Current.MainPage = new MainPage();
 
         }
     }

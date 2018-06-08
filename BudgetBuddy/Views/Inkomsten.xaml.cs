@@ -40,9 +40,19 @@ namespace BudgetBuddy.Views
         }
 
 
-        void Entry_Completed(object sender, EventArgs e)
+        private void Naam_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var text = ((Entry)sender).Text; //cast sender to access the properties of the Entry
+            {
+                var entry = (Entry)sender;
+                var MaxLength = 150;
+                if (entry.Text.Length > MaxLength)
+                {
+                    string entryText = entry.Text;
+                    entry.TextChanged -= Naam_OnTextChanged;
+                    entry.Text = e.OldTextValue;
+                    entry.TextChanged += Naam_OnTextChanged;
+                }
+            }
         }
 
 
@@ -68,8 +78,15 @@ namespace BudgetBuddy.Views
                 inkomsten.Date = DateTime.Now;
 				inkomsten.Value = double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);    
                 inkomsten.Category = Pick_cat.SelectedItem.ToString();
-                inkomsten.Name = Pick_cat.SelectedItem.ToString();
                 inkomsten.Recurring = Maand_Inkomst.IsToggled;
+                if (Naam.Text == null)
+                {
+                    inkomsten.Name = Pick_cat.SelectedItem.ToString();
+                }
+                else
+                {
+                    inkomsten.Name = Naam.Text;
+                }
 
                 var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
 

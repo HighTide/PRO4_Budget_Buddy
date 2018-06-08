@@ -21,7 +21,7 @@ namespace BudgetBuddy.Views
 
         private void Next_OnClicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MainPage());
+            App.Current.MainPage = new MainPage();
         }
         protected override async void OnAppearing()
         {

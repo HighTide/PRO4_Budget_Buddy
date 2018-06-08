@@ -11,19 +11,17 @@
         <Label Text=""/>
         <StackLayout Orientation="Vertical">
             <Label VerticalOptions="End" Text="Aankoop:" TextColor="{DynamicResource textColor}"/>
-            <Entry VerticalOptions="End" Placeholder="Wat heb je aangeschaft?" x:Name="Naam" TextChanged="Naam_OnTextChanged" BackgroundColor="{DynamicResource entryColor}"/>
+            <Entry VerticalOptions="End" Placeholder="Wat heb je aangeschaft?(optioneel)" x:Name="Naam" TextChanged="Naam_OnTextChanged" BackgroundColor="{DynamicResource entryColor}"/>
             <Label VerticalOptions="End" Text="Bedrag:" TextColor="{DynamicResource textColor}"/>
             <Entry VerticalOptions="End"  Keyboard="Numeric" Placeholder="Wat kostte het?" x:Name="Bedrag" TextChanged="Bedrag_OnTextChanged" BackgroundColor="{DynamicResource entryColor}"/>
         </StackLayout>
         <BoxView x:Name="Ruimte" HeightRequest="20" />
+        <Label Text=""></Label>
         <StackLayout Orientation="Vertical">
-            <Label HorizontalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
-            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                <Picker Title="Selecteer Categorie" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}"></Picker>
-                <Label Text="Vaste Lasten?" TextColor="{DynamicResource textColor}"/>
-                <Switch x:Name="Vaste_Lasten" HorizontalOptions="Center"></Switch>
-
-            </StackLayout>
+            <Label VerticalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
+            <Picker Title="Selecteer Categorie" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}" VerticalOptions="Center"></Picker>
+            <Label Text="Vaste Lasten?" TextColor="{DynamicResource textColor}"/>
+            <Switch x:Name="Vaste_Lasten" HorizontalOptions="Center"></Switch>
         </StackLayout>
         <StackLayout>
             <Button BorderColor="Bisque" Margin="50" BorderWidth="2" Text="Voeg Toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"> 
