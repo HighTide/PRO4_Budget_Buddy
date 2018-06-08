@@ -17,6 +17,8 @@ namespace BudgetBuddy.Views
         //private ObservableCollection<SQL_Category> _cats;
         private SQLiteAsyncConnection _connection;
         List<string> _cats = new List<string>();
+        private double _budget;
+
 
         public Inkomsten()
         {
@@ -38,9 +40,19 @@ namespace BudgetBuddy.Views
         }
 
 
-        void Entry_Completed(object sender, EventArgs e)
+        private void Naam_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            var text = ((Entry)sender).Text; //cast sender to access the properties of the Entry
+            {
+                var entry = (Entry)sender;
+                var MaxLength = 150;
+                if (entry.Text.Length > MaxLength)
+                {
+                    string entryText = entry.Text;
+                    entry.TextChanged -= Naam_OnTextChanged;
+                    entry.Text = e.OldTextValue;
+                    entry.TextChanged += Naam_OnTextChanged;
+                }
+            }
         }
 
 
@@ -56,24 +68,53 @@ namespace BudgetBuddy.Views
             }
             else
             {
-                var inkomsten = new SQL_Inkomsten { }; //link with table
+                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                player.Load("cash.wav");
+
+                player.Play();
+
+                
+                var inkomsten = new SQL_Transacties(); //link with table
                 inkomsten.Date = DateTime.Now;
-                inkomsten.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+				inkomsten.Value = double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);    
                 inkomsten.Category = Pick_cat.SelectedItem.ToString();
-                await _connection.InsertAsync(inkomsten);
+                inkomsten.Recurring = Maand_Inkomst.IsToggled;
+                if (Naam.Text == null)
+                {
+                    inkomsten.Name = Pick_cat.SelectedItem.ToString();
+                }
+                else
+                {
+                    inkomsten.Name = Naam.Text;
+                }
 
-                // following is bad practice, but it works
-                var uitgaven = new SQL_Uitgaven { }; //link with table
-                uitgaven.Date = DateTime.Now;
-                uitgaven.Value = Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
-                uitgaven.Category = Pick_cat.SelectedItem.ToString();
-                uitgaven.Name = Pick_cat.SelectedItem.ToString();
-                await _connection.InsertAsync(uitgaven);
+                var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
 
-                await DisplayAlert("Alert", "Inkomsten succesvol toegevoegd", "OK");
+                if (Maand_Inkomst.IsToggled)
+                {
+                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                    _budget += inkomsten.Value / s;
+                    
+                    foreach (var item in list_budget)
+                    {
+                        _budget += item.Value;
+                    }
+                    await _connection.InsertAsync(inkomsten);
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                }
+                else if (!Maand_Inkomst.IsToggled)
+                {
+                    _budget += inkomsten.Value;
+                    foreach (var item in list_budget)
+                    {
+                        _budget += item.Value;
+                    }
+                    await _connection.InsertAsync(inkomsten);
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                }
+                await DisplayAlert("Gelukt", "Inkomsten succesvol toegevoegd", "OK");
                 await Navigation.PushAsync(new BudgetBuddyPage());
                 Navigation.RemovePage(this);
-
             }
         }
         private void Bedrag_OnTextChanged(object sender, TextChangedEventArgs e)
@@ -99,7 +140,7 @@ namespace BudgetBuddy.Views
                         Bedrag.Text = "";
                     }
 
-                    if (_entry <= MinimumLength)
+                    if (_entry < MinimumLength)
                     {
                         DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
                         Bedrag.Text = "";

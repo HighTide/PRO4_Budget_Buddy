@@ -13,7 +13,7 @@ namespace BudgetBuddy.Properties
         public string Value { get; set; }
     }
     
-	public class SQL_Uitgaven
+	public class SQL_Transacties
     {
         [PrimaryKey]
 		public DateTime Date { get; set; }
@@ -26,21 +26,8 @@ namespace BudgetBuddy.Properties
 
 		[MaxLength(255)]
         public string Name { get; set; }
-    }
 
-    public class SQL_Inkomsten
-    {
-        [PrimaryKey]
-        public DateTime Date { get; set; }
-
-        [MaxLength(255)]
-        public double Value { get; set; }
-
-        [MaxLength(255)]
-        public string Category { get; set; }
-
-		[MaxLength(255)]
-        public string Name { get; set; }
+        public bool Recurring { get; set; }
     }
 
 	public class SQL_Category 
@@ -68,6 +55,15 @@ namespace BudgetBuddy.Properties
         [MaxLength(255)]
         public string Value { get; set; }
         
+        [PrimaryKey]
+        public string Name { get; set; }
+    }
+
+    public class SQL_Budget
+    {
+        public double Value { get; set; }
+
+        public DateTime Date { get; set; }
         [PrimaryKey]
         public string Name { get; set; }
     }

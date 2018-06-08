@@ -11,8 +11,8 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Button BorderColor="Bisque" Margin="5,10,5,5" BorderWidth="2" Text="Light Theme" Clicked="Button_Clicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
-                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Dark Theme" Clicked="Button_Clicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
+                <Button BorderColor="Bisque" Margin="5,10,5,5" BorderWidth="2" Text="Licht Thema" Clicked="Button_Clicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
+                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Donker Thema" Clicked="Button_Clicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
             </StackLayout>
             <StackLayout>
                 <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Voeg categorie toe" Clicked="Button_OnClicked" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>

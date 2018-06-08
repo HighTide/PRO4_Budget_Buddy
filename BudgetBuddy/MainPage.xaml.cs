@@ -96,5 +96,17 @@ namespace BudgetBuddy
             IsPresented = false;
         }
 
+
+        private void NavigationDrawerList_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = (MasterPageItem)e.Item;
+            Type page = item.TargetType;
+            Detail = new NavigationPage((Page)Activator.CreateInstance(page))
+            {
+                BarBackgroundColor = Color.Orange,
+                BarTextColor = Color.White
+            };
+            IsPresented = false;
+        }
     }
 }

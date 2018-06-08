@@ -10,12 +10,14 @@ namespace BudgetBuddy
     public partial class BudgetBuddyPage : ContentPage
     {
         private SQLiteAsyncConnection _connection;
-        public string Button1Val = "Inkomsten";
-        public string Button2Val = "Uitgaven";
-        public string Button3Val = "Overzicht";
-        public string Button4Val = "Settings";
-        private ObservableCollection<SQL_Uitgaven> _uitgaven_maand_filter;
-        private ObservableCollection<SQL_Uitgaven> _laatste_uitgave_filter;
+        public string Button1Val;
+        public string Button2Val;
+        public string Button3Val;
+        public string Button4Val;
+        private double total;
+        private double total2;
+        private ObservableCollection<SQL_Transacties> _uitgaven_maand_filter;
+        private ObservableCollection<SQL_Transacties> _laatste_uitgave_filter;
         private DateTime _datum = DateTime.UtcNow.AddDays(-4);
 
         public BudgetBuddyPage()
@@ -32,6 +34,7 @@ namespace BudgetBuddy
 
         protected override async void OnAppearing()
         {
+            
             // int month = System.DateTime.Now.Month;
             // int year = System.DateTime.Now.Year;
             // int days_this_month = System.DateTime.DaysInMonth(year, month);
@@ -45,15 +48,15 @@ namespace BudgetBuddy
             //    SQL_Uitgaven.Date < new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month + 1, 1).Ticks and
             //    SQL_Uitgaven.Date > new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month - 1, System.DateTime.DaysInMonth(System.DateTime.Now.Month - 1)).Ticks;
 
-            var laatste_uitgave = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven ORDER BY Date DESC LIMIT 1");
-            _laatste_uitgave_filter = new ObservableCollection<SQL_Uitgaven>(laatste_uitgave);
+            var laatste_uitgave = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties ORDER BY Date DESC LIMIT 1");
+            _laatste_uitgave_filter = new ObservableCollection<SQL_Transacties>(laatste_uitgave);
             //uitgaveView.ItemSource = _laatste_uitgave_filter;
 
-            var uitgaven_maand = await _connection.QueryAsync<SQL_Uitgaven>("SELECT SUM(Value) FROM SQL_Uitgaven WHERE Date <= ? AND Date >= ? LIMIT 1", 
+            var uitgaven_maand = await _connection.QueryAsync<SQL_Transacties>("SELECT SUM(Value) FROM SQL_Transacties WHERE Date <= ? AND Date >= ? LIMIT 1", 
                 new DateTime(DateTime.Now.Year, DateTime.Now.Month,1).Ticks, new DateTime(DateTime.Now.Year, DateTime.Now.Month,
                              DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)).Ticks);
 
-            var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Date > _datum).ToListAsync();
+            var uitgaven = await _connection.Table<SQL_Transacties>().Where(x => x.Date > _datum).ToListAsync();
             uitgaveView.ItemsSource = _laatste_uitgave_filter;
 
             // var inkomen_maand = await _connection.QueryAsync<SQL_Inkomsten>("SELECT SUM(Value) FROM SQL_Inkomsten WHERE Date <= ? AND Date >= ? LIMIT 1",
@@ -93,9 +96,36 @@ namespace BudgetBuddy
             Button2.Text = Button2Val;
             Button3.Text = Button3Val;
             Button4.Text = Button4Val;
+            Budgetdag2();
             base.OnAppearing();
         }
 
+        //private async void BudgetDag()
+        //{
+        //    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+        //    var recur = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
+        //    var one_time = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE NOT Recurring");
+
+        //    foreach (var item in recur)
+        //    {
+        //        total2 += item.Value;
+        //    }
+        //    total2 /= s;
+        //    foreach (var item in one_time)
+        //    {
+        //        total2 += item.Value;
+        //    }
+        //    days_left.Text = "€ " + total2.ToString("0.00");
+        //}
+
+        private async void Budgetdag2()
+        {
+            var recur = await _connection.QueryAsync<SQL_Budget>("SELECT Value FROM SQL_Budget WHERE NAME = 'Budget'");
+            foreach (var item in recur)
+            {
+                days_left.Text = "€ " + item.Value.ToString("0.00");
+            }
+        }
 
         void Text_Click(object sender, System.EventArgs e)
         {

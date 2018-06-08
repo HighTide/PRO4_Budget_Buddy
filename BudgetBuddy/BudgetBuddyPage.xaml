@@ -16,8 +16,7 @@
                  AbsoluteLayout.LayoutBounds=".5,.05,.975,.28"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <Label Text="{Binding days_left}"
-               x:Name="days_left"
+        <Label x:Name="days_left"
                Style="{DynamicResource TitleStyle}"
                FontSize="50"
                FontAttributes="Bold"
@@ -50,8 +49,7 @@
                AbsoluteLayout.LayoutFlags="PositionProportional"/>
 
 
-        <Button Text="Totaal overzicht"
-                x:Name="Button1"
+        <Button x:Name="Button1"
                 FontSize="11"
                 Clicked="Button_Pressed1"
                 BackgroundColor="Orange"
@@ -59,8 +57,7 @@
                 AbsoluteLayout.LayoutBounds="0,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <Button Text="Totaal overzicht"
-                x:Name="Button3"
+        <Button x:Name="Button3"
                 FontSize="11"
                 Clicked="Button_Pressed3"
                 BackgroundColor="Orange"
@@ -68,8 +65,7 @@
                 AbsoluteLayout.LayoutBounds=".665,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <Button Text="Inkomen invoeren"
-                x:Name="Button2"
+        <Button x:Name="Button2"
                 FontSize="11"
                 Clicked="Button_Pressed2"
                 BackgroundColor="Orange"
@@ -78,8 +74,7 @@
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"
                 />
 
-        <Button Text="Settings"
-                x:Name="Button4"
+        <Button x:Name="Button4"
                 FontSize="11"
                 Clicked="Button_Pressed4"
                 BackgroundColor="Orange"
@@ -87,7 +82,7 @@
                 AbsoluteLayout.LayoutBounds="1,1,.25,.15"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
 
-        <ListView x:Name="dataView">
+        <ListView x:Name="dataView" IsVisible="false">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -100,7 +95,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView x:Name="uitgaveView">
+        <ListView x:Name="uitgaveView" IsVisible="false">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

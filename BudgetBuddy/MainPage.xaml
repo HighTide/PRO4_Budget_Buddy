@@ -19,7 +19,7 @@
                     </StackLayout>
                 </Grid>-->
                 <StackLayout Margin="0,30,0,0" Grid.Row="1" Spacing="15">
-                    <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="None"  ItemSelected="OnMenuItemSelected" BackgroundColor="{DynamicResource backgroundColor}">
+                    <ListView x:Name="navigationDrawerList" RowHeight="60" SeparatorVisibility="None" ItemTapped="NavigationDrawerList_OnItemTapped" BackgroundColor="{DynamicResource backgroundColor}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <customControls:ExtendedViewCell SelectedBackgroundColor="Orange">

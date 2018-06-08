@@ -15,6 +15,7 @@ namespace BudgetBuddy.Views
     {
         private SQLiteAsyncConnection _connection;
         private double _Bedrag;
+        private double _budget;
         List<string> _cats = new List<string>();
 
         public Uitgaven()
@@ -54,10 +55,17 @@ namespace BudgetBuddy.Views
             }
             else
             {
-                var uitgaven = new SQL_Uitgaven { };
+                var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+                player.Load("cash.wav");
+
+                player.Play();
+                
+
+                var uitgaven = new SQL_Transacties { };
                 uitgaven.Date = DateTime.Now;
-                uitgaven.Value = -Convert.ToDouble(Bedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+				uitgaven.Value = -double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);            
                 uitgaven.Category = Pick_cat.SelectedItem.ToString();
+                uitgaven.Recurring = Vaste_Lasten.IsToggled;
                 if (Naam.Text == null)
                 {
                     uitgaven.Name = Pick_cat.SelectedItem.ToString();
@@ -66,8 +74,36 @@ namespace BudgetBuddy.Views
                 {
                     uitgaven.Name = Naam.Text;
                 }
-                await _connection.InsertAsync(uitgaven);
-                await DisplayAlert("Alert", "Uitgaven succesvol toegevoegd", "OK");
+                
+
+
+
+                var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
+
+                if (Vaste_Lasten.IsToggled)
+                {
+                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                    _budget += uitgaven.Value / s;
+                    
+                    foreach (var item in list_budget)
+                    {
+                        _budget += item.Value;
+                    }
+                    await _connection.InsertAsync(uitgaven);
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                }
+                else if(!Vaste_Lasten.IsToggled)
+                {
+                    _budget += uitgaven.Value;
+                    foreach (var item in list_budget)
+                    {
+                        _budget += item.Value;
+                    }
+                    await _connection.InsertAsync(uitgaven);
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                }
+
+                await DisplayAlert("Gelukt", "Uitgaven succesvol toegevoegd", "OK");
                 await Navigation.PushAsync(new BudgetBuddyPage());
                 Navigation.RemovePage(this);
             }
@@ -114,7 +150,7 @@ namespace BudgetBuddy.Views
                         Bedrag.Text = "";
                     }
 
-                    if (_entry <= MinimumLength)
+                    if (_entry < MinimumLength)
                     {
                         DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
                         Bedrag.Text = "";

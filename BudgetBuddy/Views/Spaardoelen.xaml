@@ -21,7 +21,7 @@
                                    
                                     <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
                                     <Label Text="-" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
-                                    <Label Text="{Binding Value}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
+                                    <Label Text="{Binding Value, StringFormat='€ {0:F2}'}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
                                     <Label Text="-" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
                                     <Label Text="{Binding Goal}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
                             </StackLayout>

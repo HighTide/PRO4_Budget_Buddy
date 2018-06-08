@@ -15,15 +15,12 @@ namespace BudgetBuddy.Views
     public partial class Overzicht_Detail : ContentPage
     {
         private SQLiteAsyncConnection _connection;
-        private ObservableCollection<SQL_Uitgaven> _uitgaven;
-        private ObservableCollection<SQL_Uitgaven> _uitgavenfilter;
-        private ObservableCollection<SQL_Inkomsten> _inkomsten;
-        private ObservableCollection<SQL_Inkomsten> _inkomstenfilter;
+        private ObservableCollection<SQL_Transacties> _uitgaven;
+        private ObservableCollection<SQL_Transacties> _uitgavenfilter;
         private String category;
         List<double> results = new List<double>();
         List<string> cat_list = new List<string>();
         List<string> cat_list2 = new List<string>();
-
         public double total;
         //private DateTime _datum = DateTime.UtcNow.AddDays(-4);
 
@@ -46,19 +43,14 @@ namespace BudgetBuddy.Views
             Title = category;
             Soort_label.IsVisible = false;
             Total.IsVisible = false;
-            var uitgaven = await _connection.Table<SQL_Uitgaven>().Where(x => x.Category == category).ToListAsync();
-            var inkomsten = await _connection.Table<SQL_Inkomsten>().Where(x => x.Category == category).ToListAsync();
+            var uitgaven = await _connection.Table<SQL_Transacties>().Where(x => x.Category == category).ToListAsync();
             foreach (var item in uitgaven)
             {
                 cat_list.Add(item.Category);
             }
-            foreach (var item in inkomsten)
-            {
-                cat_list2.Add(item.Category);
-            }
             if (cat_list.Contains(Title))
             {
-                _uitgaven = new ObservableCollection<SQL_Uitgaven>(uitgaven);
+                _uitgaven = new ObservableCollection<SQL_Transacties>(uitgaven);
                 ListView.ItemsSource = _uitgaven;
 
                 foreach (var item in uitgaven)
@@ -68,25 +60,18 @@ namespace BudgetBuddy.Views
                 }
                 Soort_label.IsVisible = true;
                 Total.IsVisible = true;
-                Total.TextColor = Color.Red;
-                Soort_label.Text = "Je totale uitgaven zijn:";
-            }
-            else if (cat_list2.Contains(Title))
-            {
-                
-                _inkomsten = new ObservableCollection<SQL_Inkomsten>(inkomsten);
-                ListView.ItemsSource = _inkomsten;
-
-                foreach (var item in inkomsten)
+                if(total > 0)
                 {
-                    results.Add(item.Value);
-                    total += item.Value;
+                    Soort_label.Text = "Je totale inkomsten zijn:";
+                    Total.TextColor = Color.LawnGreen;
                 }
-                Soort_label.IsVisible = true;
-                Total.IsVisible = true;
-                Total.TextColor = Color.LawnGreen;
-                Soort_label.Text = "Je totale inkomsten zijn:";
+                else
+                {
+                    Soort_label.Text = "Je totale uitgaven zijn:";
+                    Total.TextColor = Color.Red;
+                }
 
+                
             }
             else
             {
@@ -101,7 +86,7 @@ namespace BudgetBuddy.Views
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var selected = e.SelectedItem as SQL_Uitgaven;
+            var selected = e.SelectedItem as SQL_Transacties;
             DisplayAlert("Alert", selected.Value.ToString(), "OK");
         }
 
@@ -114,22 +99,12 @@ namespace BudgetBuddy.Views
                 {
                     ListView.ItemsSource = _uitgaven;
                 }
-                else if (cat_list2.Contains(category))
-                {
-                    ListView.ItemsSource = _inkomsten;
-                }
             }
             else if (cat_list.Contains(category))
             {
-                var uitgaven = await _connection.QueryAsync<SQL_Uitgaven>("SELECT * FROM SQL_Uitgaven WHERE Name COLLATE SQL_Latin1_General_CP1_CI_AS LIKE '%" + keyword + "%' AND Category = '" + category + "'");
-                _uitgavenfilter = new ObservableCollection<SQL_Uitgaven>(uitgaven);
+                var uitgaven = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE Name COLLATE SQL_Latin1_General_CP1_CI_AS LIKE '%" + keyword + "%' AND Category = '" + category + "'");
+                _uitgavenfilter = new ObservableCollection<SQL_Transacties>(uitgaven);
                 ListView.ItemsSource = _uitgavenfilter;
-            }
-            else if (cat_list2.Contains(category))
-            {
-                var inkomsten = await _connection.QueryAsync<SQL_Inkomsten>("SELECT * FROM SQL_Uitgaven WHERE Name COLLATE SQL_Latin1_General_CP1_CI_AS LIKE '%" + keyword + "%' AND Category = '" + category + "'");
-                _inkomstenfilter = new ObservableCollection<SQL_Inkomsten>(inkomsten);
-                ListView.ItemsSource = _inkomstenfilter;
             }
         }
     }

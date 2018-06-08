@@ -14,6 +14,7 @@ namespace BudgetBuddy.Views
 	public partial class Addcatagory : ContentPage
 	{
 	    private SQLiteAsyncConnection _connection;
+        public List<string> catList = new List<string>();
         public Addcatagory ()
 		{
 			InitializeComponent ();
@@ -22,19 +23,31 @@ namespace BudgetBuddy.Views
 
 	    private async void Button_OnClicked(object sender, EventArgs e)
 	    {
-	        var category = new SQL_Category { };
-	        category.Name = Naam.Text;
-	        if (Category.SelectedIndex == 0)
-	        {
-	            category.Income = false;
-	        }
-	        else
-	        {
-	            category.Income = true;
+            var cats = await _connection.QueryAsync<SQL_Category>("SELECT Name FROM SQL_Category");
+            foreach( var item in cats)
+            {
+                catList.Add(item.Name);
             }
-	        await _connection.InsertAsync(category);
-	        await DisplayAlert("Alert", "categorie succesvol toegevoegd", "OK");
-	        Navigation.RemovePage(this);
+            if(!catList.Contains(Naam.Text))
+            {
+                var category = new SQL_Category { };
+                category.Name = Naam.Text;
+                if (Category.SelectedIndex == 0)
+                {
+                    category.Income = false;
+                }
+                else
+                {
+                    category.Income = true;
+                }
+                await _connection.InsertAsync(category);
+                await DisplayAlert("Alert", "categorie succesvol toegevoegd", "OK");
+                Navigation.RemovePage(this);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Categorie bestaat al", "Ok");
+            }
             
 	        
         }
