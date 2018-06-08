@@ -150,7 +150,7 @@ namespace BudgetBuddy.Views
                         Bedrag.Text = "";
                     }
 
-                    if (_entry <= MinimumLength)
+                    if (_entry < MinimumLength)
                     {
                         DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
                         Bedrag.Text = "";
