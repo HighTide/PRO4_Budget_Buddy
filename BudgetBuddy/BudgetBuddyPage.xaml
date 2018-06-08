@@ -104,31 +104,22 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
-                            <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="105"/>
-                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                                <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="225"/>
+                        <StackLayout Orientation="Vertical"
+                                     BackgroundColor="Red"
+                                     HorizontalOptions="FillAndExpand">
+                            <BoxView Color="DarkRed"/>
+                            <BoxView Color="AliceBlue"/>
+                            <BoxView Color="Gainsboro"/>
+                            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+                            <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap"  WidthRequest="105"/>
+                            <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                                <Label Text="{Binding Name}" LineBreakMode="CharacterWrap"  WidthRequest="225"/>
                             </StackLayout>
-                            <StackLayout HorizontalOptions="Start">
-                                <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80"/>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80"/>
+                                </StackLayout>
                             </StackLayout>
-
                         </StackLayout>
-                        <!--<StackLayout Orientation="Horizontal"
-                                     BackgroundColor="Bisque">
-                            <Label="{Binding Value}"/>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal"
-                                      BackgroundColor="Bisque">
-                            <Label="{Binding Name}"/>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal"
-                                      BackgroundColor="Bisque">
-                            <Label="{Binding Category}"/>
-                        </StackLayout>-->
-
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
