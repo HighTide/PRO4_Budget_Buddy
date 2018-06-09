@@ -14,9 +14,9 @@ namespace BudgetBuddy
         public string Button2Val;
         public string Button3Val;
         public string Button4Val;
-        private double total;
-        private double total2;
-        private ObservableCollection<SQL_Transacties> _uitgaven_maand_filter;
+        //private double total;
+        //private double total2;
+        //private ObservableCollection<SQL_Transacties> _uitgaven_maand_filter;
         private ObservableCollection<SQL_Transacties> _laatste_uitgave_filter;
         private DateTime _datum = DateTime.UtcNow.AddDays(-4);
 
