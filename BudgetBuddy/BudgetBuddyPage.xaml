@@ -21,14 +21,14 @@
                          HorizontalOptions="FillAndExpand"
                          HeightRequest="125"
                          VerticalOptions="Start">
-                         <Label x:Name="days_left"
+                <Label x:Name="days_left"
                                 Style="{DynamicResource TitleStyle}"
                                 FontSize="50"
                                 HorizontalOptions="Center"
                                 VerticalOptions="CenterAndExpand"
                                 FontAttributes="Bold"/>
             </StackLayout>
-            
+
             <StackLayout BackgroundColor="Transparent"
                          HorizontalOptions="FillAndExpand"
                          HeightRequest="10"
@@ -111,7 +111,7 @@
                          HorizontalOptions="Fill"
                          HeightRequest="75"
                          VerticalOptions="Start">
-                
+
                 <Button x:Name="Button1"
                         FontSize="11"
                         Clicked="Button_Pressed1"
@@ -154,7 +154,7 @@
 
             </StackLayout>
 
-        
+
             <!--<ListView x:Name="dataView" IsVisible="false">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -218,121 +218,4 @@
             </ListView>-->
         </StackLayout>
     </ContentPage.Content>
-
-
-
-    <!--<AbsoluteLayout IsVisible="False">
-        <BoxView Color="Orange"
-                 AbsoluteLayout.LayoutBounds=".5,.05,.975,.28"
-                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-
-        <Label x:Name="days_left"
-               Style="{DynamicResource TitleStyle}"
-               FontSize="50"
-               FontAttributes="Bold"
-               AbsoluteLayout.LayoutBounds=".335,.1,AutoSize,AutoSize"
-               AbsoluteLayout.LayoutFlags="PositionProportional"/>
-
-        <BoxView Color="Bisque"
-                 AbsoluteLayout.LayoutBounds=".5,.67,.975,.47"
-                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-
-        <Label Text="Datum:"
-               Style="{DynamicResource TitleStyle}"
-               FontSize="Medium"
-               FontAttributes="Bold"
-               AbsoluteLayout.LayoutBounds="0.03,.38,AutoSize,AutoSize"
-               AbsoluteLayout.LayoutFlags="PositionProportional"/>
-
-        <Label Text="Naam:"
-               Style="{DynamicResource SubtitleStyle}"
-               FontSize="Medium"
-               FontAttributes="Bold"
-               AbsoluteLayout.LayoutBounds=".315,.38,AutoSize,AutoSize"
-               AbsoluteLayout.LayoutFlags="PositionProportional"/>
-
-        <Label Text="Bedrag:"
-               Style="{DynamicResource SubtitleStyle}"
-               FontSize="Medium"
-               FontAttributes="Bold"
-               AbsoluteLayout.LayoutBounds=".95,.38,AutoSize,AutoSize"
-               AbsoluteLayout.LayoutFlags="PositionProportional"/>
-
-
-        <Button x:Name="Button1"
-                FontSize="11"
-                Clicked="Button_Pressed1"
-                BackgroundColor="Orange"
-                TextColor="White"
-                AbsoluteLayout.LayoutBounds="0,1,.25,.15"
-                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-
-        <Button x:Name="Button3"
-                FontSize="11"
-                Clicked="Button_Pressed3"
-                BackgroundColor="Orange"
-                TextColor="White"
-                AbsoluteLayout.LayoutBounds=".665,1,.25,.15"
-                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-
-        <Button x:Name="Button2"
-                FontSize="11"
-                Clicked="Button_Pressed2"
-                BackgroundColor="Orange"
-                TextColor="White"
-                AbsoluteLayout.LayoutBounds=".335,1,.25,.15"
-                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"
-                />
-
-        <Button x:Name="Button4"
-                FontSize="11"
-                Clicked="Button_Pressed4"
-                BackgroundColor="Orange"
-                TextColor="White"
-                AbsoluteLayout.LayoutBounds="1,1,.25,.15"
-                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
-
-        <ListView x:Name="dataView" IsVisible="false">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal"
-                                     BackgroundColor="Orange">
-                            <Label Text="{Binding Value}"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <ListView x:Name="uitgaveView" IsVisible="False">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical"
-                                     BackgroundColor="Red"
-                                     HorizontalOptions="FillAndExpand">
-                            <StackLayout Orientation="Vertical">
-                                <BoxView Color="DarkRed"/>
-                                <BoxView Color="AliceBlue"/>
-                                <BoxView Color="Gainsboro"/>
-                            </StackLayout>
-
-                            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
-                                <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap"  WidthRequest="105"/>
-                                <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                                    <Label Text="{Binding Name}" LineBreakMode="CharacterWrap"  WidthRequest="225"/>
-                                </StackLayout>
-                                <StackLayout HorizontalOptions="FillAndExpand">
-                                    <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-
-    </AbsoluteLayout>-->
 </ContentPage>
