@@ -11,7 +11,45 @@
         <ToolbarItem Icon="help_button.png" Clicked="Clicked"/>
     </ContentPage.ToolbarItems>
 
-    <AbsoluteLayout>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <BoxView Color="Orange"
+                     AbsoluteLayout.LayoutBounds=".5,.05,.975,.28"
+                     AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
+            <Label HorizontalOptions="Center" Text="Je balans is:" TextColor="{DynamicResource textColor}"/>
+            <Label x:Name="Totals" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"></Label>
+            <ListView x:Name="Total"
+                      HasUnevenRows="True"
+                      Margin="0,20"
+                      BackgroundColor="{DynamicResource backgroundColor}"
+                      SeparatorColor="Orange">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding Name}"  Text="Delete" IsDestructive="True"/>
+                                <!--<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />-->
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
+                                <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap" WidthRequest="50" TextColor="{DynamicResource textColor}"/>
+                                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="250" TextColor="{DynamicResource textColor}"/>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start">
+                                    <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80" TextColor="{DynamicResource textColor}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+
+    <AbsoluteLayout IsVisible="False">
         <BoxView Color="Orange"
                  AbsoluteLayout.LayoutBounds=".5,.05,.975,.28"
                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional, HeightProportional"/>
@@ -95,7 +133,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView x:Name="uitgaveView" IsVisible="True">
+        <ListView x:Name="uitgaveView" IsVisible="False">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -104,19 +142,15 @@
                                      HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Vertical">
                                 <BoxView Color="DarkRed"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical">
                                 <BoxView Color="AliceBlue"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical">
                                 <BoxView Color="Gainsboro"/>
                             </StackLayout>
-                            
+
                             <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
-                            <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap"  WidthRequest="105"/>
-                            <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
-                                <Label Text="{Binding Name}" LineBreakMode="CharacterWrap"  WidthRequest="225"/>
-                            </StackLayout>
+                                <Label Text="{Binding Date,StringFormat='{}{0:dd/MM}'}" LineBreakMode="NoWrap"  WidthRequest="105"/>
+                                <StackLayout HorizontalOptions="FillAndExpand"  Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" LineBreakMode="CharacterWrap"  WidthRequest="225"/>
+                                </StackLayout>
                                 <StackLayout HorizontalOptions="FillAndExpand">
                                     <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80"/>
                                 </StackLayout>
@@ -126,5 +160,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+
     </AbsoluteLayout>
 </ContentPage>
