@@ -6,7 +6,7 @@
              BackgroundColor="{DynamicResource backgroundColor}">
     
     <StackLayout Orientation="Vertical" Padding="20">
-        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" TextColor="{DynamicResource textColor}"/>
+        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" x:Name="Top_lbl" TextColor="{DynamicResource textColor}"/>
         <Label Text=""/>
         <StackLayout Orientation="Vertical">
             <Label VerticalOptions="End" Text="Naam:" TextColor="{DynamicResource textColor}"/>
@@ -19,12 +19,12 @@
         <StackLayout Orientation="Vertical">
             <Label VerticalOptions="Center" Text="Categorie" TextColor="{DynamicResource textColor}"/>
             <Picker Title="Selecteer Categorie" VerticalOptions="Center" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}"></Picker>
-            <Label Text="Maandelijke Inkomsten?" TextColor="{DynamicResource textColor}"/>
+            <Label Text="Maandelijke Inkomsten?" TextColor="{DynamicResource textColor}" x:Name="Mnd_inkmostlbl"/>
             <Switch x:Name="Maand_Inkomst" HorizontalOptions="Center"></Switch>
         </StackLayout>
         <StackLayout>
-            <Button BorderColor="Bisque" Margin="50" BorderWidth="2" Text="Voeg Toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}">
-            </Button>
+            <Button BorderColor="Bisque" Margin="50,50,50,30" BorderWidth="2" Text="Voeg toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"/>
+            <Button BorderColor="Bisque" Margin="50,5,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>

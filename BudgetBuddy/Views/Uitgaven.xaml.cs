@@ -24,6 +24,18 @@ namespace BudgetBuddy.Views
 
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 
+            //checks if this is first use of app, if so, execute this
+            if (!App.Current.Properties.ContainsKey("savedPropA"))
+            {
+                Vaste_Lasten.IsVisible = false;
+                Vaste_Lasten.IsToggled = true;
+                vastlstlbl.IsVisible = false;
+                Top_lbl.Text = "voeg hier je maandelijke uitgaven toe, dit kan je meerdere keren doen.";
+            }
+            else
+            {
+                Ga_verder.IsVisible = false;
+            }
         }
 
         protected override async void OnAppearing()
@@ -35,6 +47,7 @@ namespace BudgetBuddy.Views
             }
 
             Pick_cat.ItemsSource = _cats;
+
 
         }
 
@@ -104,14 +117,26 @@ namespace BudgetBuddy.Views
                 }
 
                 await DisplayAlert("Gelukt", "Uitgaven succesvol toegevoegd", "OK");
-                await Navigation.PushAsync(new BudgetBuddyPage());
-                Navigation.RemovePage(this);
+                if (App.Current.Properties.ContainsKey("savedPropA"))
+                {
+                    await Navigation.PushAsync(new BudgetBuddyPage());
+                    Navigation.RemovePage(this);
+                }
             }
 
 
 
 
         }
+
+        private async void Button_OnClicked2(object sender, EventArgs e)
+        {
+            App.Current.Properties.Add("savedPropA", "start");
+            App.Current.SavePropertiesAsync();
+            App.Current.MainPage = new MainPage();
+
+        }
+
 
         private void Naam_OnTextChanged(object sender, TextChangedEventArgs e)
         {
