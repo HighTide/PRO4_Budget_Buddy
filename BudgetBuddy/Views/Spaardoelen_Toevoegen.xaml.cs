@@ -94,7 +94,7 @@ namespace BudgetBuddy.Views
             InsertTransaction();
             await DisplayAlert("Alert", "Spaardoel succesvol toegevoegd", "OK");
 
-
+            await DisplayAlert("Gelukt", "Spaardoel succesvol toegevoegd", "OK");
             await Navigation.PushAsync(new BudgetBuddyPage());
             Navigation.RemovePage(this);
         }
