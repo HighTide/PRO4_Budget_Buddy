@@ -175,6 +175,10 @@ namespace BudgetBuddy
                 Category.Income = true;
                 await _connection.InsertAsync(Category);
 
+                Category.Name = "Inleg Spaardoel";
+                Category.Income = false;
+                await _connection.InsertAsync(Category);
+
             }
 
             DailyBudgetAdd();
