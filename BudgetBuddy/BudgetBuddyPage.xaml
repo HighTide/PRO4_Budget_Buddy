@@ -15,6 +15,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="0"
                      Margin="7"
+                     Padding="0"
                      IsVisible="True">
 
             <StackLayout BackgroundColor="Orange"
@@ -55,20 +56,21 @@
                            Style="{DynamicResource SubtitleStyle}"
                            FontSize="Medium"
                            FontAttributes="Bold"
-                           WidthRequest="100"
+                           WidthRequest="130"
                            HorizontalOptions="StartAndExpand"/>
                     <Label Text="Bedrag:"
                            Style="{DynamicResource SubtitleStyle}"
                            FontSize="Medium"
                            FontAttributes="Bold"
-                           WidthRequest="100"
+                           WidthRequest="67"
                            HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
                     <ScrollView>
                         <ListView x:Name="uitgaveView" 
-                              IsVisible="True">
+                                  IsVisible="True"
+                                  SeparatorColor="DarkGray">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
