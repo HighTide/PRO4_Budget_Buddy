@@ -11,12 +11,14 @@ namespace BudgetBuddy.Views
     {
         private SQLiteAsyncConnection _connection;
         private double InputDay;
+        private double _budget;
 
         public Spaardoelen_Toevoegen()
         {
             InitializeComponent();
 
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            
 
             //WHY U MERGE NO RIGHT VISUAL STUDIO?
         }
@@ -58,6 +60,27 @@ namespace BudgetBuddy.Views
             }
         }
 
+        private async void InsertTransaction()
+        {
+            var Transaction = new SQL_Transacties();
+            Transaction.Date = DateTime.Now;
+            Transaction.Value = -InputDay;
+            Transaction.Category = "Inleg Spaardoel";
+            Transaction.Name = "Inleg Spaardoel: " + SpaardoelNaam.Text;
+            await _connection.InsertAsync(Transaction);
+
+
+            //Doing Lame shit because they did not make function
+            var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
+
+            _budget -= InputDay;
+            foreach (var item in list_budget)
+            {
+                _budget += item.Value;
+            }
+            await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+        }
+
         private async void Button_OnClicked(object sender, EventArgs e)
         {
             var spaarDoelen = new SQL_SpaarDoelen { }; //link with table
@@ -67,8 +90,10 @@ namespace BudgetBuddy.Views
             spaarDoelen.Goal = double.Parse(SpaardoelBedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);
             spaarDoelen.Completed = false;
             await _connection.InsertAsync(spaarDoelen);
-
+            InsertTransaction();
             await DisplayAlert("Alert", "Spaardoel succesvol toegevoegd", "OK");
+
+
             await Navigation.PushAsync(new BudgetBuddyPage());
             Navigation.RemovePage(this);
         }
