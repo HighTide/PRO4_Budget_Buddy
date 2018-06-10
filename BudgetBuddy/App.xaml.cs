@@ -12,6 +12,7 @@ namespace BudgetBuddy
     {
 		private SQLiteAsyncConnection _connection;
         private DateTime Datum;
+        private string hex1 = "#303030";
 
         public App()
         {
@@ -23,7 +24,15 @@ namespace BudgetBuddy
             _connection.CreateTableAsync<SQL_Budget>();
 
 
+
+
             InitializeComponent();
+            if (App.Current.Properties.ContainsKey("savedPropB"))
+            {
+                App.Current.Resources["backgroundColor"] = Color.FromHex(hex1);
+                App.Current.Resources["textColor"] = Color.White;
+
+            }
             if (App.Current.Properties.ContainsKey("savedPropA"))
             {
                 MainPage = new WelcomeBack();

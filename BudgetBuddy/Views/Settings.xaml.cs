@@ -24,16 +24,20 @@ namespace BudgetBuddy.Views
 		}
 
 
-        private void Button_Clicked1(object sender, EventArgs e)
+        private async void Button_Clicked1(object sender, EventArgs e)
         {
             App.Current.Resources["backgroundColor"] = Color.White;
             App.Current.Resources["textColor"] = Color.FromHex(hex1);
+            App.Current.Properties.Remove("savedPropB");
+            await App.Current.SavePropertiesAsync();
         }
 
-        private void Button_Clicked2(object sender, EventArgs e)
+        private async void Button_Clicked2(object sender, EventArgs e)
         {
             App.Current.Resources["backgroundColor"] = Color.FromHex(hex1);
             App.Current.Resources["textColor"] = Color.White;
+            App.Current.Properties.Add("savedPropB", "start");
+            await App.Current.SavePropertiesAsync();
         }
 
 	    private void Button_OnClicked(object sender, EventArgs e)

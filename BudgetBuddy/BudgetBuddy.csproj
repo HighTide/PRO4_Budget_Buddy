@@ -244,6 +244,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\piggy2.png" />
     <EmbeddedResource Include="Resources\cash.wav" />
     <Content Include="Resources\help_button.png" />
   </ItemGroup>
