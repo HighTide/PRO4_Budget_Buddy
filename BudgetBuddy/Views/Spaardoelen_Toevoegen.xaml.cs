@@ -11,6 +11,7 @@ namespace BudgetBuddy.Views
     {
         private SQLiteAsyncConnection _connection;
         private double InputDay;
+        private double _budget;
 
         public Spaardoelen_Toevoegen()
         {
@@ -65,12 +66,19 @@ namespace BudgetBuddy.Views
             Transaction.Date = DateTime.Now;
             Transaction.Value = -InputDay;
             Transaction.Category = "Inleg Spaardoel";
-            Transaction.Name = "Inleg Spaardoel " + SpaardoelNaam.Text;
+            Transaction.Name = "Inleg Spaardoel: " + SpaardoelNaam.Text;
             await _connection.InsertAsync(Transaction);
 
 
             //Doing Lame shit because they did not make function
+            var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
 
+            _budget -= InputDay;
+            foreach (var item in list_budget)
+            {
+                _budget += item.Value;
+            }
+            await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
         }
 
         private async void Button_OnClicked(object sender, EventArgs e)
