@@ -6,8 +6,48 @@
              BackgroundColor="{DynamicResource backgroundColor}"
              Style="{DynamicResource backgroundStyle}">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Om uitgaven toe te voegen kunt u in het menu naar uitgaven toevoegen gaan. Om in het menu te komen klikt u op de beginpagina linksbovenin op het icoontje."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
 
-        </StackLayout>
+                <Image x:Name="menu"></Image>
+
+                <Label Text="In het menu moet u 'Uitgaven Toevoegen' aanklikken. Dan komt u op een ander scherm."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <!--<Image x:Name="uitgavenToevoegen" Source="uitgaven_toevoegen.png" HorizontalOptions="Center"></Image>-->
+
+                <Label Text="Op het volgende scherm ziet u dat u uw naam van het uitgegeven bedrag kan invoeren, het uitgegeven bedrag kan invoeren en onder welke categorie het past."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Label Text="Ook is het mogelijk om het als vaste last op te geven. Dan moet u het icoontje onder 'Vaste Lasten?' aanvinken door er op te klikken."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <!--<Image x:Name="nietAangevinkt" Source="niet_aangevinkt.png" HorizontalOptions="Center"></Image>
+                <Image x:Name="aangevinkt" Source="aangevinkt.png" HorizontalOptions="Center"></Image>-->
+
+                <Label Text="Zodra het toevoegen van uitgaven is gelukt krijg u een bevestiging te zien zoals hieronder op de foto staat"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <!--<Image x:Name="geluktUitgaven" Source="gelukt_uitgaven.png" HorizontalOptions="Center"></Image>-->
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
