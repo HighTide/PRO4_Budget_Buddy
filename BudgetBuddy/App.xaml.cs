@@ -13,6 +13,7 @@ namespace BudgetBuddy
 		private SQLiteAsyncConnection _connection;
         private DateTime Datum;
         private string hex1 = "#303030";
+        private double _budget;
 
         public App()
         {
@@ -213,6 +214,7 @@ namespace BudgetBuddy
             {
                 double days = (DateTime.Now.Date - Datum.Date).TotalDays;
                 int dayss = Convert.ToInt32(Math.Floor(days));
+                //DailyBudgetSpaardoelAdd(dayss);
                 while(dayss > 0)
                 {
                     dayss --;
@@ -227,6 +229,71 @@ namespace BudgetBuddy
                 await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget");
 
             }
+        }
+
+        private async void DailyBudgetSpaardoelAdd(int dayss)
+        {
+            while (dayss > 0)
+            {
+                //Defining some local Variables
+                var Spaardoelen = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_SpaarDoelen WHERE NOT Completed");
+                var PlaybackDate = DateTime.Now.AddDays(-dayss);
+
+                //Loop trough all the Spaardoelen, selected by the quarry above
+                foreach (var item in Spaardoelen)
+                {
+                    //Prepairing Transaction
+                    var Transaction = new SQL_Transacties();
+                    Transaction.Date = PlaybackDate;
+                    Transaction.Value = -item.Value;
+                    Transaction.Category = "Inleg Spaardoel";
+                    Transaction.Name = "Inleg Spaardoel: " + item.Name;
+                    await _connection.InsertAsync(Transaction);
+
+
+                    //Doing Lame shit because they did not make function
+                    var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
+
+                    _budget += Transaction.Value;
+                    foreach (var item2 in list_budget)
+                    {
+                        _budget += item2.Value;
+                    }
+                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+
+                }
+                //Lower Days in Spaardoelen Table, by 1
+                CheckIfSpaardoelCompleted();
+
+                //Lower While loop by 1
+                dayss--;
+            }
+
+        }
+
+        private async void CheckIfSpaardoelCompleted()
+        {
+            //Get date from database
+            var Spaardoelen = await _connection.QueryAsync<SQL_SpaarDoelen>("SELECT * FROM SQL_SpaarDoelen WHERE NOT Completed");
+
+            //loop trough the data
+            foreach (var item in Spaardoelen)
+            {
+
+                //check if spaardoel is completed
+                if (item.Days <= 0)
+                {
+                    //change Completed to True
+                    await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Completed = 1 Where Name = ?", item.Name);
+                }
+                else
+                {
+                    //lower day by 1
+                    await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Days = ? Where Name = ?", item.Days, item.Name);
+                }
+                
+            }
+            
         }
 
     }
