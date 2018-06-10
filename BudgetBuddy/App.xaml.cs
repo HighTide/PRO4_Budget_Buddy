@@ -18,7 +18,7 @@ namespace BudgetBuddy
         {
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 
-            //don't delete this line
+            //don't delete these lines, this creates the tables before anything is shown.
             _connection.CreateTableAsync<SQL_Buttons>();
             _connection.CreateTableAsync<SQL_Transacties>();
             _connection.CreateTableAsync<SQL_Budget>();
@@ -27,19 +27,24 @@ namespace BudgetBuddy
 
 
             InitializeComponent();
+            // checks if color theme has been adjusted
             if (App.Current.Properties.ContainsKey("savedPropB"))
             {
                 App.Current.Resources["backgroundColor"] = Color.FromHex(hex1);
                 App.Current.Resources["textColor"] = Color.White;
 
             }
+
+            // checks if this is first time starting app or not
             if (App.Current.Properties.ContainsKey("savedPropA"))
             {
+                //happens if this is not the first time
                 MainPage = new WelcomeBack();
 
             }
             else
             {
+                //happens if this is the first time
                 MainPage = new First_Use();
 
             }
