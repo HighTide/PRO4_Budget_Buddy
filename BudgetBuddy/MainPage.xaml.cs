@@ -60,6 +60,12 @@ namespace BudgetBuddy
             });
             MenuList.Add(new MasterPageItem()
             {
+                Title = "Budget overzicht",
+                Icon = "TotOverzicht.png",
+                TargetType = typeof(BudgetOverzicht)
+            });
+            MenuList.Add(new MasterPageItem()
+            {
                 Title = "Settings",
                 Icon = "Settings.png",
                 TargetType = typeof(Settings)
