@@ -43,11 +43,15 @@ namespace BudgetBuddy.Properties
 		[PrimaryKey]
         public DateTime Date { get; set; }
 
+        public double Days { get; set; }
+
         public string Name { get; set; }
        
         public double Value { get; set; }
 
 		public double Goal { get; set; }
+
+        public bool Completed { get; set; }
 
     }
     public class SQL_Buttons
@@ -61,9 +65,11 @@ namespace BudgetBuddy.Properties
 
     public class SQL_Budget
     {
+        [MaxLength(255)]
         public double Value { get; set; }
 
         public DateTime Date { get; set; }
+
         [PrimaryKey]
         public string Name { get; set; }
     }
