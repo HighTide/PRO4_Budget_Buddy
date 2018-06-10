@@ -22,7 +22,7 @@
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="{DynamicResource textColor}"/>
 
-                <!--<Image x:Name="uitgavenToevoegen" Source="uitgaven_toevoegen.png" HorizontalOptions="Center"></Image>-->
+                <Image x:Name="uitgavenToevoegen" Source="uitgaven_toevoegen.png" HorizontalOptions="Center"></Image>
 
                 <Label Text="Op het volgende scherm ziet u dat u uw naam van het uitgegeven bedrag kan invoeren, het uitgegeven bedrag kan invoeren en onder welke categorie het past."
                    HorizontalTextAlignment="Center"
@@ -36,8 +36,8 @@
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="{DynamicResource textColor}"/>
 
-                <!--<Image x:Name="nietAangevinkt" Source="niet_aangevinkt.png" HorizontalOptions="Center"></Image>
-                <Image x:Name="aangevinkt" Source="aangevinkt.png" HorizontalOptions="Center"></Image>-->
+                <Image x:Name="nietAangevinkt" Source="niet_aangevinkt.png" HorizontalOptions="Center"></Image>
+                <Image x:Name="aangevinkt" Source="aangevinkt.png" HorizontalOptions="Center"></Image>
 
                 <Label Text="Zodra het toevoegen van uitgaven is gelukt krijg u een bevestiging te zien zoals hieronder op de foto staat"
                    HorizontalTextAlignment="Center"
@@ -45,7 +45,7 @@
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="{DynamicResource textColor}"/>
 
-                <!--<Image x:Name="geluktUitgaven" Source="gelukt_uitgaven.png" HorizontalOptions="Center"></Image>-->
+                <Image x:Name="geluktUitgaven" Source="gelukt_uitgaven.png" HorizontalOptions="Center"></Image>
 
             </StackLayout>
         </ScrollView>

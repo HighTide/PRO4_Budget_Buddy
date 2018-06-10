@@ -16,7 +16,6 @@ namespace BudgetBuddy.Views
 		{
 			InitializeComponent ();
 
-            menu.Source = "menu.png";
 		}
 	}
 }
