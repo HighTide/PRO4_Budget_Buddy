@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using SQLite;
 using Xamarin.Forms;
 using BudgetBuddy.Properties;
@@ -23,27 +24,38 @@ namespace BudgetBuddy.Views
 
         private void DatePicker_OnDateSelected(object sender, DateChangedEventArgs e)
         {
+            UpdateCalculations();
+        }
+
+        private void UpdateCalculations()
+        {
+            try
+            {
+                DateTime daysLeft = DatePickerSpaardoel.Date;
+                double goal = double.Parse(SpaardoelBedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);
 
 
-            DateTime daysLeft = DatePickerSpaardoel.Date;
-            double goal = Convert.ToDouble(SpaardoelBedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+                //daysLeft.Subtract(DateTime.Today);
+                //double days = Convert.ToDouble(daysLeft.Day.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+
+                double days = (daysLeft.Date - DateTime.Now.Date).TotalDays;
 
 
-			//daysLeft.Subtract(DateTime.Today);
-			//double days = Convert.ToDouble(daysLeft.Day.ToString(), System.Globalization.CultureInfo.InvariantCulture);
-            
-			double days = (daysLeft.Date - DateTime.Now.Date).TotalDays;
-            
+                DaysLeft.Text = "U heeft nog " + days.ToString() + " dagen om uw doel te bereiken.";
 
-            DaysLeft.Text = "U heeft nog " + days.ToString() + " dagen om uw doel te bereiken.";
+                //Calculate Daily Input
+                InputDay = ((double)goal / (double)days);
 
-            //Calculate Daily Input
-            InputDay = ((double) goal / (double) days);
+                EuroPerDag.Text = "U moet hiervoor dagelijks " + InputDay.ToString("0.00") + " Euro Inleggen.";
 
-            EuroPerDag.Text = "U moet hiervoor dagelijks " + InputDay.ToString("0.00") + " Euro Inleggen.";
-
-
-
+                SpaardoelenToevoegenButton.IsEnabled = true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                SpaardoelenToevoegenButton.IsEnabled = false;
+                //throw;
+            }
         }
 
         private async void Button_OnClicked(object sender, EventArgs e)
@@ -52,12 +64,23 @@ namespace BudgetBuddy.Views
             spaarDoelen.Date = DateTime.Now;
             spaarDoelen.Value = Convert.ToDouble(InputDay, System.Globalization.CultureInfo.InvariantCulture);
             spaarDoelen.Name = SpaardoelNaam.Text;
-            spaarDoelen.Goal = Convert.ToDouble(SpaardoelBedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
+            spaarDoelen.Goal = double.Parse(SpaardoelBedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);
+            spaarDoelen.Completed = false;
             await _connection.InsertAsync(spaarDoelen);
 
             await DisplayAlert("Alert", "Spaardoel succesvol toegevoegd", "OK");
             await Navigation.PushAsync(new BudgetBuddyPage());
             Navigation.RemovePage(this);
+        }
+
+        private void SpaardoelNaam_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateCalculations();
+        }
+
+        private void SpaardoelBedrag_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateCalculations();
         }
     }
 }

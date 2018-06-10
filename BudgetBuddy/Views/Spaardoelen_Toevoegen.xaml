@@ -10,10 +10,10 @@
         <Label Text=""/>
         <StackLayout Orientation="Vertical">
             <Label VerticalOptions="End" Text="Waarvoor wil je sparen?" TextColor="{DynamicResource textColor}"/>
-            <Entry VerticalOptions="End" Placeholder="Vakantie Bangkok" x:Name="SpaardoelNaam"  BackgroundColor="{DynamicResource entryColor}"/>
+            <Entry VerticalOptions="End" Placeholder="Vakantie Bangkok" x:Name="SpaardoelNaam" TextChanged="SpaardoelNaam_OnTextChanged"  BackgroundColor="{DynamicResource entryColor}"/>
 
             <Label VerticalOptions="End" Text="Hoeveel wil je sparen?" TextColor="{DynamicResource textColor}"/>
-            <Entry VerticalOptions="End"  Keyboard="Numeric" Placeholder="€4500" x:Name="SpaardoelBedrag" BackgroundColor="{DynamicResource entryColor}"/>
+            <Entry VerticalOptions="End"  Keyboard="Numeric" Placeholder="€4500" x:Name="SpaardoelBedrag" TextChanged="SpaardoelBedrag_OnTextChanged" BackgroundColor="{DynamicResource entryColor}"/>
 
             <Label VerticalOptions="End" Text="Wanneer wil je klaar zijn met sparen?" TextColor="{DynamicResource textColor}"/>
             <DatePicker MinimumDate="{x:Static system:DateTime.Today}" MaximumDate="1/1/2200" Date="{x:Static system:DateTime.Today}" x:Name="DatePickerSpaardoel" DateSelected="DatePicker_OnDateSelected" BackgroundColor="{DynamicResource entryColor}"  />
@@ -28,7 +28,7 @@
 
         </StackLayout>
         <StackLayout>
-            <Button BorderColor="Bisque" Margin="50" BorderWidth="2" Text="Voeg Toe" VerticalOptions="CenterAndExpand" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}" Clicked="Button_OnClicked">
+            <Button IsEnabled="False" x:Name="SpaardoelenToevoegenButton" BorderColor="Bisque" Margin="50" BorderWidth="2" Text="Voeg Toe" VerticalOptions="CenterAndExpand" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}" Clicked="Button_OnClicked">
             </Button>
         </StackLayout>
     </StackLayout>

@@ -49,6 +49,8 @@ namespace BudgetBuddy.Properties
 
 		public double Goal { get; set; }
 
+        public bool Completed { get; set; }
+
     }
     public class SQL_Buttons
     {

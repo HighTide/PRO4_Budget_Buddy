@@ -27,6 +27,7 @@ namespace BudgetBuddy
 
 
             InitializeComponent();
+
             if (App.Current.Properties.ContainsKey("savedPropB"))
             {
                 App.Current.Resources["backgroundColor"] = Color.FromHex(hex1);
@@ -219,5 +220,6 @@ namespace BudgetBuddy
 
             }
         }
+
     }
 }
