@@ -14,7 +14,7 @@
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="{DynamicResource textColor}"/>
 
-                <Image x:Name="menu"></Image>
+                <Image x:Name="menu" Source="menu.png" HorizontalOptions="Center"></Image>
 
                 <Label Text="In het menu moet u 'Uitgaven Toevoegen' aanklikken. Dan komt u op een ander scherm."
                    HorizontalTextAlignment="Center"
@@ -24,7 +24,7 @@
 
                 <Image x:Name="uitgavenToevoegen" Source="uitgaven_toevoegen.png" HorizontalOptions="Center"></Image>
 
-                <Label Text="Op het volgende scherm ziet u dat u uw naam van het uitgegeven bedrag kan invoeren, het uitgegeven bedrag kan invoeren en onder welke categorie het past."
+                <Label Text="Op het volgende scherm ziet u dat u een beschrijving voor de uitgaven kan toevoegen, het uitgegeven bedrag kan invoeren en onder welke categorie het past kiezen."
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
                    HorizontalOptions="CenterAndExpand" 
@@ -39,13 +39,30 @@
                 <Image x:Name="nietAangevinkt" Source="niet_aangevinkt.png" HorizontalOptions="Center"></Image>
                 <Image x:Name="aangevinkt" Source="aangevinkt.png" HorizontalOptions="Center"></Image>
 
-                <Label Text="Zodra het toevoegen van uitgaven is gelukt krijg u een bevestiging te zien zoals hieronder op de foto staat"
+                <Label Text="Zodra het toevoegen van uitgaven is gelukt krijgt u een bevestiging te zien zoals hieronder op de foto staat."
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="{DynamicResource textColor}"/>
 
                 <Image x:Name="geluktUitgaven" Source="gelukt_uitgaven.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="Het is ook mogelijk om in de instellingen categorieën toe te voegen aan uitgaven. Zo kunt u uw uitgaven nog specifieker in de app zetten. In de hoofdpagina klikt 
+                       u op het menu icoontje links bovenin en klik je op instellingen."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="instellingen" Source="instellingen.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="Klik daarna op de 'categorie toevoegen' knop waar u op deze pagina ziet dat u een categorie kan toevoegen en of deze onder inkomsten of uitgaven hoort."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="buttonToevoeg" Source="voeg_cat_toe.png" HorizontalOptions="Center"></Image>
 
             </StackLayout>
         </ScrollView>
