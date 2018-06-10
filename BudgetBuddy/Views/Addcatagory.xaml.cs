@@ -41,12 +41,12 @@ namespace BudgetBuddy.Views
                     category.Income = true;
                 }
                 await _connection.InsertAsync(category);
-                await DisplayAlert("Alert", "categorie succesvol toegevoegd", "OK");
+                await DisplayAlert("Gelukt", "Categorie succesvol toegevoegd", "OK");
                 Navigation.RemovePage(this);
             }
             else
             {
-                await DisplayAlert("Error", "Categorie bestaat al", "Ok");
+                await DisplayAlert("Alert", "Categorie bestaat al", "OK");
             }
             
 	        

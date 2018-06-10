@@ -55,7 +55,7 @@ namespace BudgetBuddy.Views
             spaarDoelen.Goal = Convert.ToDouble(SpaardoelBedrag.Text, System.Globalization.CultureInfo.InvariantCulture);
             await _connection.InsertAsync(spaarDoelen);
 
-            await DisplayAlert("Alert", "Spaardoel succesvol toegevoegd", "OK");
+            await DisplayAlert("Gelukt", "Spaardoel succesvol toegevoegd", "OK");
             await Navigation.PushAsync(new BudgetBuddyPage());
             Navigation.RemovePage(this);
         }

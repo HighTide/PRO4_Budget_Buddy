@@ -6,10 +6,65 @@
              BackgroundColor="{DynamicResource backgroundColor}"
              Style="{DynamicResource backgroundStyle}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Om inkomsten toe te voegen kunt u in het menu naar inkomsten toevoegen gaan. Om in het menu te komen klikt u op de beginpagina linksbovenin op het icoontje."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="menu" Source="menu.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="In het menu moet u 'Inkomsten toevoegen' aanklikken. Dan komt u op een ander scherm."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="inkomstenToevoegen" Source="inkomsten_toevoegen.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="Op het volgende scherm ziet u dat u een beschrijving voor de inkomsten kan toevoegen, het bedrag van de inkomst kan invoeren en onder welke categorie het past kiezen."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Label Text="Ook is het mogelijk om het als maandelijke inkomst op te geven. Dan moet u het icoontje onder 'Maandelijke inkomst?' aanvinken door er op te klikken."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="nietAangevinkt" Source="niet_aangevinkt.png" HorizontalOptions="Center"></Image>
+                <Image x:Name="aangevinkt" Source="aangevinkt.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="Zodra het toevoegen van inkomsten is gelukt krijgt u een bevestiging te zien zoals hieronder op de foto staat."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="geluktInkomsten" Source="gelukt_inkomsten.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="Het is ook mogelijk om in de instellingen categorieën toe te voegen aan inkomsten. Zo kunt u uw inkomsten nog specifieker in de app zetten. In de hoofdpagina klikt 
+                       u op het menu icoontje links bovenin en klik je op instellingen."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="instellingen" Source="instellingen.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="Klik daarna op de 'categorie toevoegen' knop waar u op deze pagina ziet dat u een categorie kan toevoegen en of deze onder inkomsten of uitgaven hoort."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="buttonToevoeg" Source="voeg_cat_toe.png" HorizontalOptions="Center"></Image>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
