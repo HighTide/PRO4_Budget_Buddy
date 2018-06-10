@@ -20,7 +20,6 @@ namespace BudgetBuddy.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await Task.Delay(500);
             Application.Current.MainPage = new MainPage();
 
         }
