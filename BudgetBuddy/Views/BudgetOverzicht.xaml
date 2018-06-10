@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetBuddy.Views.BudgetOverzicht"
+             BackgroundColor="{DynamicResource backgroundColor}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="help_button.png" Clicked="MenuItem_OnClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label HorizontalOptions="Center" Text="" TextColor="{DynamicResource textColor}"/>
+            <Label HorizontalOptions="Center" Text="Je dagelijkse budget voor deze maand is:" TextColor="{DynamicResource textColor}"/>
+            <Label x:Name="Totals" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"></Label>
+            <ListView x:Name="Total"
+                      HasUnevenRows="True"
+                      Margin="0,20"
+                      BackgroundColor="{DynamicResource backgroundColor}"
+                      SeparatorColor="Orange">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding Name}"  Text="Delete" IsDestructive="True"/>
+                                <!--<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />-->
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal" Padding="10,10,0,10">
+                                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" LineBreakMode="CharacterWrap" WidthRequest="250" TextColor="{DynamicResource textColor}"/>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start">
+                                    <Label Text="{Binding Value,StringFormat='€ {0:F2}'}" WidthRequest="80" TextColor="{DynamicResource textColor}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

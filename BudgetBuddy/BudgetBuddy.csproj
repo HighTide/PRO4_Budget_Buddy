@@ -65,6 +65,9 @@
     <Compile Include="Views\Addcatagory.xaml.cs">
       <DependentUpon>Addcatagory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BudgetOverzicht.xaml.cs">
+      <DependentUpon>BudgetOverzicht.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ButtonChange.xaml.cs">
       <DependentUpon>ButtonChange.xaml</DependentUpon>
     </Compile>
@@ -244,7 +247,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\aangevinkt.png" />
+    <Content Include="Resources\gelukt_inkomsten.png" />
+    <Content Include="Resources\gelukt_uitgaven.png" />
+    <Content Include="Resources\inkomsten_toevoegen.png" />
+    <Content Include="Resources\menu.png" />
+    <Content Include="Resources\niet_aangevinkt.png" />
     <Content Include="Resources\piggy2.png" />
+    <Content Include="Resources\uitgaven_toevoegen.png" />
     <EmbeddedResource Include="Resources\cash.wav" />
     <Content Include="Resources\help_button.png" />
   </ItemGroup>
@@ -274,6 +284,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\WelcomeBack.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\BudgetOverzicht.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
