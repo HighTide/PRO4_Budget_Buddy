@@ -63,10 +63,14 @@ namespace BudgetBuddy.Views
         {
             var Transaction = new SQL_Transacties();
             Transaction.Date = DateTime.Now;
-            Transaction.Value = InputDay;
+            Transaction.Value = -InputDay;
             Transaction.Category = "Inleg Spaardoel";
             Transaction.Name = "Inleg Spaardoel " + SpaardoelNaam.Text;
             await _connection.InsertAsync(Transaction);
+
+
+            //Doing Lame shit because they did not make function
+
         }
 
         private async void Button_OnClicked(object sender, EventArgs e)
