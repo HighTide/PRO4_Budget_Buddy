@@ -29,8 +29,8 @@ namespace BudgetBuddy
 
         private void Clicked(object sender, System.EventArgs e)
         {
-            //Navigation.PushAsync(new HelpPage());
-            ((App)App.Current).DailyBudgetAdd(1);
+            Navigation.PushAsync(new HelpPage());
+            //((App)App.Current).DailyBudgetAdd(1);
         }
 
         protected override async void OnAppearing()
