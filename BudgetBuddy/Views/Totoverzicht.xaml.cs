@@ -26,7 +26,7 @@ namespace BudgetBuddy.Views
 
         protected override async void OnAppearing()
         {
-            var Tots = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties ORDER BY Date DESC");
+            var Tots = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE NOT Recurring ORDER BY Date DESC");
 
             Total.ItemsSource = Tots;
 
@@ -48,6 +48,7 @@ namespace BudgetBuddy.Views
 
         async void MenuItem_Clicked(object sender, System.EventArgs e)
         {
+            int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
             totalis2 = 0.00;
             var mi = ((MenuItem)sender);
             var viewCellSelected = sender as MenuItem;

@@ -17,9 +17,10 @@ namespace BudgetBuddy.Views
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+            await Task.Delay(200);
             Application.Current.MainPage = new MainPage();
 
         }

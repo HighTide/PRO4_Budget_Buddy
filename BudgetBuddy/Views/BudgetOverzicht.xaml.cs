@@ -27,7 +27,7 @@ namespace BudgetBuddy.Views
         protected override async void OnAppearing()
         {
             var Tots = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE Recurring ORDER BY Date DESC");
-
+            
             Total.ItemsSource = Tots;
 
 
@@ -53,7 +53,7 @@ namespace BudgetBuddy.Views
             }
             else
             {
-                Totals.Text = "€ " + totalis.ToString("0.00");
+                Totals.Text = "€ " + (totalis / s).ToString("0.00");
             }
 
 
@@ -62,14 +62,15 @@ namespace BudgetBuddy.Views
 
         async void MenuItem_Clicked(object sender, System.EventArgs e)
         {
+            int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
             totalis2 = 0.00;
             var mi = ((MenuItem)sender);
             var viewCellSelected = sender as MenuItem;
             var calculationToDelete = viewCellSelected?.BindingContext as SQL_Transacties;
             if (calculationToDelete.Value > 0)
-                await _connection.ExecuteAsync("Update SQL_Budget SET Value = Value - ? Where Name = ?", calculationToDelete.Value, "Budget");
+                await _connection.ExecuteAsync("Update SQL_Budget SET Value = Value - ? Where Name = ?", calculationToDelete.Value / s, "Budget");
             else if (calculationToDelete.Value < 0)
-                await _connection.ExecuteAsync("Update SQL_Budget SET Value = Value + ? Where Name = ?", Math.Abs(calculationToDelete.Value), "Budget");
+                await _connection.ExecuteAsync("Update SQL_Budget SET Value = Value + ? Where Name = ?", Math.Abs(calculationToDelete.Value / s), "Budget");
             await _connection.DeleteAsync(calculationToDelete);
             var Tots = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE Recurring ORDER BY Date DESC");
             Total.ItemsSource = Tots;
