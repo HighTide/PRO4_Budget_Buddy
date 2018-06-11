@@ -31,7 +31,7 @@ namespace BudgetBuddy.Views
                 Vaste_Lasten.IsToggled = true;
                 vastlstlbl.IsVisible = false;
                 Top_lbl.FontSize = 15;
-                Top_lbl.Text = "voeg hier je maandelijke uitgaven toe, dit kan je meerdere keren doen.";
+                Top_lbl.Text = "Voeg hier uw maandelijke inkomsten toe. Het is mogelijk om dit meerdere malen te doen! Dit kan ook later nog in de App.";
             }
             else
             {
