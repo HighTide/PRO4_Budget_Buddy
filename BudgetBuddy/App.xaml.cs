@@ -14,7 +14,7 @@ namespace BudgetBuddy
 		private SQLiteAsyncConnection _connection;
         private DateTime Datum;
         private string hex1 = "#303030";
-        private double _budgett;
+        
 
         public App()
         {
@@ -203,6 +203,7 @@ namespace BudgetBuddy
         public async void DailyBudgetAdd(int menual = 0)
         {
             //some lcal variables
+            double _budgett = 0.00;
             double total = 0.00;
             //loop through the budget to get the values we need to work with
             var recur = await _connection.QueryAsync<SQL_Budget>("SELECT * FROM SQL_Budget WHERE NAME = 'Budget'");
@@ -249,10 +250,11 @@ namespace BudgetBuddy
                     await _connection.InsertAsync(Transaction);
 
 
-                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", total, "Budget");
+                    
                     dayss--;
                 }
-                await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget");
+                await _connection.ExecuteAsync("Update SQL_Budget SET Value = ?, Date = ? Where Name = ?", total, DateTime.Now, "Budget");
+                //await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget");
 
             }
         }

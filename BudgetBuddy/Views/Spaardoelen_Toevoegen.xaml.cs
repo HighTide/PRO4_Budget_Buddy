@@ -67,6 +67,7 @@ namespace BudgetBuddy.Views
             Transaction.Value = -InputDay;
             Transaction.Category = "Inleg Spaardoel";
             Transaction.Name = "Inleg Spaardoel: " + SpaardoelNaam.Text;
+            Transaction.Recurring = false;
             await _connection.InsertAsync(Transaction);
 
 
