@@ -48,7 +48,7 @@ namespace BudgetBuddy
             //    SQL_Uitgaven.Date < new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month + 1, 1).Ticks and
             //    SQL_Uitgaven.Date > new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month - 1, System.DateTime.DaysInMonth(System.DateTime.Now.Month - 1)).Ticks;
 
-            var laatste_uitgave = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties ORDER BY Date DESC");
+            var laatste_uitgave = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE NOT Recurring ORDER BY Date DESC");
             _laatste_uitgave_filter = new ObservableCollection<SQL_Transacties>(laatste_uitgave);
             //uitgaveView.ItemSource = _laatste_uitgave_filter;
 
