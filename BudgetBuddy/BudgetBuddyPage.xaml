@@ -22,11 +22,16 @@
                          HorizontalOptions="FillAndExpand"
                          HeightRequest="125"
                          VerticalOptions="Start">
+                <Label Text="Resterende bedrag per dag:"
+                       Style="{DynamicResource SubtitleStyle}"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"/>
                 <Label x:Name="days_left"
                                 Style="{DynamicResource TitleStyle}"
                                 FontSize="50"
                                 HorizontalOptions="Center"
-                                VerticalOptions="CenterAndExpand"
+                                VerticalOptions="Start"
                                 FontAttributes="Bold"/>
             </StackLayout>
 
@@ -39,12 +44,12 @@
                          HorizontalOptions="FillAndExpand"
                          HeightRequest="325"
                          VerticalOptions="Start">
-                <Label Text="Laatste Uitgaven"
-                                Style="{DynamicResource TitleStyle}"
-                                FontSize="23"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Start"
-                                FontAttributes="Bold"/>
+                <Label Text="Laatste Transacties"
+                       Style="{DynamicResource TitleStyle}"
+                       FontSize="23"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       FontAttributes="Bold"/>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Datum:"
                            Style="{DynamicResource SubtitleStyle}"
