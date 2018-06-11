@@ -47,12 +47,13 @@ namespace BudgetBuddy.Views
             }
             if (!Tots.Any())
             {
+                Totals.TextColor = Color.Red;
                 Totals.FontSize = 12;
                 Totals.Text = "Je hebt nog geen vaste inkomen of uitgaven toegevoegd";
             }
             else
             {
-                Totals.Text = "€ " + (totalis / s).ToString("0.00");
+                Totals.Text = "€ " + totalis.ToString("0.00");
             }
 
 
@@ -84,7 +85,16 @@ namespace BudgetBuddy.Views
             {
                 Totals.TextColor = Color.Red;
             }
-            Totals.Text = "€ " + (totalis2 / s).ToString("0.00");
+            if (!Tots.Any())
+            {
+                Totals.TextColor = Color.Red;
+                Totals.FontSize = 12;
+                Totals.Text = "Je hebt nog geen vaste inkomen of uitgaven toegevoegd";
+            }
+            else
+            {
+                Totals.Text = "€ " + (totalis2 / s).ToString("0.00");
+            }
         }
 
         private void MenuItem_OnClicked(object sender, EventArgs e)

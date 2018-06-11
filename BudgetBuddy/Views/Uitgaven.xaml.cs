@@ -30,6 +30,7 @@ namespace BudgetBuddy.Views
                 Vaste_Lasten.IsVisible = false;
                 Vaste_Lasten.IsToggled = true;
                 vastlstlbl.IsVisible = false;
+                Top_lbl.FontSize = 15;
                 Top_lbl.Text = "voeg hier je maandelijke uitgaven toe, dit kan je meerdere keren doen.";
             }
             else
@@ -129,7 +130,7 @@ namespace BudgetBuddy.Views
 
         }
 
-        private async void Button_OnClicked2(object sender, EventArgs e)
+        private void Button_OnClicked2(object sender, EventArgs e)
         {
             App.Current.Properties.Add("savedPropA", "start");
             App.Current.SavePropertiesAsync();

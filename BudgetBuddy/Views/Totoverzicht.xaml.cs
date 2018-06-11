@@ -26,7 +26,7 @@ namespace BudgetBuddy.Views
 
         protected override async void OnAppearing()
         {
-            var Tots = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE NOT Recurring ORDER BY Date DESC");
+            var Tots = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties ORDER BY Date DESC");
 
             Total.ItemsSource = Tots;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using SQLite;
 using BudgetBuddy.Properties;
@@ -201,73 +202,81 @@ namespace BudgetBuddy
 
         private async void DailyBudgetAdd()
         {
+            //some lcal variables
             double total = 0.00;
+            double totals = 0.00;
+            //loop through the budget to get the values we need to work with
             var recur = await _connection.QueryAsync<SQL_Budget>("SELECT * FROM SQL_Budget WHERE NAME = 'Budget'");
             foreach (var item in recur)
             {
                 Datum = item.Date;
                 total += item.Value;
+                totals += item.Value;
 
             }
 
             if ((DateTime.Now.Date - Datum.Date).TotalDays >= 1)
             {
+                //some local variables
+                double transvalue = 0;
                 double days = (DateTime.Now.Date - Datum.Date).TotalDays;
                 int dayss = Convert.ToInt32(Math.Floor(days));
-                //DailyBudgetSpaardoelAdd(dayss);
+                var Spaardoelen = await _connection.QueryAsync<SQL_SpaarDoelen>("SELECT * FROM SQL_SpaarDoelen WHERE NOT Completed");
+                var PlaybackDate = DateTime.Now.AddDays(-dayss + 1);
+                
+
                 while(dayss > 0)
                 {
-                    dayss --;
+                    
+                    total = DailyBudgetSpaardoelAdd(total, Spaardoelen, PlaybackDate);
                     int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
                     var recurring = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
                     foreach (var item in recurring)
                     {
+                        transvalue = item.Value / s;
                         total += item.Value / s;
                     }
+                    
+
+                    //add new transaction for overviews
+                    var Transaction = new SQL_Transacties();
+                    Transaction.Date = DateTime.Now.AddDays((-dayss + 1));
+                    Transaction.Value = transvalue;
+                    Transaction.Category = "Budget";
+                    Transaction.Name = "Budget";
+                    await _connection.InsertAsync(Transaction);
                     await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", total, "Budget");
+                    dayss--;
                 }
                 await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget");
 
             }
         }
 
-        private async void DailyBudgetSpaardoelAdd(int dayss)
+        private double DailyBudgetSpaardoelAdd(double total, List<SQL_SpaarDoelen> Spaardoelen, DateTime PlaybackDate)
         {
-            while (dayss > 0)
-            {
-                //Defining some local Variables
-                var Spaardoelen = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_SpaarDoelen WHERE NOT Completed");
-                var PlaybackDate = DateTime.Now.AddDays(-dayss);
 
                 //Loop trough all the Spaardoelen, selected by the quarry above
-                foreach (var item in Spaardoelen)
-                {
-                    //Prepairing Transaction
-                    var Transaction = new SQL_Transacties();
-                    Transaction.Date = PlaybackDate;
-                    Transaction.Value = -item.Value;
-                    Transaction.Category = "Inleg Spaardoel";
-                    Transaction.Name = "Inleg Spaardoel: " + item.Name;
-                    await _connection.InsertAsync(Transaction);
+            foreach (var item in Spaardoelen)
+            {
+                //Prepairing Transaction
+                var Transaction = new SQL_Transacties();
+                Transaction.Date = PlaybackDate;
+                Transaction.Value = item.Value;
+                Transaction.Category = "Inleg Spaardoel";
+                Transaction.Name = "Inleg Spaardoel: " + item.Name;
+                _connection.InsertAsync(Transaction);
+
+                //add spaardoel value to new budget amount
+                total += Transaction.Value;
 
 
-                    //Doing Lame shit because they did not make function
-                    var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
-
-                    _budget += Transaction.Value;
-                    foreach (var item2 in list_budget)
-                    {
-                        _budget += item2.Value;
-                    }
-                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
-
-                }
-                //Lower Days in Spaardoelen Table, by 1
-                CheckIfSpaardoelCompleted();
-
-                //Lower While loop by 1
-                dayss--;
             }
+            //Lower Days in Spaardoelen Table, by 1
+            CheckIfSpaardoelCompleted();
+            //return the new budget amount
+            return total;
+
 
         }
 

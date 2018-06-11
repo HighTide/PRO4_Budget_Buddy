@@ -85,7 +85,7 @@ namespace BudgetBuddy.Views
         {
             var spaarDoelen = new SQL_SpaarDoelen { }; //link with table
             spaarDoelen.Date = DateTime.Now;
-            spaarDoelen.Value = Convert.ToDouble(InputDay, System.Globalization.CultureInfo.InvariantCulture);
+            spaarDoelen.Value = Math.Round(-Convert.ToDouble(InputDay, System.Globalization.CultureInfo.InvariantCulture), 2);
             spaarDoelen.Name = SpaardoelNaam.Text;
             spaarDoelen.Goal = double.Parse(SpaardoelBedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);
             spaarDoelen.Completed = false;

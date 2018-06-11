@@ -33,6 +33,7 @@ namespace BudgetBuddy.Views
                 Maand_Inkomst.IsToggled = true;
                 Ga_verder.IsVisible = true;
                 Mnd_inkmostlbl.IsVisible = false;
+                Top_lbl.FontSize = 15;
                 Top_lbl.Text = "voeg hier je maandelijke inkomsten toe, dit kan je meerdere keren doen.";
             }
             else
@@ -72,6 +73,7 @@ namespace BudgetBuddy.Views
 
         private async void Button_OnClicked(object sender, EventArgs e)
         {
+            int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
             if (Pick_cat.SelectedItem == null)
             {
                 await DisplayAlert("Alert", "Kies een geldige categorie", "OK");
@@ -106,7 +108,7 @@ namespace BudgetBuddy.Views
 
                 if (Maand_Inkomst.IsToggled)
                 {
-                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                    
                     _budget += inkomsten.Value / s;
                     
                     foreach (var item in list_budget)
@@ -135,7 +137,7 @@ namespace BudgetBuddy.Views
             }
         }
 
-        private async void Button_OnClicked2(object sender, EventArgs e)
+        private void Button_OnClicked2(object sender, EventArgs e)
         {
             App.Current.MainPage = new Uitgaven();
         }

@@ -23,11 +23,5 @@ namespace BudgetBuddy.Views
         {
             App.Current.MainPage = new Inkomsten();
         }
-        protected override async void OnAppearing()
-        {
-            //App.Current.Properties.Add("savedPropA", "start");
-            //await App.Current.SavePropertiesAsync();
-            base.OnAppearing();
-        }
     }
 }

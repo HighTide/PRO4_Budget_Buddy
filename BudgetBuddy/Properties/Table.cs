@@ -15,7 +15,6 @@ namespace BudgetBuddy.Properties
     
 	public class SQL_Transacties
     {
-        [PrimaryKey]
 		public DateTime Date { get; set; }
 
         [MaxLength(255)]
@@ -40,7 +39,6 @@ namespace BudgetBuddy.Properties
 
 	public class SQL_SpaarDoelen
     {
-		[PrimaryKey]
         public DateTime Date { get; set; }
 
         public double Days { get; set; }
@@ -70,7 +68,6 @@ namespace BudgetBuddy.Properties
 
         public DateTime Date { get; set; }
 
-        [PrimaryKey]
         public string Name { get; set; }
     }
 }
