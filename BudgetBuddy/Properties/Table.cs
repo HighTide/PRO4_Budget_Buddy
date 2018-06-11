@@ -15,6 +15,9 @@ namespace BudgetBuddy.Properties
     
 	public class SQL_Transacties
     {
+        [AutoIncrement][PrimaryKey]
+        public int Id { get; set; }
+
 		public DateTime Date { get; set; }
 
         [MaxLength(255)]
