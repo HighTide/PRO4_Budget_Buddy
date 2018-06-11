@@ -231,7 +231,7 @@ namespace BudgetBuddy
 
                 while (dayss > 0)
                 {
-                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.AddDays((-dayss + 1)).Month);
                     var recurring = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
                     foreach (var item in recurring)
                     {
@@ -247,14 +247,14 @@ namespace BudgetBuddy
                     Transaction.Category = "Budget";
                     Transaction.Name = "Budget";
                     Transaction.Recurring = false;
-                    await _connection.InsertAsync(Transaction);
+                    _connection.InsertAsync(Transaction);
 
 
                     
                     dayss--;
                 }
                 await _connection.ExecuteAsync("Update SQL_Budget SET Value = ?, Date = ? Where Name = ?", total, DateTime.Now, "Budget");
-                //await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget");
+                await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget");
 
             }
         }
