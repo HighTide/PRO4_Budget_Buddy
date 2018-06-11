@@ -200,7 +200,7 @@ namespace BudgetBuddy
             // Handle when your app resumes
         }
 
-        private async void DailyBudgetAdd()
+        public async void DailyBudgetAdd(int menual = 0)
         {
             //some lcal variables
             double total = 0.00;
@@ -212,12 +212,17 @@ namespace BudgetBuddy
                 _budgett += item.Value;
             }
 
-            if ((DateTime.Now.Date - Datum.Date).TotalDays >= 1)
+            if (((DateTime.Now.Date - Datum.Date).TotalDays >= 1) || (menual > 0))
             {
                 //some local variables
                 double transvalue = 0;
                 double days = (DateTime.Now.Date - Datum.Date).TotalDays;
                 int dayss = Convert.ToInt32(Math.Floor(days));
+
+                if(dayss == 0)
+                {
+                    dayss = menual;
+                }
 
 
                 _budgett = await DailyBudgetSpaardoelAdd(dayss, _budgett);
@@ -240,6 +245,7 @@ namespace BudgetBuddy
                     Transaction.Value = transvalue;
                     Transaction.Category = "Budget";
                     Transaction.Name = "Budget";
+                    Transaction.Recurring = false;
                     await _connection.InsertAsync(Transaction);
 
 
@@ -271,6 +277,7 @@ namespace BudgetBuddy
                     Transaction.Value = item.Value;
                     Transaction.Category = "Inleg Spaardoel";
                     Transaction.Name = "Inleg Spaardoel: " + item.Name;
+                    Transaction.Recurring = false;
                     await _connection.InsertAsync(Transaction);
 
 
