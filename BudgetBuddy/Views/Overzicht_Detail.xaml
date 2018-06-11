@@ -9,7 +9,6 @@
             <Label HorizontalOptions="Center" x:Name="Soort_label" TextColor="{DynamicResource textColor}"/>
             <Label x:Name="Total" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold"></Label>
             <ListView x:Name="ListView" 
-                      ItemSelected="ListView_OnItemSelected"
                       HasUnevenRows="True"
                       SeparatorColor="Orange">
                 <ListView.ItemTemplate>

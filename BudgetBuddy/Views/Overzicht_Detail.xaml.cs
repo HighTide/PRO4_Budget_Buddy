@@ -84,12 +84,6 @@ namespace BudgetBuddy.Views
             base.OnAppearing();
         }
 
-        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var selected = e.SelectedItem as SQL_Transacties;
-            DisplayAlert("Alert", selected.Value.ToString(), "OK");
-        }
-
         private async void MainSearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             string keyword = e.NewTextValue;
