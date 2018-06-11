@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using SQLite;
 using BudgetBuddy.Properties;
 using BudgetBuddy.Views;
-
+using System.Threading.Tasks;
 
 namespace BudgetBuddy
 {
@@ -14,7 +14,7 @@ namespace BudgetBuddy
 		private SQLiteAsyncConnection _connection;
         private DateTime Datum;
         private string hex1 = "#303030";
-        private double _budget;
+        private double _budgett;
 
         public App()
         {
@@ -209,7 +209,7 @@ namespace BudgetBuddy
             foreach (var item in recur)
             {
                 Datum = item.Date;
-                _budget += item.Value;
+                _budgett += item.Value;
             }
 
             if ((DateTime.Now.Date - Datum.Date).TotalDays >= 1)
@@ -220,14 +220,8 @@ namespace BudgetBuddy
                 int dayss = Convert.ToInt32(Math.Floor(days));
 
 
-                DailyBudgetSpaardoelAdd(dayss, _budget);
-                //update total value after spaardoel has been removed removin
-                var recurs = await _connection.QueryAsync<SQL_Budget>("SELECT * FROM SQL_Budget WHERE NAME = 'Budget'");
-                foreach (var item in recurs)
-                {
-                    total += item.Value;
-                    
-                }
+                _budgett = await DailyBudgetSpaardoelAdd(dayss, _budgett);
+                total += _budgett;
 
                 while (dayss > 0)
                 {
@@ -257,7 +251,7 @@ namespace BudgetBuddy
             }
         }
 
-        private async void DailyBudgetSpaardoelAdd(int dayss, double budget)
+        private async Task<double> DailyBudgetSpaardoelAdd(int dayss, double budget)
         {
 
 
@@ -284,7 +278,7 @@ namespace BudgetBuddy
                     budget += Transaction.Value;
 
 
-                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", budget, "Budget");
+                    
 
                 }
                 //Lower Days in Spaardoelen Table, by 1
@@ -293,7 +287,7 @@ namespace BudgetBuddy
                 //Lower While loop by 1
                 dayss--;
             }
-
+            return budget;
         }
 
         private async void CheckIfSpaardoelCompleted()
