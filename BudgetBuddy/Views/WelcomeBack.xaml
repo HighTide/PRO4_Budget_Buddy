@@ -6,10 +6,13 @@
              Style="{DynamicResource backgroundStyle}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welkom terug!" FontSize="Medium"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                TextColor="{DynamicResource textColor}"/>
+            
+            <Label Text="Welkom terug!" 
+                   FontSize="Large" 
+                   TextColor="Orange"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
