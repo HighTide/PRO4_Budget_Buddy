@@ -32,6 +32,18 @@
 
                 <Image x:Name="spaardoelToevoegen" Source="spaardoel_toevoegen.png" HorizontalOptions="Center"></Image>
 
+                <Label Text="Op het volgende scherm ziet u dat u een beschrijving voor het spaardoel kunt invullen, een spaardoel (bedrag) kunt invoeren en een einddatum voor het sparen kan zetten."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Label Text="De app berekend dan met het aantal dagen en het bedrag uit hoeveel geld je per dag moet wegleggen om het spaardoel te bereiken. Het spaardoel valt terug te zien op de pagina van 'Spaardoelen'."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
                 <!--<Label Text="Ook is het mogelijk om het als vaste last op te geven. Dan moet u het icoontje onder 'Vaste Lasten?' aanvinken door er op te klikken."
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
