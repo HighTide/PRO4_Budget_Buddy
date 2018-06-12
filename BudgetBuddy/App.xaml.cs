@@ -231,11 +231,12 @@ namespace BudgetBuddy
 
                 while (dayss > 0)
                 {
+                    transvalue = 0;
                     int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.AddDays((-dayss + 1)).Month);
                     var recurring = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
                     foreach (var item in recurring)
                     {
-                        transvalue = item.Value / s;
+                        transvalue += item.Value / s;
                         total += item.Value / s;
                     }
                     
@@ -247,7 +248,7 @@ namespace BudgetBuddy
                     Transaction.Category = "Budget";
                     Transaction.Name = "Budget";
                     Transaction.Recurring = false;
-                    _connection.InsertAsync(Transaction);
+                    await _connection.InsertAsync(Transaction);
 
 
                     
