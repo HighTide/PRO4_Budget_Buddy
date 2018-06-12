@@ -242,7 +242,9 @@ namespace BudgetBuddy
 
             }
 
-            await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget"); //Update Last Seen
+            await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget"); //Update Lastseen
+
+            MessagingCenter.Send<App>(this, "BudgetUpdate");  //Force UI Update on BudgetBuddyPage
         }
 
         public async Task<double> BudgetPlaybackSpaardoel(int days, double budget)
