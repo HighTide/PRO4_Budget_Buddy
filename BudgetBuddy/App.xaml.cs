@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using Xamarin.Forms;
 using SQLite;
 using BudgetBuddy.Properties;
@@ -11,8 +13,11 @@ namespace BudgetBuddy
 
     public partial class App : Application
     {
-		private SQLiteAsyncConnection _connection;
-        private DateTime Datum;
+		private SQLiteAsyncConnection _connection; //Used for SQL Connection
+
+        private DateTime _LastSeen; //Used in BudgetPlayback();
+
+        private DateTime Datum; //Used in DailyBudgetAdd();
         private string hex1 = "#303030";
         
 
@@ -187,7 +192,8 @@ namespace BudgetBuddy
 
             }
 
-            DailyBudgetAdd();
+            BudgetPlayback();
+            //DailyBudgetAdd();
         }
 
         protected override void OnSleep()
@@ -200,130 +206,126 @@ namespace BudgetBuddy
             // Handle when your app resumes
         }
 
-        public async void DailyBudgetAdd(int menual = 0)
+        public async void BudgetPlayback(int manual = 0)
         {
-            //some lcal variables
-            double _budgett = 0.00;
+            //Local Variables
+            double budget = 0.00;
             double total = 0.00;
-            //loop through the budget to get the values we need to work with
-            var recur = await _connection.QueryAsync<SQL_Budget>("SELECT * FROM SQL_Budget WHERE NAME = 'Budget'");
-            foreach (var item in recur)
-            {
-                Datum = item.Date;
-                _budgett += item.Value;
-            }
-
-            if (((DateTime.Now.Date - Datum.Date).TotalDays >= 1) || (menual > 0))
-            {
-                //some local variables
-                double transvalue = 0;
-                double days = (DateTime.Now.Date - Datum.Date).TotalDays;
-                int dayss = Convert.ToInt32(Math.Floor(days));
-
-                if(dayss == 0)
-                {
-                    dayss = menual;
-                }
-
-
-                _budgett = await DailyBudgetSpaardoelAdd(dayss, _budgett);
-                total += _budgett;
-
-                while (dayss > 0)
-                {
-                    transvalue = 0;
-                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.AddDays((-dayss + 1)).Month);
-                    var recurring = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
-                    foreach (var item in recurring)
-                    {
-                        transvalue += item.Value / s;
-                        total += item.Value / s;
-                    }
-                    
-
-                    //add new transaction for overviews
-                    var Transaction = new SQL_Transacties();
-                    Transaction.Date = DateTime.Now.AddDays((-dayss + 1));
-                    Transaction.Value = transvalue;
-                    Transaction.Category = "Budget";
-                    Transaction.Name = "Budget";
-                    Transaction.Recurring = false;
-                    await _connection.InsertAsync(Transaction);
-
-
-                    
-                    dayss--;
-                }
-                await _connection.ExecuteAsync("Update SQL_Budget SET Value = ?, Date = ? Where Name = ?", total, DateTime.Now, "Budget");
-                await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget");
-
-            }
-        }
-
-        private async Task<double> DailyBudgetSpaardoelAdd(int dayss, double budget)
-        {
-
-
-            while (dayss > 0)
-            {
-                CheckIfSpaardoelCompleted();
-                //Defining some local Variables
-                var Spaardoelen = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_SpaarDoelen WHERE NOT Completed");
-                var PlaybackDate = DateTime.Now.AddDays(-dayss + 1);
-
-                //Loop trough all the Spaardoelen, selected by the quarry above
-                foreach (var item in Spaardoelen)
-                {
-                    //Prepairing Transaction
-                    var Transaction = new SQL_Transacties();
-                    Transaction.Date = PlaybackDate;
-                    Transaction.Value = item.Value;
-                    Transaction.Category = "Inleg Spaardoel";
-                    Transaction.Name = "Inleg Spaardoel: " + item.Name;
-                    Transaction.Recurring = false;
-                    await _connection.InsertAsync(Transaction);
-
-
-                    //Doing Lame shit because they did not make function
-                    budget += Transaction.Value;
-
-
-                    
-
-                }
-                //Lower Days in Spaardoelen Table, by 1
-                
-
-                //Lower While loop by 1
-                dayss--;
-            }
-            return budget;
-        }
-
-        private async void CheckIfSpaardoelCompleted()
-        {
-            //Get date from database
-            var Spaardoelen = await _connection.QueryAsync<SQL_SpaarDoelen>("SELECT * FROM SQL_SpaarDoelen WHERE NOT Completed");
-
-            //loop trough the data
-            foreach (var item in Spaardoelen)
-            {
-
-                //check if spaardoel is completed
-                if (item.Days <= 0)
-                {
-                    //change Completed to True
-                    await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Completed = 1 Where Name = ?", item.Name);
-                }
-                else
-                {
-                    //lower day by 1
-                    await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Days = ? Where Name = ?", item.Days, item.Name);
-                }
-                
-            }
             
+
+            //Get the current Budget from the budget Table
+            var budgetTable = await _connection.QueryAsync<SQL_Budget>("SELECT * FROM SQL_Budget WHERE NAME = 'Budget'");
+
+            foreach (var item in budgetTable) // Loop trough all returned rows and count them together because its more work to just select 1 entry :P
+            {
+                _LastSeen = item.Date; //Place lastseen DateTime Inside Global _LastSeen
+                budget += item.Value; //Load the current value inside Local budget
+            }
+
+            //Check if the current date is diffrent then the _LastSeen Value, or if its called inside the app for debugging.
+            //All Logic relating to calculating budget for new days happens here.
+            if (((DateTime.Now.Date - _LastSeen.Date).TotalDays >= 1) || (manual > 0))
+            {
+                int days = Convert.ToInt32(Math.Floor((DateTime.Now.Date - _LastSeen.Date).TotalDays)); //Calculate how many days it has been since the app was last opened.
+
+                if (days == 0) //Quick check if the function is called because of new day or for debugging.
+                {
+                    days = manual; //Override the actual day count, for debug value.
+                }
+
+                budget = await BudgetPlaybackSpaardoel(days, budget);
+                budget = await BudgetPlaybackBudget(days, budget);
+
+                await _connection.ExecuteAsync("Update SQL_Budget SET Value = ?, Date = ? Where Name = ?", budget, DateTime.Now, "Budget");
+                
+
+
+            }
+
+            await _connection.ExecuteAsync("Update SQL_Budget SET Date = ? Where Name = ?", DateTime.Now, "Budget"); //Update Lastseen
+
+            MessagingCenter.Send<App>(this, "BudgetUpdate");  //Force UI Update on BudgetBuddyPage
         }
 
+        public async Task<double> BudgetPlaybackSpaardoel(int days, double budget)
+        {
+            while (days > 0) //This is the main loop responsible for calculating all spaardoel progression.
+            {
+                //Defining some local variables
+                var playbackDate = DateTime.Now.AddDays(-days + 1); //Want to make sure to calculate for the right day.
+                var spaardoelen = await _connection.QueryAsync<SQL_SpaarDoelen>("SELECT * FROM SQL_SpaarDoelen WHERE NOT Completed"); //Load all not completed Spaardoelen from the database.
+
+                foreach (var item in spaardoelen) //Loop to make sure we don't forget a Spaardoel, selected from query above.
+                {
+                    //This loop contains 2 tasks:
+                    //Task 1, is to add all the deposits to the transaction table
+                    //Task 2, is to check if we have completed the spaardoel
+
+                    //Task 1: Prepairing new transaction
+                    var transaction = new SQL_Transacties  
+                    {
+                        Date = playbackDate,
+                        Value = item.Value,
+                        Category = "Inleg Spaardoel",
+                        Name = "Inleg Spaardoel: " + item.Name,
+                        Recurring = false
+                    };
+                    Debug.WriteLine("Updating budget, ? lowered the budget with ?", item.Name, item.Value);
+                    await _connection.InsertAsync(transaction); //Push transaction to database
+                    
+                    budget += transaction.Value; //Updating the budget, with the daily deposit amount
+
+
+                    //Task 2: Check if spaardoel is completed
+                    if (item.Days <= 0)
+                    {
+                        //change Completed to True
+                        await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Completed = 1 Where Name = ?", item.Name);
+                        Debug.WriteLine("Spaardoel ? is completed, Updating to completed!", item.Name);
+                    }
+                    else
+                    {
+                        //lower day by 1
+                        //item.Days--;
+                        await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Days = ? Where Name = ?", (item.Days-1), item.Name);
+                        Debug.WriteLine("Spaardoel ? Days have been lowered by 1, ? Remaining", item.Name, item.Days);
+                    }
+                }
+                days--; //Lower the day count by 1 because otherwise we'll be stuck here for a looooooong while
+            }
+
+            return budget; //Return new budget
+        }
+
+        public async Task<double> BudgetPlaybackBudget(int days, double budget)
+        {
+            while (days > 0) //This is the main loop responsible for the daily budget calculations.
+            {
+                double transvalue = 0;
+                int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.AddDays((-days + 1)).Month);
+
+                var recurringTransacties = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
+                foreach (var item in recurringTransacties)
+                {
+                    transvalue += item.Value / s;
+                    budget += item.Value / s;
+                }
+
+
+                //add new transaction for overviews
+                var transaction = new SQL_Transacties();
+                transaction.Date = DateTime.Now.AddDays((-days + 1));
+                transaction.Value = transvalue;
+                transaction.Category = "Budget";
+                transaction.Name = ("Budget voor " + transaction.Date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture));
+                transaction.Recurring = false;
+                await _connection.InsertAsync(transaction);
+
+
+                days--; //Lower the day count by 1 because otherwise we'll be stuck here
+            }
+
+            return budget; //Return new budget
+        }
     }
 }

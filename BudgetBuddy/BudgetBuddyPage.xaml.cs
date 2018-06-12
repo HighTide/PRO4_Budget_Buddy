@@ -4,6 +4,7 @@ using SQLite;
 using BudgetBuddy.Properties;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace BudgetBuddy
 {
@@ -24,14 +25,21 @@ namespace BudgetBuddy
         {
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             InitializeComponent();
-            
+
+            MessagingCenter.Subscribe<App>(this, "BudgetUpdate", (sender) => {
+                Debug.WriteLine("Received Request to ForceUpdate");
+                OnAppearing();
+            });
+
         }
 
         private void Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new HelpPage());
+            //Navigation.PushAsync(new HelpPage());
             //((App)App.Current).DailyBudgetAdd(1);
+            ((App)App.Current).BudgetPlayback(1);
         }
+
 
         protected override async void OnAppearing()
         {
