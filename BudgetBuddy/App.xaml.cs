@@ -200,11 +200,22 @@ namespace BudgetBuddy
             // Handle when your app resumes
         }
 
+        public async void BudgetPlayback(int manual = 0)
+        {
+            //Local Variables
+            double _budget = 0.00;
+            double total = 0.00;
+
+
+
+        }
+
         public async void DailyBudgetAdd(int menual = 0)
         {
             //some lcal variables
             double _budgett = 0.00;
             double total = 0.00;
+
             //loop through the budget to get the values we need to work with
             var recur = await _connection.QueryAsync<SQL_Budget>("SELECT * FROM SQL_Budget WHERE NAME = 'Budget'");
             foreach (var item in recur)
