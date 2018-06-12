@@ -31,6 +31,7 @@ namespace BudgetBuddy
         {
             Navigation.PushAsync(new HelpPage());
             //((App)App.Current).DailyBudgetAdd(1);
+            ((App)App.Current).BudgetPlayback(1);
         }
 
         protected override async void OnAppearing()
