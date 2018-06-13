@@ -70,12 +70,12 @@ namespace BudgetBuddy
                 Icon = "Settings.png",
                 TargetType = typeof(Settings)
             });
-            MenuList.Add(new MasterPageItem()
-            {
-                Title = "-----SQL-----",
-                Icon = "Jurre.jpg",
-                TargetType = typeof(SQL)
-            });
+            //MenuList.Add(new MasterPageItem()
+            //{
+            //    Title = "-----SQL-----",
+            //    Icon = "Jurre.jpg",
+            //    TargetType = typeof(SQL)
+            //});
 
 
 

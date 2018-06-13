@@ -169,6 +169,10 @@ namespace BudgetBuddy
                 Category.Income = false;
                 await _connection.InsertAsync(Category);
 
+                Category.Name = "Zorg";
+                Category.Income = false;
+                await _connection.InsertAsync(Category);
+
                 Category.Name = "Amusement";
                 Category.Income = false;
                 await _connection.InsertAsync(Category);
@@ -201,6 +205,10 @@ namespace BudgetBuddy
                 Category.Income = false;
                 await _connection.InsertAsync(Category);
 
+                Category.Name = "Toeslagen";
+                Category.Income = true;
+                await _connection.InsertAsync(Category);
+
             }
 
             BudgetPlayback();
@@ -221,7 +229,6 @@ namespace BudgetBuddy
         {
             //Local Variables
             double budget = 0.00;
-            double total = 0.00;
             
 
             //Get the current Budget from the budget Table
