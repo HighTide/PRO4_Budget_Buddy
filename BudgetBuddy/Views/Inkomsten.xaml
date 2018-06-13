@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="BudgetBuddy.Views.Inkomsten" 
              Title="Inkomsten"
-             BackgroundColor="{DynamicResource backgroundColor}">
+             BackgroundColor="{DynamicResource backgroundColor}"
+             >
     
     <StackLayout Orientation="Vertical" Padding="20">
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" x:Name="Top_lbl" TextColor="{DynamicResource textColor}"/>

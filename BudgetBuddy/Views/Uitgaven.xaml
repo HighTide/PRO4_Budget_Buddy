@@ -5,8 +5,8 @@
              Title="Uitgaven"
              BackgroundColor="{DynamicResource backgroundColor}"
              Style="Bold">
-    
-    <StackLayout Orientation="Vertical" Padding="20">
+    <ScrollView Margin="0,30,0,0">
+    <StackLayout Orientation="Vertical" Padding="20" >
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Uitgaven toevoegen" x:Name="Top_lbl" TextColor="{DynamicResource textColor}"/>
         <Label Text=""/>
         <StackLayout Orientation="Vertical">
@@ -17,15 +17,16 @@
         </StackLayout>
         <BoxView x:Name="Ruimte" HeightRequest="20" />
         <Label Text=""></Label>
-        <StackLayout Orientation="Vertical">
-            <Label VerticalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
-            <Picker Title="Selecteer Categorie" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}" VerticalOptions="Center"></Picker>
-            <Label Text="Vaste Lasten?" x:Name="vastlstlbl" TextColor="{DynamicResource textColor}"/>
-            <Switch x:Name="Vaste_Lasten" HorizontalOptions="Center"></Switch>
+            <StackLayout Orientation="Vertical">
+                <Label VerticalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
+                <Picker Title="Selecteer Categorie" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}" VerticalOptions="Center"></Picker>
+                <Label Text="Vaste Lasten?" x:Name="vastlstlbl" TextColor="{DynamicResource textColor}"/>
+                <Switch x:Name="Vaste_Lasten" HorizontalOptions="Center"></Switch>
+            </StackLayout>
+            <StackLayout>
+                <Button BorderColor="Bisque" Margin="50,50,50,30" BorderWidth="2" x:Name="Voeg_toe" Text="Voeg toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"/>
+                <Button BorderColor="Bisque" Margin="50,5,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
+            </StackLayout>
         </StackLayout>
-        <StackLayout>
-            <Button BorderColor="Bisque" Margin="50,50,50,30" BorderWidth="2" x:Name="Voeg_toe" Text="Voeg toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"/>
-            <Button BorderColor="Bisque" Margin="50,5,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
-        </StackLayout>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

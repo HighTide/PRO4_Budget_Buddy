@@ -8,6 +8,11 @@ using BudgetBuddy.Properties;
 using BudgetBuddy.Views;
 using System.Threading.Tasks;
 
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Push;
+
 namespace BudgetBuddy
 {
 
@@ -17,7 +22,7 @@ namespace BudgetBuddy
 
         private DateTime _LastSeen; //Used in BudgetPlayback();
 
-        private DateTime Datum; //Used in DailyBudgetAdd();
+       // private DateTime Datum; //Used in DailyBudgetAdd();
         private string hex1 = "#303030";
         
 
@@ -62,7 +67,13 @@ namespace BudgetBuddy
 
 
         protected async override void OnStart()
-        {            
+        {   
+			AppCenter.LogLevel = LogLevel.Verbose;
+
+            //Connect to Analytics to collect those juicy statss
+			AppCenter.Start("android=a9636b16-80a9-46ca-8381-91c6f1b44948;" + "ios=8fc92317-8677-4269-b461-548ebb3469f8", typeof(Analytics), typeof(Crashes), typeof(Push));
+
+
             //Create SQL Connection
             await _connection.CreateTableAsync<SQL_Buttons>();
 
