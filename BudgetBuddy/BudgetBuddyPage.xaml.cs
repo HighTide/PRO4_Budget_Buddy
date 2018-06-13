@@ -170,6 +170,14 @@ namespace BudgetBuddy
             {
                 await Navigation.PushAsync(new Settings());
             }
+            if (Button1.Text == "Budget")
+            {
+                await Navigation.PushAsync(new BudgetOverzicht());
+            }
+            if (Button1.Text == "Spaardoel toevoegen")
+            {
+                await Navigation.PushAsync(new Spaardoelen_Toevoegen());
+            }
         }
 
         async void Button_Pressed2(object sender, System.EventArgs e)
@@ -197,6 +205,14 @@ namespace BudgetBuddy
             if (Button2.Text == "Settings")
             {
                 await Navigation.PushAsync(new Settings());
+            }
+            if (Button2.Text == "Budget")
+            {
+                await Navigation.PushAsync(new BudgetOverzicht());
+            }
+            if (Button2.Text == "Spaardoel toevoegen")
+            {
+                await Navigation.PushAsync(new Spaardoelen_Toevoegen());
             }
         }
 
@@ -226,6 +242,14 @@ namespace BudgetBuddy
             {
                 await Navigation.PushAsync(new Settings());
             }
+            if (Button3.Text == "Budget")
+            {
+                await Navigation.PushAsync(new BudgetOverzicht());
+            }
+            if (Button3.Text == "Spaardoel toevoegen")
+            {
+                await Navigation.PushAsync(new Spaardoelen_Toevoegen());
+            }
         }
 
         async void Button_Pressed4(object sender, System.EventArgs e)
@@ -253,6 +277,14 @@ namespace BudgetBuddy
             if (Button4.Text == "Settings")
             {
                 await Navigation.PushAsync(new Settings());
+            }
+            if (Button4.Text == "Budget")
+            {
+                await Navigation.PushAsync(new BudgetOverzicht());
+            }
+            if (Button4.Text == "Spaardoel toevoegen")
+            {
+                await Navigation.PushAsync(new Spaardoelen_Toevoegen());
             }
         }
     }

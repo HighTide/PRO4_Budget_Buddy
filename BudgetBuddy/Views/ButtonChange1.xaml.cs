@@ -58,5 +58,17 @@ namespace BudgetBuddy.Views
             await DisplayAlert("Gelukt", "Knop verandert naar settings", "OK");
             Navigation.RemovePage(this);
         }
+        private async void Button_OnClicked7(object sender, EventArgs e)
+        {
+            await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Spaardoel toevoegen", "Button1");
+            await DisplayAlert("Gelukt", "Knop verandert naar spaardoel toevoegen", "OK");
+            Navigation.RemovePage(this);
+        }
+        private async void Button_OnClicked8(object sender, EventArgs e)
+        {
+            await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Budget", "Button1");
+            await DisplayAlert("Gelukt", "Knop verandert naar budget", "OK");
+            Navigation.RemovePage(this);
+        }
     }
 }
