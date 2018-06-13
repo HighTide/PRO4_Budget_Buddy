@@ -248,6 +248,8 @@ namespace BudgetBuddy
                 budget = await BudgetPlaybackBudget(days, budget);
 
                 await _connection.ExecuteAsync("Update SQL_Budget SET Value = ?, Date = ? Where Name = ?", budget, DateTime.Now, "Budget");
+
+				Analytics.TrackEvent("Dagelijkse Update");
                 
 
 

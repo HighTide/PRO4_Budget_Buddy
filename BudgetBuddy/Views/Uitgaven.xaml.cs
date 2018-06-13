@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BudgetBuddy.Properties;
+using Microsoft.AppCenter.Analytics;
 using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -120,6 +121,7 @@ namespace BudgetBuddy.Views
                 await DisplayAlert("Gelukt", "Uitgaven succesvol toegevoegd", "OK");
                 if (App.Current.Properties.ContainsKey("savedPropA"))
                 {
+					Analytics.TrackEvent("Uitgaven Toegevoed");
                     await Navigation.PushAsync(new BudgetBuddyPage());
                     Navigation.RemovePage(this);
                 }

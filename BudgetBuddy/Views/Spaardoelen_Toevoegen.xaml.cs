@@ -4,6 +4,7 @@ using System.Diagnostics;
 using SQLite;
 using Xamarin.Forms;
 using BudgetBuddy.Properties;
+using Microsoft.AppCenter.Analytics;
 
 namespace BudgetBuddy.Views
 {
@@ -93,6 +94,8 @@ namespace BudgetBuddy.Views
             spaarDoelen.Days = (DatePickerSpaardoel.Date - DateTime.Now.Date).TotalDays;
             await _connection.InsertAsync(spaarDoelen);
             InsertTransaction();
+
+			Analytics.TrackEvent("Spaardoel Aangemaakt");
             await DisplayAlert("Gelukt", "Spaardoel succesvol toegevoegd", "OK");
             await Navigation.PushAsync(new BudgetBuddyPage());
             Navigation.RemovePage(this);

@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BudgetBuddy.Properties;
 using SQLite;
+using Microsoft.AppCenter.Analytics;
 
 namespace BudgetBuddy.Views
 {
@@ -131,6 +132,7 @@ namespace BudgetBuddy.Views
                 await DisplayAlert("Gelukt", "Inkomsten succesvol toegevoegd", "OK");
                 if (App.Current.Properties.ContainsKey("savedPropA"))
                 { 
+					Analytics.TrackEvent("Inkomsten Aangemaakt");
                     await Navigation.PushAsync(new BudgetBuddyPage());
                     Navigation.RemovePage(this);
                 }
@@ -149,14 +151,16 @@ namespace BudgetBuddy.Views
                 var entry = e.NewTextValue;
                 var MaxLength = 9999999.99;
                 var MinimumLength = 0;
-                if (Bedrag.Text.IndexOf('.') == 0 || Bedrag.Text.IndexOf(',') == 0)
-                {
-                    DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
-                    Bedrag.Text = "";
+                //if (Bedrag.Text.IndexOf('.') == 0 || Bedrag.Text.IndexOf(',') == 0)
+                //{
+                //    DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
+                //    Bedrag.Text = "";
 
-                }
+                //}
 
-                else if (entry != "")
+                //else
+
+					if (entry != "")
                 {
                     double _entry = Convert.ToDouble(entry);
                     if (_entry > MaxLength)
