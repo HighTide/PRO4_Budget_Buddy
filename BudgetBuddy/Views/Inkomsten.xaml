@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="BudgetBuddy.Views.Inkomsten" 
              Title="Inkomsten"
-             BackgroundColor="{DynamicResource backgroundColor}">
-    
+             BackgroundColor="{DynamicResource backgroundColor}"
+             >
+    <ScrollView Margin="0,30,0,0">
     <StackLayout Orientation="Vertical" Padding="20">
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" x:Name="Top_lbl" TextColor="{DynamicResource textColor}"/>
         <Label Text=""/>
@@ -27,4 +28,5 @@
             <Button BorderColor="Bisque" Margin="50,5,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
         </StackLayout>
     </StackLayout>
+    </ScrollView>
 </ContentPage>

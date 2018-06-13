@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.Information2"
@@ -6,7 +6,7 @@
              BackgroundColor="{DynamicResource backgroundColor}"
              Style="{DynamicResource backgroundStyle}">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView Margin="0,30,0,0">
             <StackLayout>
                 <Label Text="Om inkomsten toe te voegen kunt u in het menu naar inkomsten toevoegen gaan. Om in het menu te komen klikt u op de beginpagina linksbovenin op het icoontje."
                    HorizontalTextAlignment="Center"
