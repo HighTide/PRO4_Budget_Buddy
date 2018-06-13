@@ -6,7 +6,8 @@
              BackgroundColor="{DynamicResource backgroundColor}">
     <ContentPage.Content>
         <StackLayout>
-            <BoxView x:Name="Ruimte" HeightRequest="20" />
+            
+            <Label HorizontalOptions="Center" Text="Verander knop 1" TextColor="{DynamicResource textColor}"/>
             <Picker Title="verander knop 1" HorizontalOptions="CenterAndExpand" x:Name="knop1" BackgroundColor="{DynamicResource entryColor}">
                 <Picker.Items>
                     <x:String>Inkomsten</x:String>
@@ -20,6 +21,7 @@
                 </Picker.Items>
             </Picker>
             <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Verander knop 1" Clicked="Button_OnClicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            <Label HorizontalOptions="Center" Text="Verander knop 2" TextColor="{DynamicResource textColor}"/>
             <Picker Title="verander knop 2" HorizontalOptions="CenterAndExpand" x:Name="knop2" BackgroundColor="{DynamicResource entryColor}">
                 <Picker.Items>
                     <x:String>Inkomsten</x:String>
@@ -33,6 +35,7 @@
                 </Picker.Items>
             </Picker>
             <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Verander knop 2" Clicked="Button_OnClicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            <Label HorizontalOptions="Center" Text="Verander knop 3" TextColor="{DynamicResource textColor}"/>
             <Picker Title="verander knop 3" HorizontalOptions="CenterAndExpand" x:Name="knop3" BackgroundColor="{DynamicResource entryColor}">
                 <Picker.Items>
                     <x:String>Inkomsten</x:String>
@@ -46,6 +49,7 @@
                 </Picker.Items>
             </Picker>
             <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Verander knop 3" Clicked="Button_OnClicked3" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            <Label HorizontalOptions="Center" Text="Verander knop 4" TextColor="{DynamicResource textColor}"/>
             <Picker Title="verander knop 4" HorizontalOptions="CenterAndExpand" x:Name="knop4" BackgroundColor="{DynamicResource entryColor}">
                 <Picker.Items>
                     <x:String>Inkomsten</x:String>
