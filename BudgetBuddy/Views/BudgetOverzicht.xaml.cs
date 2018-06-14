@@ -83,7 +83,18 @@ namespace BudgetBuddy.Views
             Total.ItemsSource = Tots;
             foreach (var item in Tots)
             {
-                totalis2 += item.Value;
+                if (item.Recurtype == "Maandelijks")
+                {
+                    totalis2 += item.Value / s;
+                }
+                else if (item.Recurtype == "Per kwartaal")
+                {
+                    totalis2 += item.Value / (k / 4);
+                }
+                else if (item.Recurtype == "Jaarlijks")
+                {
+                    totalis2 += item.Value / k;
+                }
             }
             if (totalis2 >= 0)
             {
@@ -101,7 +112,7 @@ namespace BudgetBuddy.Views
             }
             else
             {
-                Totals.Text = "€ " + (totalis2 / s).ToString("0.00");
+                Totals.Text = "€ " + totalis2.ToString("0.00");
             }
         }
 
