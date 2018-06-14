@@ -24,6 +24,7 @@ namespace BudgetBuddy
 
        // private DateTime Datum; //Used in DailyBudgetAdd();
         private string hex1 = "#303030";
+        public int k = GetDaysInYear(DateTime.Now.Year);
         
 
         public App()
@@ -288,7 +289,8 @@ namespace BudgetBuddy
                         Value = item.Value,
                         Category = "Inleg Spaardoel",
                         Name = "Inleg Spaardoel: " + item.Name,
-                        Recurring = false
+                        Recurring = false,
+                        Recurtype = ""
                     };
                     Debug.WriteLine("Updating budget, ? lowered the budget with ?", item.Name, item.Value);
                     await _connection.InsertAsync(transaction); //Push transaction to database
@@ -324,11 +326,24 @@ namespace BudgetBuddy
                 double transvalue = 0;
                 int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.AddDays((-days + 1)).Month);
 
-                var recurringTransacties = await _connection.QueryAsync<SQL_Transacties>("SELECT Value FROM SQL_Transacties WHERE Recurring");
+                var recurringTransacties = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE Recurring");
                 foreach (var item in recurringTransacties)
                 {
-                    transvalue += item.Value / s;
-                    budget += item.Value / s;
+                    if (item.Recurtype == "Maandelijks")
+                    {
+                        transvalue += item.Value / s;
+                        budget += item.Value / s;
+                    }
+                    else if (item.Recurtype == "Per kwartaal")
+                    {
+                        transvalue += item.Value / (k / 4);
+                        budget += item.Value / (k / 4);
+                    }
+                    else if (item.Recurtype == "Jaarlijks")
+                    {
+                        transvalue += item.Value / k;
+                        budget += item.Value / k;
+                    }
                 }
 
 
@@ -337,8 +352,9 @@ namespace BudgetBuddy
                 transaction.Date = DateTime.Now.AddDays((-days + 1));
                 transaction.Value = transvalue;
                 transaction.Category = "Budget";
-                transaction.Name = ("Budget voor " + transaction.Date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture));
                 transaction.Recurring = false;
+                transaction.Name = ("Budget voor " + transaction.Date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture));
+                transaction.Recurtype = "";
                 await _connection.InsertAsync(transaction);
 
 
@@ -346,6 +362,13 @@ namespace BudgetBuddy
             }
 
             return budget; //Return new budget
+        }
+        public static int GetDaysInYear(int year)
+        {
+            var thisYear = new DateTime(year, 1, 1);
+            var nextYear = new DateTime(year + 1, 1, 1);
+
+            return (nextYear - thisYear).Days;
         }
     }
 }

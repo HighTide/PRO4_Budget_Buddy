@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace BudgetBuddy.Views
         private SQLiteAsyncConnection _connection;
         List<string> _cats = new List<string>();
         private double _budget;
+        List<string> recurList = new List<string>{"Maandelijks", "Per kwartaal", "Jaarlijks"};
 
 
         public Inkomsten()
@@ -26,6 +28,7 @@ namespace BudgetBuddy.Views
 
             InitializeComponent();
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            recurtype.ItemsSource = recurList;
 
             //checks if this is first use of app, if so, execute this
             if (!App.Current.Properties.ContainsKey("savedPropA"))
@@ -36,6 +39,8 @@ namespace BudgetBuddy.Views
                 Mnd_inkmostlbl.IsVisible = false;
                 Top_lbl.FontSize = 15;
                 Top_lbl.Text = "Voeg hier uw maandelijke inkomsten toe. Het is mogelijk om dit meerdere malen te doen! Dit kan ook later nog in de App.";
+                recurtype.IsVisible = true;
+                recurtypelbl.IsVisible = true;
             }
             else
             {
@@ -75,6 +80,7 @@ namespace BudgetBuddy.Views
         private async void Button_OnClicked(object sender, EventArgs e)
         {
             int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            int k = GetDaysInYear(DateTime.Now.Year);
             if (Pick_cat.SelectedItem == null)
             {
                 await DisplayAlert("Alert", "Kies een geldige categorie", "OK");
@@ -96,6 +102,7 @@ namespace BudgetBuddy.Views
 				inkomsten.Value = double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);    
                 inkomsten.Category = Pick_cat.SelectedItem.ToString();
                 inkomsten.Recurring = Maand_Inkomst.IsToggled;
+                inkomsten.Recurtype = recurtype.SelectedItem.ToString();
                 if (Naam.Text == null)
                 {
                     inkomsten.Name = Pick_cat.SelectedItem.ToString();
@@ -105,19 +112,58 @@ namespace BudgetBuddy.Views
                     inkomsten.Name = Naam.Text;
                 }
 
+
+
+
                 var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
 
                 if (Maand_Inkomst.IsToggled)
                 {
-                    
-                    _budget += inkomsten.Value / s;
-                    
-                    foreach (var item in list_budget)
-                    {
-                        _budget += item.Value;
-                    }
+                    inkomsten.Name += " - " + recurtype.SelectedItem.ToString();
                     await _connection.InsertAsync(inkomsten);
-                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+
+                    inkomsten.Recurring = false;
+                    inkomsten.Name = "Update budget";
+                    // if it is monthly income
+                    if (recurtype.SelectedItem.ToString() == "Maandelijks")
+                    { 
+                        _budget += inkomsten.Value / s;
+                        inkomsten.Value /= s;
+                        
+                        foreach (var item in list_budget)
+                        {
+                            _budget += item.Value;
+                        }
+
+                        await _connection.InsertAsync(inkomsten);
+                        await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                    }
+                    // if it is quartarly income
+                    else if (recurtype.SelectedItem.ToString() == "Per kwartaal")
+                    {
+                        _budget += inkomsten.Value / (k/4);
+                        inkomsten.Value /= (k / 4);
+                        foreach (var item in list_budget)
+                        {
+                            _budget += item.Value;
+                        }
+
+                        await _connection.InsertAsync(inkomsten);
+                        await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                    }
+                    // if it is a yearly incme
+                    else if (recurtype.SelectedItem.ToString() == "Jaarlijks")
+                    {
+                        _budget += inkomsten.Value / k;
+                        inkomsten.Value /= k;
+                        foreach (var item in list_budget)
+                        {
+                            _budget += item.Value;
+                        }
+
+                        await _connection.InsertAsync(inkomsten);
+                        await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                    }
                 }
                 else if (!Maand_Inkomst.IsToggled)
                 {
@@ -176,6 +222,29 @@ namespace BudgetBuddy.Views
                     }
                 }
             }
+        }
+
+        private void Maand_Inkomst_OnToggled(object sender, ToggledEventArgs e)
+        {
+            
+            if (e.Value)
+            {
+                recurtype.SelectedIndex = 0;
+                recurtype.IsVisible = true;
+                recurtypelbl.IsVisible = true;
+            }
+            if (!e.Value)
+            {
+                recurtype.IsVisible = false;
+                recurtypelbl.IsVisible = false;
+            }
+        }
+        public static int GetDaysInYear(int year)
+        {
+            var thisYear = new DateTime(year, 1, 1);
+            var nextYear = new DateTime(year + 1, 1, 1);
+
+            return (nextYear - thisYear).Days;
         }
     }
 }
