@@ -58,7 +58,7 @@ namespace BudgetBuddy.Views
                 await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Settings", "Button1");
             }
             await DisplayAlert("Gelukt", "Knop verandert naar "+ knop1.SelectedItem, "OK");
-            //Navigation.PushAsync(new ButtonChange1());
+            
         }
         private async void Button_OnClicked2(object sender, EventArgs e)
         {
@@ -95,7 +95,7 @@ namespace BudgetBuddy.Views
                 await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Settings", "Button2");
             }
             await DisplayAlert("Gelukt", "Knop verandert naar " + knop2.SelectedItem, "OK");
-            //Navigation.PushAsync(new ButtonChange2());
+            
         }
         private async void Button_OnClicked3(object sender, EventArgs e)
         {
@@ -132,7 +132,7 @@ namespace BudgetBuddy.Views
                 await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Settings", "Button3");
             }
             await DisplayAlert("Gelukt", "Knop verandert naar " + knop3.SelectedItem, "OK");
-            //Navigation.PushAsync(new ButtonChange3());
+            
         }
         private async void Button_OnClicked4(object sender, EventArgs e)
         {
@@ -169,7 +169,7 @@ namespace BudgetBuddy.Views
                 await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Settings", "Button4");
             }
             await DisplayAlert("Gelukt", "Knop verandert naar " + knop4.SelectedItem, "OK");
-            //Navigation.PushAsync(new ButtonChange4());
+            
         }
     }
 }

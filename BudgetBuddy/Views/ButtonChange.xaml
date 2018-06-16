@@ -10,8 +10,7 @@
             <Label HorizontalOptions="Center" Text="Verander knop 1" FontSize="Medium" TextColor="{DynamicResource textColor}"/>
             <StackLayout Orientation="Horizontal"
                          BackgroundColor="Transparent"
-                         HorizontalOptions="Fill"
-                         
+                         HorizontalOptions="Fill"                      
                          VerticalOptions="Start">
 
                 <Picker Title="verander knop 1" HorizontalOptions="CenterAndExpand" WidthRequest="250" x:Name="knop1" BackgroundColor="{DynamicResource entryColor}">
