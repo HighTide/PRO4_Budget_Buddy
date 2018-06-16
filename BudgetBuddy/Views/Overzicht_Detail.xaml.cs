@@ -62,12 +62,12 @@ namespace BudgetBuddy.Views
                 Total.IsVisible = true;
                 if(total > 0)
                 {
-                    Soort_label.Text = "Je totale inkomsten zijn:";
+                    Soort_label.Text = $"Je totale inkomsten aan {Title} is:";
                     Total.TextColor = Color.LawnGreen;
                 }
                 else
                 {
-                    Soort_label.Text = "Je totale uitgaven zijn:";
+                    Soort_label.Text = $"Je totale uitgaven aan {Title} is:";
                     Total.TextColor = Color.Red;
                 }
 

@@ -35,7 +35,7 @@ namespace BudgetBuddy.Views
                 Vaste_Lasten.IsToggled = true;
                 vastlstlbl.IsVisible = false;
                 Top_lbl.FontSize = 15;
-                Top_lbl.Text = "Voeg hier uw maandelijke uitgaven toe. Het is mogelijk om dit meerdere malen te doen! Dit kan ook later nog in de App.";
+                Top_lbl.Text = "Voeg hier een maandelijkse uitgaven toe. Het is later mogelijk om meer (vaste) uitgaven toe te voegen in de App.";
                 recurtype.IsVisible = true;
                 recurtypelbl.IsVisible = true;
             }
@@ -87,7 +87,7 @@ namespace BudgetBuddy.Views
 				uitgaven.Value = -double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);            
                 uitgaven.Category = Pick_cat.SelectedItem.ToString();
                 uitgaven.Recurring = Vaste_Lasten.IsToggled;
-                uitgaven.Recurtype = recurtype.SelectedItem.ToString(); ;
+                uitgaven.Recurtype = "";
                 if (Naam.Text == null)
                 {
                     uitgaven.Name = Pick_cat.SelectedItem.ToString();
@@ -104,13 +104,15 @@ namespace BudgetBuddy.Views
 
                 if (Vaste_Lasten.IsToggled)
                 {
+
                     // add database entry for budget samenstelling
+                    uitgaven.Recurtype = recurtype.SelectedItem.ToString();
                     uitgaven.Name += " - " + recurtype.SelectedItem.ToString();
                     await _connection.InsertAsync(uitgaven);
 
                     //change variables for update budget record
                     uitgaven.Recurring = false;
-                    uitgaven.Name = "Update budget";
+                    uitgaven.Name = $"Update budget - {uitgaven.Category}";
 
                     int k = GetDaysInYear(DateTime.Now.Year);
 
@@ -170,6 +172,12 @@ namespace BudgetBuddy.Views
 					Analytics.TrackEvent("Uitgaven Toegevoed");
                     await Navigation.PushAsync(new BudgetBuddyPage());
                     Navigation.RemovePage(this);
+                }
+                else
+                {
+                    App.Current.Properties.Add("savedPropA", "start");
+                    App.Current.SavePropertiesAsync();
+                    App.Current.MainPage = new MainPage();
                 }
             }
 

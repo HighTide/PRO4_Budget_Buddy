@@ -30,7 +30,7 @@
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="{DynamicResource textColor}"/>
 
-                <Label Text="Ook is het mogelijk om het als maandelijke inkomst op te geven. Dan moet u het icoontje onder 'Maandelijke inkomst?' aanvinken door er op te klikken."
+                <Label Text="Ook is het mogelijk om het als maandelijke inkomst op te geven. Dan moet u het icoontje onder 'Vaste inkomst?' aanvinken door er op te klikken, vervolgens moet u de frequentie van de inkomst aangeven."
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
                    HorizontalOptions="CenterAndExpand" 
