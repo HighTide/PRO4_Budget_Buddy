@@ -223,6 +223,11 @@ namespace BudgetBuddy.Views
                     Bedrag.Text = "";
 
                 }
+                else if (entry == "-" || entry == "+")
+                {
+                    DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
+                    Bedrag.Text = "";
+                }
                 else if (entry != "")
                 {
                     double _entry = Convert.ToDouble(entry);
