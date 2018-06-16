@@ -7,8 +7,14 @@
     <ContentPage.Content>
         <StackLayout>
             
-            <Label HorizontalOptions="Center" Text="Verander knop 1" TextColor="{DynamicResource textColor}"/>
-            <Picker Title="verander knop 1" HorizontalOptions="CenterAndExpand" x:Name="knop1" BackgroundColor="{DynamicResource entryColor}">
+            <Label HorizontalOptions="Center" Text="Verander knop 1" FontSize="Medium" TextColor="{DynamicResource textColor}"/>
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="Fill"
+                         
+                         VerticalOptions="Start">
+
+                <Picker Title="verander knop 1" HorizontalOptions="CenterAndExpand" WidthRequest="250" x:Name="knop1" BackgroundColor="{DynamicResource entryColor}">
                 <Picker.Items>
                     <x:String>Inkomsten</x:String>
                     <x:String>Uitgaven</x:String>
@@ -20,49 +26,71 @@
                     <x:String>Settings</x:String>
                 </Picker.Items>
             </Picker>
-            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Verander knop 1" Clicked="Button_OnClicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
-            <Label HorizontalOptions="Center" Text="Verander knop 2" TextColor="{DynamicResource textColor}"/>
-            <Picker Title="verander knop 2" HorizontalOptions="CenterAndExpand" x:Name="knop2" BackgroundColor="{DynamicResource entryColor}">
-                <Picker.Items>
-                    <x:String>Inkomsten</x:String>
-                    <x:String>Uitgaven</x:String>
-                    <x:String>Spaardoelen</x:String>
-                    <x:String>Spaardoel toevoegen</x:String>
-                    <x:String>Overzicht</x:String>
-                    <x:String>Totaal Overzicht</x:String>
-                    <x:String>Budget</x:String>
-                    <x:String>Settings</x:String>
-                </Picker.Items>
-            </Picker>
-            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Verander knop 2" Clicked="Button_OnClicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
-            <Label HorizontalOptions="Center" Text="Verander knop 3" TextColor="{DynamicResource textColor}"/>
-            <Picker Title="verander knop 3" HorizontalOptions="CenterAndExpand" x:Name="knop3" BackgroundColor="{DynamicResource entryColor}">
-                <Picker.Items>
-                    <x:String>Inkomsten</x:String>
-                    <x:String>Uitgaven</x:String>
-                    <x:String>Spaardoelen</x:String>
-                    <x:String>Spaardoel toevoegen</x:String>
-                    <x:String>Overzicht</x:String>
-                    <x:String>Totaal Overzicht</x:String>
-                    <x:String>Budget</x:String>
-                    <x:String>Settings</x:String>
-                </Picker.Items>
-            </Picker>
-            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Verander knop 3" Clicked="Button_OnClicked3" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
-            <Label HorizontalOptions="Center" Text="Verander knop 4" TextColor="{DynamicResource textColor}"/>
-            <Picker Title="verander knop 4" HorizontalOptions="CenterAndExpand" x:Name="knop4" BackgroundColor="{DynamicResource entryColor}">
-                <Picker.Items>
-                    <x:String>Inkomsten</x:String>
-                    <x:String>Uitgaven</x:String>
-                    <x:String>Spaardoelen</x:String>
-                    <x:String>Spaardoel toevoegen</x:String>
-                    <x:String>Overzicht</x:String>
-                    <x:String>Totaal Overzicht</x:String>
-                    <x:String>Budget</x:String>
-                    <x:String>Settings</x:String>
-                </Picker.Items>
-            </Picker>
-            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Verander knop 4" Clicked="Button_OnClicked4" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="OK" Clicked="Button_OnClicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            </StackLayout>
+            
+            <BoxView HeightRequest="10" />
+            <Label HorizontalOptions="Center" Text="Verander knop 2" FontSize="Medium" TextColor="{DynamicResource textColor}"/>
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="Fill"                         
+                         VerticalOptions="Start">
+                <Picker Title="verander knop 2" HorizontalOptions="CenterAndExpand" WidthRequest="250" x:Name="knop2" BackgroundColor="{DynamicResource entryColor}">
+                    <Picker.Items>
+                        <x:String>Inkomsten</x:String>
+                        <x:String>Uitgaven</x:String>
+                        <x:String>Spaardoelen</x:String>
+                        <x:String>Spaardoel toevoegen</x:String>
+                        <x:String>Overzicht</x:String>
+                        <x:String>Totaal Overzicht</x:String>
+                        <x:String>Budget</x:String>
+                        <x:String>Settings</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="OK" Clicked="Button_OnClicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            </StackLayout>
+            
+            <BoxView HeightRequest="10" />
+            <Label HorizontalOptions="Center" Text="Verander knop 3" FontSize="Medium" TextColor="{DynamicResource textColor}"/>
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="Fill"                    
+                         VerticalOptions="Start">
+                <Picker Title="verander knop 3" HorizontalOptions="CenterAndExpand" WidthRequest="250" x:Name="knop3" BackgroundColor="{DynamicResource entryColor}">
+                    <Picker.Items>
+                        <x:String>Inkomsten</x:String>
+                        <x:String>Uitgaven</x:String>
+                        <x:String>Spaardoelen</x:String>
+                        <x:String>Spaardoel toevoegen</x:String>
+                        <x:String>Overzicht</x:String>
+                        <x:String>Totaal Overzicht</x:String>
+                        <x:String>Budget</x:String>
+                        <x:String>Settings</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="OK" Clicked="Button_OnClicked3" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            </StackLayout>
+            
+            <BoxView  HeightRequest="10" />
+            <Label HorizontalOptions="Center" Text="Verander knop 4" FontSize="Medium" TextColor="{DynamicResource textColor}"/>
+            <StackLayout Orientation="Horizontal"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="Fill"                     
+                         VerticalOptions="Start">
+                <Picker Title="verander knop 4" HorizontalOptions="CenterAndExpand" WidthRequest="250"  x:Name="knop4" BackgroundColor="{DynamicResource entryColor}">
+                    <Picker.Items>
+                        <x:String>Inkomsten</x:String>
+                        <x:String>Uitgaven</x:String>
+                        <x:String>Spaardoelen</x:String>
+                        <x:String>Spaardoel toevoegen</x:String>
+                        <x:String>Overzicht</x:String>
+                        <x:String>Totaal Overzicht</x:String>
+                        <x:String>Budget</x:String>
+                        <x:String>Settings</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="OK" Clicked="Button_OnClicked4"  TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"></Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
