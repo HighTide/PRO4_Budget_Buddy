@@ -43,7 +43,7 @@ namespace BudgetBuddy.Views
             Title = category;
             Soort_label.IsVisible = false;
             Total.IsVisible = false;
-            var uitgaven = await _connection.Table<SQL_Transacties>().Where(x => x.Category == category).ToListAsync();
+            var uitgaven = await _connection.Table<SQL_Transacties>().Where(x => x.Category == category && !x.Recurring).ToListAsync();
             foreach (var item in uitgaven)
             {
                 cat_list.Add(item.Category);
@@ -96,7 +96,7 @@ namespace BudgetBuddy.Views
             }
             else if (cat_list.Contains(category))
             {
-                var uitgaven = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE Name COLLATE SQL_Latin1_General_CP1_CI_AS LIKE '%" + keyword + "%' AND Category = '" + category + "'");
+                var uitgaven = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Transacties WHERE NOT Recurring AND Name COLLATE SQL_Latin1_General_CP1_CI_AS LIKE '%" + keyword + "%' AND Category = '" + category + "'");
                 _uitgavenfilter = new ObservableCollection<SQL_Transacties>(uitgaven);
                 ListView.ItemsSource = _uitgavenfilter;
             }
