@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <ScrollView Margin="0,30,0,0">
             <StackLayout>
-                <Label Text="Om uitgaven toe te voegen kunt u in het menu naar uitgaven toevoegen gaan. Om in het menu te komen klikt u op de beginpagina linksbovenin op het icoontje."
+                <Label Text="Om spaardoelen toe te voegen kunt u in het menu naar spaardoelen gaan. Om in het menu te komen klikt u op de beginpagina linksbovenin op het icoontje."
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
                    HorizontalOptions="CenterAndExpand" 

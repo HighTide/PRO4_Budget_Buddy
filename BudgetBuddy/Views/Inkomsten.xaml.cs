@@ -38,7 +38,7 @@ namespace BudgetBuddy.Views
                 Ga_verder.IsVisible = true;
                 Mnd_inkmostlbl.IsVisible = false;
                 Top_lbl.FontSize = 15;
-                Top_lbl.Text = "Voeg hier uw maandelijke inkomsten toe. Het is mogelijk om dit meerdere malen te doen! Dit kan ook later nog in de App.";
+                Top_lbl.Text = "Om te beginnen is het aangeraden om een vaste inkomst in te voeren(bijv. salaris), Het is later mogelijk om meer (vaste) inkomsten toe te voegen";
                 recurtype.IsVisible = true;
                 recurtypelbl.IsVisible = true;
             }
@@ -102,7 +102,7 @@ namespace BudgetBuddy.Views
 				inkomsten.Value = double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);    
                 inkomsten.Category = Pick_cat.SelectedItem.ToString();
                 inkomsten.Recurring = Maand_Inkomst.IsToggled;
-                inkomsten.Recurtype = recurtype.SelectedItem.ToString();
+                inkomsten.Recurtype = "";
                 if (Naam.Text == null)
                 {
                     inkomsten.Name = Pick_cat.SelectedItem.ToString();
@@ -119,11 +119,12 @@ namespace BudgetBuddy.Views
 
                 if (Maand_Inkomst.IsToggled)
                 {
+                    inkomsten.Recurtype = recurtype.SelectedItem.ToString();
                     inkomsten.Name += " - " + recurtype.SelectedItem.ToString();
                     await _connection.InsertAsync(inkomsten);
 
                     inkomsten.Recurring = false;
-                    inkomsten.Name = "Update budget";
+                    inkomsten.Name = $"Update budget - {inkomsten.Category}";
                     // if it is monthly income
                     if (recurtype.SelectedItem.ToString() == "Maandelijks")
                     { 
@@ -182,6 +183,10 @@ namespace BudgetBuddy.Views
                     await Navigation.PushAsync(new BudgetBuddyPage());
                     Navigation.RemovePage(this);
                 }
+                else
+                {
+                    App.Current.MainPage = new Uitgaven();
+                }
             }
         }
 
@@ -197,14 +202,19 @@ namespace BudgetBuddy.Views
                 var entry = e.NewTextValue;
                 var MaxLength = 9999999.99;
                 var MinimumLength = 0;
-                //if (Bedrag.Text.IndexOf('.') == 0 || Bedrag.Text.IndexOf(',') == 0)
-                //{
-                //    DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
-                //    Bedrag.Text = "";
+                if (Bedrag.Text.IndexOf('.') == 0 || Bedrag.Text.IndexOf(',') == 0)
+                {
+                    DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
+                    Bedrag.Text = "";
 
-                //}
+                }
+                else if (entry == "-" || entry == "+")
+                {
+                    DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
+                    Bedrag.Text = "";
+                }
 
-                //else
+                else
 
 					if (entry != "")
                 {

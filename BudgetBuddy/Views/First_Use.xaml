@@ -17,7 +17,7 @@
                    HorizontalOptions="CenterAndExpand" 
                    TextColor="{DynamicResource textColor}"/>
             
-            <Label Text="Het is handig om allereerst je maandelijkse lasten en inkomsten toe te voegen. Zodra je een ander inkomst of uitgaven hebt, kun je die handmatig invoeren." 
+            <Label Text="Het is handig om allereerst je vaste lasten en inkomsten toe te voegen. Zodra je een ander inkomst of uitgaven hebt, kun je die handmatig invoeren." 
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
                    VerticalOptions="CenterAndExpand" 
