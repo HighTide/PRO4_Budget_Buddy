@@ -18,7 +18,8 @@ namespace BudgetBuddy.Views
     {
         //private ObservableCollection<SQL_Category> _cats;
         private SQLiteAsyncConnection _connection;
-        List<string> _cats = new List<string>();
+        private ObservableCollection<SQL_Category> _Categories;
+        
         private double _budget;
         List<string> recurList = new List<string>{"Maandelijks", "Per kwartaal", "Jaarlijks"};
 
@@ -30,6 +31,12 @@ namespace BudgetBuddy.Views
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             recurtype.ItemsSource = recurList;
 
+            var profileTapRecognizer = new TapGestureRecognizer
+            {
+                TappedCallback = (v, o) => { Navigation.PushAsync(new Addcatagory()); },
+                NumberOfTapsRequired = 1
+            };
+            plusbutton.GestureRecognizers.Add(profileTapRecognizer);
             //checks if this is first use of app, if so, execute this
             if (!App.Current.Properties.ContainsKey("savedPropA"))
             {
@@ -41,6 +48,7 @@ namespace BudgetBuddy.Views
                 Top_lbl.Text = "Om te beginnen is het aangeraden om een vaste inkomst in te voeren(bijv. salaris), Het is later mogelijk om meer (vaste) inkomsten toe te voegen";
                 recurtype.IsVisible = true;
                 recurtypelbl.IsVisible = true;
+                plusbutton.IsVisible = false;
             }
             else
             {
@@ -48,10 +56,27 @@ namespace BudgetBuddy.Views
             }
         }
 
+
         protected override async void OnAppearing()
         {
+            List<string> _cats = new List<string>();
+            if (App.Current.Properties.ContainsKey("savedPropB"))
+            {
+                plusbutton.Source = "Add.png";
+
+            }
+            else
+            {
+                plusbutton.Source = "Addblack.png";
+            }
+
+
+
+
+
             var cats = await _connection.Table<SQL_Category>().Where(x => x.Income == true).ToListAsync();
-            foreach (var item in cats)
+            _Categories = new ObservableCollection<SQL_Category>(cats);
+            foreach (var item in _Categories)
             {
                 _cats.Add(item.Name);
             }

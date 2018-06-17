@@ -18,7 +18,10 @@
         <Label Text="" />
         <StackLayout Orientation="Vertical">
             <Label VerticalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
-            <Picker Title="Selecteer Categorie" VerticalOptions="Center" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}"></Picker>
+            <StackLayout Orientation="Horizontal">
+            <Picker Title="Selecteer Categorie" VerticalOptions="Center" x:Name="Pick_cat"  BackgroundColor="{DynamicResource entryColor}" HorizontalOptions="FillAndExpand"></Picker>
+            <Image x:Name="plusbutton" HorizontalOptions="End"></Image>
+            </StackLayout>
             <Label Text="Vaste Inkomst?" TextColor="{DynamicResource textColor}" x:Name="Mnd_inkmostlbl"/>
             <Switch x:Name="Maand_Inkomst" HorizontalOptions="Center" Toggled="Maand_Inkomst_OnToggled" ></Switch>
             <Label Text="Frequentie:" TextColor="{DynamicResource textColor}" x:Name="recurtypelbl" IsVisible="False"/>

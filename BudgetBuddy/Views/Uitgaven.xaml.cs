@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,10 @@ namespace BudgetBuddy.Views
     public partial class Uitgaven : ContentPage
     {
         private SQLiteAsyncConnection _connection;
+        private ObservableCollection<SQL_Category> _Categories;
         private double _Bedrag;
         private double _budget;
-        List<string> _cats = new List<string>();
+        
         List<string> recurList = new List<string> { "Maandelijks", "Per kwartaal", "Jaarlijks" };
         int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
@@ -38,18 +40,40 @@ namespace BudgetBuddy.Views
                 Top_lbl.Text = "Voeg hier een maandelijkse uitgaven toe. Het is later mogelijk om meer (vaste) uitgaven toe te voegen in de App.";
                 recurtype.IsVisible = true;
                 recurtypelbl.IsVisible = true;
+                plusbutton.IsVisible = false;
             }
             else
             {
                 Ga_verder.IsVisible = false;
             }
+
+            var profileTapRecognizer = new TapGestureRecognizer
+            {
+                TappedCallback = (v, o) => { Navigation.PushAsync(new Addcatagory()); },
+                NumberOfTapsRequired = 1
+            };
+            plusbutton.GestureRecognizers.Add(profileTapRecognizer);
         }
 
         protected override async void OnAppearing()
         {
-            
+            List<string> _cats = new List<string>();
+
+            if (App.Current.Properties.ContainsKey("savedPropB"))
+            {
+                plusbutton.Source = "Add.png";
+
+            }
+            else
+            {
+                plusbutton.Source = "Addblack.png";
+            }
+
+
+
             var cats = await _connection.Table<SQL_Category>().Where(x => x.Income == false).ToListAsync();
-            foreach (var item in cats)
+            _Categories = new ObservableCollection<SQL_Category>(cats);
+            foreach (var item in _Categories)
             {
                 _cats.Add(item.Name);
             }
