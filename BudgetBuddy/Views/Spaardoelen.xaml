@@ -24,7 +24,7 @@
                                 <!-- Main design for our menu items -->
                                 <StackLayout >
 
-                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="25,0,0,0">
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="25,15,0,0">
                                         <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
                                     </StackLayout>
 

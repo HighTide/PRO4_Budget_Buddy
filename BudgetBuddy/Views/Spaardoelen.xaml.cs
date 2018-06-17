@@ -40,8 +40,32 @@ namespace BudgetBuddy.Views
 	    }
 	    async void MenuItem_Clicked(object sender, System.EventArgs e)
 	    {
+	        int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
-	    }
+	        var mi = ((MenuItem)sender);
+	        var viewCellSelected = sender as MenuItem;
+	        var calculationToDelete = viewCellSelected?.BindingContext as SQL_SpaarDoelen;
+
+            await _connection.ExecuteAsync("Update SQL_Budget SET Value = Value + ? Where Name = ?", calculationToDelete.Saved, "Budget");
+
+	        
+
+	        var Transaction = new SQL_Transacties();
+	        Transaction.Date = DateTime.Now;
+	        Transaction.Value = calculationToDelete.Saved;
+	        Transaction.Category = "Spaardoel";
+	        Transaction.Name = "Opnamen Spaardoel: " + calculationToDelete.Name;
+	        Transaction.Recurring = false;
+	        await _connection.InsertAsync(Transaction);
+
+
+	        await _connection.DeleteAsync(calculationToDelete);
+
+	        var spaardoelen = await _connection.Table<SQL_SpaarDoelen>().ToListAsync();
+	        _sqlSpaarDoelen = new ObservableCollection<SQL_SpaarDoelen>(spaardoelen);
+	        ListView.ItemsSource = _sqlSpaarDoelen;
+
+        }
     }
 
 
