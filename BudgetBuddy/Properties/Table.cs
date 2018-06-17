@@ -48,6 +48,10 @@ namespace BudgetBuddy.Properties
 
         public double Days { get; set; }
 
+        public double TotalDays { get; set; }
+
+        public double ProgressBar { get; set; }
+
         public string Name { get; set; }
        
         public double Value { get; set; }
