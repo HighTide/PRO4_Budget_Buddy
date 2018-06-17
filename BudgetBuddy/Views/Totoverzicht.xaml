@@ -4,6 +4,10 @@
              x:Class="BudgetBuddy.Views.Totoverzicht"
              BackgroundColor="{DynamicResource backgroundColor}"
              Title="Totaal Overzicht">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="help_button.png" Clicked="MenuItem_OnClicked"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
             <Label HorizontalOptions="Center" Text="Je balans is:" TextColor="{DynamicResource textColor}"/>

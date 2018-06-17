@@ -76,5 +76,9 @@ namespace BudgetBuddy.Views
             Totals.Text = "€ " + totalis2.ToString("0.00");
         }
 
+        private void MenuItem_OnClicked(object sender, EventArgs e)
+        {
+            DisplayAlert("", "Change me", "OK");
+        }
     }
 }
