@@ -38,6 +38,10 @@ namespace BudgetBuddy.Views
 
 	        base.OnAppearing();
 	    }
+	    async void MenuItem_Clicked(object sender, System.EventArgs e)
+	    {
+
+	    }
     }
 
 

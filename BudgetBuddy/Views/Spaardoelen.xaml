@@ -5,36 +5,37 @@
              x:Class="BudgetBuddy.Views.Spaardoelen"
              Title="Spaardoelen"
              BackgroundColor="{DynamicResource backgroundColor}">
-    
-     <ContentPage.ToolbarItems>
+
+    <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="Toevoegen" Text="Toevoegen" Icon="Add.png" Clicked="Handle_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListView" BackgroundColor="{DynamicResource backgroundColor}" SeparatorColor="Orange">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <customControls:ExtendedViewCell SelectedBackgroundColor="Orange">
-                        <ViewCell.View>
-                            <!-- Main design for our menu items -->
-                            <StackLayout >
-                                    
-                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0,0,0,0">
+            <ListView x:Name="ListView" RowHeight="75" BackgroundColor="{DynamicResource backgroundColor}" SeparatorColor="Orange">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <customControls:ExtendedViewCell SelectedBackgroundColor="Orange">
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding Name}"  Text="Delete" IsDestructive="True"/>
+                                <!--<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />-->
+                            </ViewCell.ContextActions>
 
-                                        <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" TextColor="{DynamicResource textColor}"/>
-                                        
-                                        
-                                        
+                            <ViewCell.View>
+                                <!-- Main design for our menu items -->
+                                <StackLayout >
 
-
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="25,0,0,0">
+                                        <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
                                     </StackLayout>
-                                <ProgressBar Progress="{Binding ProgressBar}" ></ProgressBar>
+
+                                    <ProgressBar Progress="{Binding ProgressBar}" HeightRequest="25" ></ProgressBar>
+
                                 </StackLayout>
-                         </ViewCell.View>
-                    </customControls:ExtendedViewCell>
-                </DataTemplate>
+                            </ViewCell.View>
+                        </customControls:ExtendedViewCell>
+                    </DataTemplate>
                 </ListView.ItemTemplate>
-        </ListView>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

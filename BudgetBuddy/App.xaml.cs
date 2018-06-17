@@ -300,11 +300,13 @@ namespace BudgetBuddy
                     //Update Progressbar
                     item.ProgressBar = (item.TotalDays - item.Days) / item.TotalDays;
 
+                    item.Saved += -item.Value;
+
                     //Task 2: Check if spaardoel is completed
                     if (item.Days <= 0)
                     {
                         //Change Completed to True
-                        await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Completed = 1 , ProgressBar = ? Where Name = ?",item.ProgressBar ,item.Name);
+                        await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Completed = 1 , ProgressBar = ? Where Id = ?",item.ProgressBar ,item.Id);
                         Debug.WriteLine("Spaardoel ? is completed, Updating to completed!", item.Name);
 
                         
@@ -313,7 +315,7 @@ namespace BudgetBuddy
                     {
                         //lower day by 1
                         //item.Days--;
-                        await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Days = ? , ProgressBar = ? Where Name = ?", (item.Days-1), item.ProgressBar, item.Name);
+                        await _connection.ExecuteAsync("Update SQL_SpaarDoelen SET Days = ? , ProgressBar = ? , Saved = ? Where Id = ?", (item.Days-1), item.ProgressBar, item.Saved, item.Id);
                         Debug.WriteLine("Spaardoel ? Days have been lowered by 1, ? Remaining", item.Name, item.Days);
                     }
                 }

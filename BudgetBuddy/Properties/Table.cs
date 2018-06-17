@@ -44,6 +44,9 @@ namespace BudgetBuddy.Properties
 
 	public class SQL_SpaarDoelen
     {
+        [AutoIncrement][PrimaryKey]
+        public int Id { get; set; }
+
         public DateTime Date { get; set; }
 
         public double Days { get; set; }
@@ -56,7 +59,9 @@ namespace BudgetBuddy.Properties
        
         public double Value { get; set; }
 
-		public double Goal { get; set; }
+		public double Saved { get; set; }
+
+        public double Goal { get; set; }
 
         public bool Completed { get; set; }
 

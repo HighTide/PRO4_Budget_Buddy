@@ -94,9 +94,10 @@ namespace BudgetBuddy.Views
             spaarDoelen.Name = SpaardoelNaam.Text;
             spaarDoelen.Goal = double.Parse(SpaardoelBedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);
             spaarDoelen.Completed = false;
-            spaarDoelen.Days = (DatePickerSpaardoel.Date - DateTime.Now.Date).TotalDays;
+            spaarDoelen.Days = (DatePickerSpaardoel.Date - DateTime.Now.Date).TotalDays - 2;
             spaarDoelen.TotalDays = spaarDoelen.Days;
             spaarDoelen.ProgressBar = 0;
+            spaarDoelen.Saved = -spaarDoelen.Value;
             await _connection.InsertAsync(spaarDoelen);
             InsertTransaction();
 
