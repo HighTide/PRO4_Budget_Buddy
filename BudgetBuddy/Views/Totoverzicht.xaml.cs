@@ -32,6 +32,7 @@ namespace BudgetBuddy.Views
 
             foreach (var item in Tots)
             {
+
                 totalis += item.Value;
             }
             if (totalis > 0)
@@ -74,6 +75,6 @@ namespace BudgetBuddy.Views
             }
             Totals.Text = "€ " + totalis2.ToString("0.00");
         }
-        
+
     }
 }

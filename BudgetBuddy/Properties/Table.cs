@@ -30,6 +30,8 @@ namespace BudgetBuddy.Properties
         public string Name { get; set; }
 
         public bool Recurring { get; set; }
+
+        public string Recurtype { get; set; }
     }
 
 	public class SQL_Category 

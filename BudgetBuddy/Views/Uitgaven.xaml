@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BudgetBuddy.Views.Uitgaven"
              Title="Uitgaven"
-             BackgroundColor="{DynamicResource backgroundColor}"
-             Style="Bold">
-    <ScrollView Margin="0,30,0,0">
-    <StackLayout Orientation="Vertical" Padding="20" >
+             BackgroundColor="{DynamicResource backgroundColor}">
+    <ScrollView Margin="0,10,0,0">
+        <StackLayout Orientation="Vertical" Padding="20,10,20,0" >
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Uitgaven toevoegen" x:Name="Top_lbl" TextColor="{DynamicResource textColor}"/>
         <Label Text=""/>
         <StackLayout Orientation="Vertical">
@@ -15,16 +14,18 @@
             <Label VerticalOptions="End" Text="Bedrag:" TextColor="{DynamicResource textColor}"/>
             <Entry VerticalOptions="End"  Keyboard="Numeric" Placeholder="Wat kostte het?" x:Name="Bedrag" TextChanged="Bedrag_OnTextChanged" BackgroundColor="{DynamicResource entryColor}"/>
         </StackLayout>
-        <BoxView x:Name="Ruimte" HeightRequest="20" />
+        <BoxView x:Name="Ruimte" HeightRequest="15" />
         <Label Text=""></Label>
             <StackLayout Orientation="Vertical">
                 <Label VerticalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
                 <Picker Title="Selecteer Categorie" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}" VerticalOptions="Center"></Picker>
-                <Label Text="Vaste Lasten?" x:Name="vastlstlbl" TextColor="{DynamicResource textColor}"/>
-                <Switch x:Name="Vaste_Lasten" HorizontalOptions="Center"></Switch>
+                <Label Text="Vaste Last?" x:Name="vastlstlbl" TextColor="{DynamicResource textColor}"/>
+                <Switch x:Name="Vaste_Lasten" HorizontalOptions="Center" Toggled="Vaste_Lasten_OnToggled"></Switch>
+                <Label Text="Frequentie:" TextColor="{DynamicResource textColor}" x:Name="recurtypelbl" IsVisible="False"/>
+                <Picker x:Name="recurtype" IsVisible="False" VerticalOptions="Center" BackgroundColor="{DynamicResource entryColor}" SelectedIndex="0"></Picker>
             </StackLayout>
             <StackLayout>
-                <Button BorderColor="Bisque" Margin="50,50,50,30" BorderWidth="2" x:Name="Voeg_toe" Text="Voeg toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"/>
+                <Button BorderColor="Bisque" Margin="50,20,50,30" BorderWidth="2" x:Name="Voeg_toe" Text="Voeg toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"/>
                 <Button BorderColor="Bisque" Margin="50,5,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
             </StackLayout>
         </StackLayout>

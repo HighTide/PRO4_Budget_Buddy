@@ -18,12 +18,15 @@ namespace BudgetBuddy.Views
         private double _Bedrag;
         private double _budget;
         List<string> _cats = new List<string>();
+        List<string> recurList = new List<string> { "Maandelijks", "Per kwartaal", "Jaarlijks" };
+        int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
         public Uitgaven()
         {
             InitializeComponent();
 
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            recurtype.ItemsSource = recurList;
 
             //checks if this is first use of app, if so, execute this
             if (!App.Current.Properties.ContainsKey("savedPropA"))
@@ -32,7 +35,9 @@ namespace BudgetBuddy.Views
                 Vaste_Lasten.IsToggled = true;
                 vastlstlbl.IsVisible = false;
                 Top_lbl.FontSize = 15;
-                Top_lbl.Text = "Voeg hier uw maandelijke uitgaven toe. Het is mogelijk om dit meerdere malen te doen! Dit kan ook later nog in de App.";
+                Top_lbl.Text = "Voeg hier een maandelijkse uitgaven toe. Het is later mogelijk om meer (vaste) uitgaven toe te voegen in de App.";
+                recurtype.IsVisible = true;
+                recurtypelbl.IsVisible = true;
             }
             else
             {
@@ -42,6 +47,7 @@ namespace BudgetBuddy.Views
 
         protected override async void OnAppearing()
         {
+            
             var cats = await _connection.Table<SQL_Category>().Where(x => x.Income == false).ToListAsync();
             foreach (var item in cats)
             {
@@ -76,11 +82,12 @@ namespace BudgetBuddy.Views
                 player.Play();
                 
 
-                var uitgaven = new SQL_Transacties { };
+                var uitgaven = new SQL_Transacties();
                 uitgaven.Date = DateTime.Now;
 				uitgaven.Value = -double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);            
                 uitgaven.Category = Pick_cat.SelectedItem.ToString();
                 uitgaven.Recurring = Vaste_Lasten.IsToggled;
+                uitgaven.Recurtype = "";
                 if (Naam.Text == null)
                 {
                     uitgaven.Name = Pick_cat.SelectedItem.ToString();
@@ -97,15 +104,56 @@ namespace BudgetBuddy.Views
 
                 if (Vaste_Lasten.IsToggled)
                 {
-                    int s = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-                    _budget += uitgaven.Value / s;
-                    
-                    foreach (var item in list_budget)
-                    {
-                        _budget += item.Value;
-                    }
+
+                    // add database entry for budget samenstelling
+                    uitgaven.Recurtype = recurtype.SelectedItem.ToString();
+                    uitgaven.Name += " - " + recurtype.SelectedItem.ToString();
                     await _connection.InsertAsync(uitgaven);
-                    await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+
+                    //change variables for update budget record
+                    uitgaven.Recurring = false;
+                    uitgaven.Name = $"Update budget - {uitgaven.Category}";
+
+                    int k = GetDaysInYear(DateTime.Now.Year);
+
+                    if (recurtype.SelectedItem.ToString() == "Maandelijks")
+                    {
+                        
+                        _budget += uitgaven.Value / s;
+                        uitgaven.Value /= s;
+                        foreach (var item in list_budget)
+                        {
+                            _budget += item.Value;
+                        }
+                        await _connection.InsertAsync(uitgaven);
+                        await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                    }
+
+                    else if (recurtype.SelectedItem.ToString() == "Per kwartaal")
+                    {
+                        _budget += uitgaven.Value / (k / 4);
+                        uitgaven.Value /= (k / 4);
+                        foreach (var item in list_budget)
+                        {
+                            _budget += item.Value;
+                        }
+
+                        await _connection.InsertAsync(uitgaven);
+                        await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                    }
+                    else if (recurtype.SelectedItem.ToString() == "Jaarlijks")
+                    {
+                        _budget += uitgaven.Value / k;
+                        uitgaven.Value /= k;
+                        foreach (var item in list_budget)
+                        {
+                            _budget += item.Value;
+                        }
+
+                        await _connection.InsertAsync(uitgaven);
+                        await _connection.ExecuteAsync("Update SQL_Budget SET Value = ? Where Name = ?", _budget, "Budget");
+                    }
+
                 }
                 else if(!Vaste_Lasten.IsToggled)
                 {
@@ -124,6 +172,12 @@ namespace BudgetBuddy.Views
 					Analytics.TrackEvent("Uitgaven Toegevoed");
                     await Navigation.PushAsync(new BudgetBuddyPage());
                     Navigation.RemovePage(this);
+                }
+                else
+                {
+                    App.Current.Properties.Add("savedPropA", "start");
+                    App.Current.SavePropertiesAsync();
+                    App.Current.MainPage = new MainPage();
                 }
             }
 
@@ -169,6 +223,11 @@ namespace BudgetBuddy.Views
                     Bedrag.Text = "";
 
                 }
+                else if (entry == "-" || entry == "+")
+                {
+                    DisplayAlert("Alert", "Dit is geen geldige invoer", "OK");
+                    Bedrag.Text = "";
+                }
                 else if (entry != "")
                 {
                     double _entry = Convert.ToDouble(entry);
@@ -184,6 +243,28 @@ namespace BudgetBuddy.Views
                         Bedrag.Text = "";
                     }
                 }
+            }
+        }
+        public static int GetDaysInYear(int year)
+        {
+            var thisYear = new DateTime(year, 1, 1);
+            var nextYear = new DateTime(year + 1, 1, 1);
+
+            return (nextYear - thisYear).Days;
+        }
+
+        private void Vaste_Lasten_OnToggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value)
+            {
+                recurtype.SelectedIndex = 0;
+                recurtype.IsVisible = true;
+                recurtypelbl.IsVisible = true;
+            }
+            if (!e.Value)
+            {
+                recurtype.IsVisible = false;
+                recurtypelbl.IsVisible = false;
             }
         }
     }
