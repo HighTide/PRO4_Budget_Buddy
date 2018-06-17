@@ -18,7 +18,10 @@
         <Label Text=""></Label>
             <StackLayout Orientation="Vertical">
                 <Label VerticalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
-                <Picker Title="Selecteer Categorie" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}" VerticalOptions="Center"></Picker>
+                <StackLayout Orientation="Horizontal">
+                <Picker Title="Selecteer Categorie" x:Name="Pick_cat" BackgroundColor="{DynamicResource entryColor}" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Picker>
+                <Image x:Name="plusbutton" HorizontalOptions="End"></Image>
+                </StackLayout>
                 <Label Text="Vaste Last?" x:Name="vastlstlbl" TextColor="{DynamicResource textColor}"/>
                 <Switch x:Name="Vaste_Lasten" HorizontalOptions="Center" Toggled="Vaste_Lasten_OnToggled"></Switch>
                 <Label Text="Frequentie:" TextColor="{DynamicResource textColor}" x:Name="recurtypelbl" IsVisible="False"/>
