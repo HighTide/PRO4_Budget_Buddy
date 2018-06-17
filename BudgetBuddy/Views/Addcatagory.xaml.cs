@@ -26,10 +26,25 @@ namespace BudgetBuddy.Views
             var cats = await _connection.QueryAsync<SQL_Category>("SELECT Name FROM SQL_Category");
             foreach( var item in cats)
             {
-                catList.Add(item.Name);
+                catList.Add(item.Name.ToLower());
             }
-            if(!catList.Contains(Naam.Text))
+	        if (string.IsNullOrWhiteSpace(Naam.Text))
+	        {
+	            await DisplayAlert("Alert", "Categorie heeft geen naam", "OK");
+	        }
+	        else if (Category.SelectedItem == null)
+	        {
+	            await DisplayAlert("Alert", "Kies een Type categorie", "OK");
+	        }
+            else if (catList.Contains(Naam.Text.ToLower()))
             {
+                await DisplayAlert("Alert", "Categorie bestaat al", "OK");
+            }
+
+            
+            else
+            {
+                
                 var category = new SQL_Category { };
                 category.Name = Naam.Text;
                 if (Category.SelectedIndex == 0)
@@ -43,10 +58,6 @@ namespace BudgetBuddy.Views
                 await _connection.InsertAsync(category);
                 await DisplayAlert("Gelukt", "Categorie succesvol toegevoegd", "OK");
                 Navigation.RemovePage(this);
-            }
-            else
-            {
-                await DisplayAlert("Alert", "Categorie bestaat al", "OK");
             }
             
 	        
