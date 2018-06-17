@@ -291,5 +291,10 @@ namespace BudgetBuddy.Views
                 recurtypelbl.IsVisible = false;
             }
         }
+
+        private void MenuItem_OnClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Information1());
+        }
     }
 }
