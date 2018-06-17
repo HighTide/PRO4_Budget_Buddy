@@ -22,7 +22,7 @@
                          HorizontalOptions="FillAndExpand"
                          HeightRequest="125"
                          VerticalOptions="Start">
-                <Label Text="Resterende bedrag per dag:"
+                <Label Text="Resterende bedrag voor vandaag:"
                        Style="{DynamicResource SubtitleStyle}"
                        FontSize="18"
                        HorizontalOptions="Center"
