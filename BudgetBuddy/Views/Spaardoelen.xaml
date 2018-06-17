@@ -7,34 +7,28 @@
              BackgroundColor="{DynamicResource backgroundColor}">
     
      <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Toevoegen" Text="Toevoegen" Clicked="Handle_Clicked" />
+        <ToolbarItem x:Name="Toevoegen" Text="Toevoegen" Icon="Add.png" Clicked="Handle_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListView" RowHeight = "100" BackgroundColor="{DynamicResource backgroundColor}" SeparatorColor="Orange">
+            <ListView x:Name="ListView" BackgroundColor="{DynamicResource backgroundColor}" SeparatorColor="Orange">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <customControls:ExtendedViewCell SelectedBackgroundColor="Orange">
                         <ViewCell.View>
                             <!-- Main design for our menu items -->
                             <StackLayout >
-                                <ProgressBar x:Name="pb_ProgressBar" Progress="0.75" ></ProgressBar>
-                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,0,0,10">
+                                    
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="0,0,0,0">
 
-                                        <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
-                                        <Label Text="-" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
-                                        <Label Text="{Binding Value, StringFormat='€ {0:F2}'}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
+                                        <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" TextColor="{DynamicResource textColor}"/>
+                                        
+                                        
+                                        
 
-                                        <Label Text="-" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
-                                        <Label Text="{Binding Goal}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
-
-                                        <Label Text="-" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
-                                        <Label Text="{Binding Days}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
-
-                                        <Label Text="-" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
-                                        <Label Text="{Binding Completed}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
 
                                     </StackLayout>
+                                <ProgressBar Progress="{Binding ProgressBar}" ></ProgressBar>
                                 </StackLayout>
                          </ViewCell.View>
                     </customControls:ExtendedViewCell>
