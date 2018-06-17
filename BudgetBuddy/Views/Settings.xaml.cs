@@ -26,18 +26,32 @@ namespace BudgetBuddy.Views
 
         private async void Button_Clicked1(object sender, EventArgs e)
         {
-            App.Current.Resources["backgroundColor"] = Color.White;
-            App.Current.Resources["textColor"] = Color.FromHex(hex1);
-            App.Current.Properties.Remove("savedPropB");
-            await App.Current.SavePropertiesAsync();
+            if (BackgroundColor == Color.White)
+            {
+                await DisplayAlert("Alert", "Het thema is al light!", "OK");
+            }
+            else
+            {
+                App.Current.Resources["backgroundColor"] = Color.White;
+                App.Current.Resources["textColor"] = Color.FromHex(hex1);
+                App.Current.Properties.Remove("savedPropB");
+                await App.Current.SavePropertiesAsync();
+            }
         }
 
         private async void Button_Clicked2(object sender, EventArgs e)
         {
-            App.Current.Resources["backgroundColor"] = Color.FromHex(hex1);
-            App.Current.Resources["textColor"] = Color.White;
-            App.Current.Properties.Add("savedPropB", "start");
-            await App.Current.SavePropertiesAsync();
+            if (App.Current.Properties.ContainsKey("savedPropB"))
+            {
+                await DisplayAlert("Alert", "Het thema is al dark!", "OK");
+            }
+            else
+            {
+                App.Current.Resources["backgroundColor"] = Color.FromHex(hex1);
+                App.Current.Resources["textColor"] = Color.White;
+                App.Current.Properties.Add("savedPropB", "start");
+                await App.Current.SavePropertiesAsync();
+            }
         }
 
 	    private void Button_OnClicked(object sender, EventArgs e)
