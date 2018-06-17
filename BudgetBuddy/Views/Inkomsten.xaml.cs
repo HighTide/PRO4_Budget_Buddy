@@ -281,5 +281,10 @@ namespace BudgetBuddy.Views
 
             return (nextYear - thisYear).Days;
         }
+
+        private void MenuItem_OnClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Information2());
+        }
     }
 }

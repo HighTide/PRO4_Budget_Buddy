@@ -10,7 +10,7 @@
 
             <Image Source="piggy2.png" HorizontalOptions="Center" ></Image>
 
-            <Label Text="Welkom bij Budget Buddy! Deze app is handig om spaardoelen, uitgaven en inkomsten bij te houden." 
+            <Label Text="Welkom bij Budget Buddy! Deze app is handig om spaardoelen, uitgaven en inkomsten bij te houden, en je zo een beter inzicht in je financiele situatie te geven." 
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
                    VerticalOptions="CenterAndExpand" 
