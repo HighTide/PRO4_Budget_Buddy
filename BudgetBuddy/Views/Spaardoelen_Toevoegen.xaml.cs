@@ -19,9 +19,6 @@ namespace BudgetBuddy.Views
             InitializeComponent();
 
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
-            
-
-            //WHY U MERGE NO RIGHT VISUAL STUDIO?
         }
 
 
@@ -49,7 +46,13 @@ namespace BudgetBuddy.Views
                 //Calculate Daily Input
                 InputDay = ((double)goal / (double)days);
 
+                if (double.IsInfinity(InputDay))
+                {
+                    throw new Exception("This is an INFINITE number!");
+                }
+
                 EuroPerDag.Text = "U moet hiervoor dagelijks " + InputDay.ToString("0.00") + " Euro Inleggen.";
+
 
                 SpaardoelenToevoegenButton.IsEnabled = true;
             }
@@ -72,7 +75,7 @@ namespace BudgetBuddy.Views
             await _connection.InsertAsync(Transaction);
 
 
-            //Doing Lame shit because they did not make function
+            //Fake it till you make it!
             var list_budget = await _connection.QueryAsync<SQL_Transacties>("SELECT * FROM SQL_Budget");
 
             _budget -= InputDay;
@@ -91,7 +94,10 @@ namespace BudgetBuddy.Views
             spaarDoelen.Name = SpaardoelNaam.Text;
             spaarDoelen.Goal = double.Parse(SpaardoelBedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture);
             spaarDoelen.Completed = false;
-            spaarDoelen.Days = (DatePickerSpaardoel.Date - DateTime.Now.Date).TotalDays;
+            spaarDoelen.Days = (DatePickerSpaardoel.Date - DateTime.Now.Date).TotalDays - 2;
+            spaarDoelen.TotalDays = spaarDoelen.Days;
+            spaarDoelen.ProgressBar = 0;
+            spaarDoelen.Saved = -spaarDoelen.Value;
             await _connection.InsertAsync(spaarDoelen);
             InsertTransaction();
 
