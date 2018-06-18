@@ -32,5 +32,10 @@ namespace BudgetBuddy.Views
             Navigation.PushAsync(new Information3());
         }
 
+	    private void Button_Clicked4(object sender, EventArgs e)
+	    {
+	        Navigation.PushAsync(new Information4());
+	    }
+
     }
 }

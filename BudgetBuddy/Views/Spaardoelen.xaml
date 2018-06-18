@@ -7,6 +7,7 @@
              BackgroundColor="{DynamicResource backgroundColor}">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="help_button.png" Clicked="MenuItem_OnClicked"/>
         <ToolbarItem x:Name="Toevoegen" Text="Toevoegen" Icon="Add.png" Clicked="Handle_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -24,7 +25,7 @@
                                 <!-- Main design for our menu items -->
                                 <StackLayout >
 
-                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="25,0,0,0">
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="25,15,0,0">
                                         <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="Center" TextColor="{DynamicResource textColor}"/>
                                     </StackLayout>
 

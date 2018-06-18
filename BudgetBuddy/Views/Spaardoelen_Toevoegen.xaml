@@ -5,6 +5,11 @@
              x:Class="BudgetBuddy.Views.Spaardoelen_Toevoegen"
              BackgroundColor="{DynamicResource backgroundColor}"
              Style="{DynamicResource backgroundStyle}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="help_button.png" Clicked="MenuItem_OnClicked"/>
+    </ContentPage.ToolbarItems>
+    
     <StackLayout Orientation="Vertical" Padding="20">
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Spaardoel Toevoegen" TextColor="{DynamicResource textColor}"/>
         <Label Text=""/>

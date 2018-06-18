@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BudgetBuddy.Views.Information4">
+             x:Class="BudgetBuddy.Views.Information4"
+             Title="Bedragen verwijderen" 
+             BackgroundColor="{DynamicResource backgroundColor}"
+             Style="{DynamicResource backgroundStyle}">
     <ContentPage.Content>
-        <StackLayout Margin="0,30,0,0">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView Margin="0,30,0,0">
+            <StackLayout>
+                <Label Text="Om bedragen te verwijderen gaat u naar het menu en klikt u op 'Totaal Overzicht.' Zodra u op het scherm bent, hou dan lang het bedrag aangeklikt wat u wilt verwijderen."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="bedrag_verwijder_1" Source="delet_img.png" HorizontalOptions="Center"></Image>
+
+                <Label Text="Zodra u het lang genoeg heeft ingedrukt, komt er bovein een zwarte balk inplaats van een oranje balk. Daarin staat een 'Delete' knop. Klik daarop en uw bedrag is verwijdert!"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+
+                <Image x:Name="bedrag_verwijder_2" Source="delet_img_but.png" HorizontalOptions="Center"></Image>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

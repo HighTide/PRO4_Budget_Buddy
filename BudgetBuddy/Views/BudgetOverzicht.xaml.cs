@@ -118,7 +118,7 @@ namespace BudgetBuddy.Views
 
         private void MenuItem_OnClicked(object sender, EventArgs e)
         {
-            DisplayAlert("", "Het budget wordt uitgerekend door je vaste inkomsten en lasten over de maand te verdelen.\n\nJe kunt ook uitgaven en inkomsten verwijderen door er met je vinger voor 1 seconde op te drukken, en vervolgens op delete drukken", "OK");
+            DisplayAlert("", "Het budget wordt uitgerekend door je vaste inkomsten en lasten over de huidige maand te verdelen.\n\nIn dit overzicht zie je hoe het dagelijke budget tot stand komt. Dit budget wordt dagelijks aan het nog te besteden bedrag toegevoegd\n\nJe kunt ook budget items verwijderen door er met je vinger voor 1 seconde op te drukken, en vervolgens op delete drukken, dit zal het budget wat je dagelijks krijgt updaten", "OK");
         }
         public static int GetDaysInYear(int year)
         {

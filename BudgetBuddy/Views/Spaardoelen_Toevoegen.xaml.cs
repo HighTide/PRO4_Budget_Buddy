@@ -48,7 +48,31 @@ namespace BudgetBuddy.Views
 
                 if (double.IsInfinity(InputDay))
                 {
+                    //DisplayAlert("Oneindigheid is maar een idee!", "Probeer je een paradox te creeren, stop hier mee!", "Ok, Sorry!");
                     throw new Exception("This is an INFINITE number!");
+                }
+
+                if (goal <= 0)
+                {
+                    DisplayAlert("",
+                        "Voer geldig bedrag in!",
+                        "OK");
+                    SpaardoelBedrag.Text = "";
+                    throw new Exception("This is invalid number!");
+                }
+
+                if (goal >= 10000000)
+                {
+                    DisplayAlert("",
+                        "Het maximale bedrag is 9.999.999,99",
+                        "OK");
+                    SpaardoelBedrag.Text = "9999999.99";
+                    throw new Exception("This is invalid number!");
+                }
+
+                if (Double.IsNaN(goal))
+                {
+                    throw new Exception("Invalid Number!");
                 }
 
                 EuroPerDag.Text = "U moet hiervoor dagelijks " + InputDay.ToString("0.00") + " Euro Inleggen.";
@@ -114,6 +138,11 @@ namespace BudgetBuddy.Views
         private void SpaardoelBedrag_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateCalculations();
+        }
+
+        private void MenuItem_OnClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Information3());
         }
     }
 }

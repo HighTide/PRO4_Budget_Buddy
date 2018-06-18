@@ -133,7 +133,13 @@ namespace BudgetBuddy
             foreach (var item in recur)
             {
                 days_left.Text = "€ " + item.Value.ToString("0.00");
+                if (item.Value < 0)
+                {
+                    days_left.TextColor = Color.Red;
+                }
+
             }
+            
         }
 
         void Text_Click(object sender, System.EventArgs e)

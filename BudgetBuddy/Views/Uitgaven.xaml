@@ -4,6 +4,11 @@
              x:Class="BudgetBuddy.Views.Uitgaven"
              Title="Uitgaven"
              BackgroundColor="{DynamicResource backgroundColor}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="help_button.png" Clicked="MenuItem_OnClicked"/>
+    </ContentPage.ToolbarItems>
+
     <ScrollView Margin="0,10,0,0">
         <StackLayout Orientation="Vertical" Padding="20,10,20,0" >
         <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Uitgaven toevoegen" x:Name="Top_lbl" TextColor="{DynamicResource textColor}"/>

@@ -10,6 +10,7 @@
             <Button Text="Uitgaven toevoegen" BorderColor="Bisque" Margin="5,10,5,5" BorderWidth="2" Clicked="Button_Clicked1" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
             <Button Text="Inkomsten toevoegen" BorderColor="Bisque" Margin="5" BorderWidth="2" Clicked="Button_Clicked2" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
             <Button Text="Spaardoelen" BorderColor="Bisque" Margin="5" BorderWidth="2" Clicked="Button_Clicked3" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
+            <Button Text="Bedragen verwijderen" BorderColor="Bisque" Margin="5" BorderWidth="2" Clicked="Button_Clicked4" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
