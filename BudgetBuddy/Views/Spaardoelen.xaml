@@ -7,6 +7,7 @@
              BackgroundColor="{DynamicResource backgroundColor}">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="help_button.png" Clicked="MenuItem_OnClicked"/>
         <ToolbarItem x:Name="Toevoegen" Text="Toevoegen" Icon="Add.png" Clicked="Handle_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

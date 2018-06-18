@@ -66,7 +66,14 @@ namespace BudgetBuddy.Views
 	        ListView.ItemsSource = _sqlSpaarDoelen;
 
         }
-    }
+
+	    private void MenuItem_OnClicked(object sender, EventArgs e)
+	    {
+	        DisplayAlert("",
+	            "Hier vind je een overzicht van alle spaardoelen.\n\nHet is ook mogelijk een spaardoel te verwijderen door er 1 seconde met je vinger op te drukken en dan op delete te drukken. Maak je geen zorgen het bedrag wordt weer terug gestuurd naar het budget",
+	            "OK");
+        }
+	}
 
 
 }
