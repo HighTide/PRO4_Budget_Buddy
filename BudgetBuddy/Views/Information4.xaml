@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <ScrollView Margin="0,30,0,0">
             <StackLayout>
-                <Label Text="Om bedragen te verwijderen gaat u naar het menu en klikt u op 'Totaal Overzicht.' Zodra u op het scherm bent, hou dan lang het bedrag aangeklikt wat u wilt verwijderen."
+                <Label Text="Om bedragen te verwijderen gaat u naar het menu en klikt u op 'Totaal Overzicht.' Zodra u op het scherm bent, hou dan lang het bedrag ingedrukt wat u wilt verwijderen."
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
                    HorizontalOptions="CenterAndExpand" 
@@ -16,7 +16,7 @@
 
                 <Image x:Name="bedrag_verwijder_1" Source="delet_img.png" HorizontalOptions="Center"></Image>
 
-                <Label Text="Zodra u het lang genoeg heeft ingedrukt, komt er bovein een zwarte balk inplaats van een oranje balk. Daarin staat een 'Delete' knop. Klik daarop en uw bedrag is verwijdert!"
+                <Label Text="Zodra u het lang genoeg heeft ingedrukt, komt er bovenin een zwarte balk inplaats van een oranje balk. Daarin staat een 'Delete' knop. Klik daarop en uw bedrag is verwijdert!"
                    HorizontalTextAlignment="Center"
                    FontSize="Medium"
                    HorizontalOptions="CenterAndExpand" 
