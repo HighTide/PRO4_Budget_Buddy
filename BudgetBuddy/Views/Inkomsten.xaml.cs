@@ -114,6 +114,11 @@ namespace BudgetBuddy.Views
             {
                 await DisplayAlert("Alert", "Voer een bedrag in", "OK");
             }
+            else if (double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture) ==
+                     0.00)
+            {
+                await DisplayAlert("Alert", "Voer een geldig bedrag in", "OK");
+            }
             else
             {
                 var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;

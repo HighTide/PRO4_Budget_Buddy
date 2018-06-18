@@ -94,9 +94,10 @@ namespace BudgetBuddy.Views
             {
                 await DisplayAlert("Alert", "Voer een bedrag in", "OK");
             }
-            else if (_Bedrag > 9999999.99)
+            else if (double.Parse(Bedrag.Text.Replace(",", "."), System.Globalization.CultureInfo.InvariantCulture) ==
+                     0.00)
             {
-
+                await DisplayAlert("Alert", "Voer een geldig bedrag in", "OK");
             }
             else
             {
