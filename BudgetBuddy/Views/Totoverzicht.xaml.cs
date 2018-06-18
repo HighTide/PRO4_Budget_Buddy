@@ -78,7 +78,7 @@ namespace BudgetBuddy.Views
 
         private void MenuItem_OnClicked(object sender, EventArgs e)
         {
-            DisplayAlert("", "Change me", "OK");
+                Navigation.PushAsync(new Information4());
         }
     }
 }

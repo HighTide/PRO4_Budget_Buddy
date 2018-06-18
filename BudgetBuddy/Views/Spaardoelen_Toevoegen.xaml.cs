@@ -115,5 +115,10 @@ namespace BudgetBuddy.Views
         {
             UpdateCalculations();
         }
+
+        private void MenuItem_OnClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Information3());
+        }
     }
 }
