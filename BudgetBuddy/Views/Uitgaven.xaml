@@ -33,8 +33,8 @@
                 <Picker x:Name="recurtype" IsVisible="False" VerticalOptions="Center" BackgroundColor="{DynamicResource entryColor}" SelectedIndex="0"></Picker>
             </StackLayout>
             <StackLayout>
-                <Button BorderColor="Bisque" Margin="50,20,50,30" BorderWidth="2" x:Name="Voeg_toe" Text="Voeg toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"/>
-                <Button BorderColor="Bisque" Margin="50,5,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
+                <Button BorderColor="Bisque" Margin="50,20,50,5" BorderWidth="2" x:Name="Voeg_toe" Text="Voeg toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"/>
+                <Button BorderColor="Bisque" Margin="50,2,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2"  BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
             </StackLayout>
         </StackLayout>
     </ScrollView>
