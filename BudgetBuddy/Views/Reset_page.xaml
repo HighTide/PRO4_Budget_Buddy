@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BudgetBuddy.Views.Reset_page"
+             Title="Reset" 
+             BackgroundColor="{DynamicResource backgroundColor}"
+             Style="{DynamicResource backgroundStyle}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Klik op de knop onderaan om alles te resetten."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+            <Label Text="LET OP: Eenmaal verwijderd kunnen gegevens niet meer teruggehaald worden."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{DynamicResource textColor}"/>
+            <Button BorderColor="Bisque" Margin="5" BorderWidth="2" Text="Reset alles" Clicked="Button_OnClicked" TextColor="{DynamicResource textColor}"  BackgroundColor="{DynamicResource buttonColor}" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -65,7 +65,11 @@ namespace BudgetBuddy.Views
 	        //await _connection.ExecuteAsync("Update SQL_Buttons SET Value = ? Where Name = ?", "Overzicht", "Button1");
 
 	    }
+	    private void Button_OnClicked4(object sender, EventArgs e)
+	    {
+	        Navigation.PushAsync(new Reset_page());
 
+	    }
 
     }
 }
