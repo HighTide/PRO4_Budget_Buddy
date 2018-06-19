@@ -184,6 +184,7 @@ namespace BudgetBuddy
             {
                 await Navigation.PushAsync(new Spaardoelen_Toevoegen());
             }
+            Navigation.RemovePage(this);
         }
 
         async void Button_Pressed2(object sender, System.EventArgs e)
@@ -220,6 +221,7 @@ namespace BudgetBuddy
             {
                 await Navigation.PushAsync(new Spaardoelen_Toevoegen());
             }
+            Navigation.RemovePage(this);
         }
 
         async void Button_Pressed3(object sender, System.EventArgs e)
@@ -256,6 +258,7 @@ namespace BudgetBuddy
             {
                 await Navigation.PushAsync(new Spaardoelen_Toevoegen());
             }
+            Navigation.RemovePage(this);
         }
 
         async void Button_Pressed4(object sender, System.EventArgs e)
@@ -292,6 +295,7 @@ namespace BudgetBuddy
             {
                 await Navigation.PushAsync(new Spaardoelen_Toevoegen());
             }
+            Navigation.RemovePage(this);
         }
     }
 }
