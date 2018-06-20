@@ -38,6 +38,8 @@ namespace BudgetBuddy.Views
                 vastlstlbl.IsVisible = false;
                 Top_lbl.FontSize = 15;
                 Top_lbl.Text = "Voeg hier een maandelijkse uitgaven toe. Het is later mogelijk om meer (vaste) uitgaven toe te voegen in de App.";
+                Header_lbl.IsVisible = true;
+                Header_lbl.FontSize = 17;
                 recurtype.IsVisible = true;
                 recurtypelbl.IsVisible = true;
                 plusbutton.IsVisible = false;
@@ -45,6 +47,7 @@ namespace BudgetBuddy.Views
             else
             {
                 Ga_verder.IsVisible = false;
+                Header_lbl.IsVisible = false;
             }
 
             var profileTapRecognizer = new TapGestureRecognizer

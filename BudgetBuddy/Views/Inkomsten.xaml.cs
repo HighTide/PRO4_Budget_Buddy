@@ -46,6 +46,8 @@ namespace BudgetBuddy.Views
                 Mnd_inkmostlbl.IsVisible = false;
                 Top_lbl.FontSize = 15;
                 Top_lbl.Text = "Om te beginnen is het aangeraden om een vaste inkomst in te voeren(bijv. salaris), Het is later mogelijk om meer (vaste) inkomsten toe te voegen";
+                Header_lbl.IsVisible = true;
+                Header_lbl.FontSize = 17;
                 recurtype.IsVisible = true;
                 recurtypelbl.IsVisible = true;
                 plusbutton.IsVisible = false;
@@ -53,6 +55,8 @@ namespace BudgetBuddy.Views
             else
             {
                 Ga_verder.IsVisible = false;
+                Header_lbl.IsVisible = false;
+
             }
         }
 

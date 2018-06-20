@@ -7,9 +7,10 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="help_button.png" Clicked="MenuItem_OnClicked"/>
     </ContentPage.ToolbarItems>
-    <ScrollView Margin="0,10,0,0">
+    <ScrollView Margin="0,5,0,0">
         <StackLayout Orientation="Vertical" Padding="20,10,20,0">
-        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" x:Name="Top_lbl" TextColor="{DynamicResource textColor}"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" x:Name="Header_lbl" TextColor="{DynamicResource textColor}"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Inkomsten toevoegen" x:Name="Top_lbl" TextColor="{DynamicResource textColor}"/>
         <Label Text=""/>
         <StackLayout Orientation="Vertical">
             <Label VerticalOptions="End" Text="Naam:" TextColor="{DynamicResource textColor}"/>
@@ -17,7 +18,7 @@
             <Label VerticalOptions="End" Text="Bedrag:" TextColor="{DynamicResource textColor}"/>
             <Entry VerticalOptions="End" Placeholder="Voer bedrag in.." Keyboard="Numeric" x:Name="Bedrag" TextChanged="Bedrag_OnTextChanged" BackgroundColor="{DynamicResource entryColor}"/>
         </StackLayout>
-        <BoxView x:Name="Ruimte" HeightRequest="15"/>
+        <BoxView x:Name="Ruimte" HeightRequest="5"/>
         <Label Text="" />
         <StackLayout Orientation="Vertical">
             <Label VerticalOptions="Center" Text="Categorie:" TextColor="{DynamicResource textColor}"/>
@@ -32,7 +33,7 @@
         </StackLayout>
         <StackLayout>
             <Button BorderColor="Bisque" Margin="50,20,50,5" BorderWidth="2" Text="Voeg toe" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"/>
-            <Button BorderColor="Bisque" Margin="50,2,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
+            <Button BorderColor="Bisque" Margin="50,0,50,2" BorderWidth="2" x:Name="Ga_verder" Text="Ga verder" VerticalOptions="CenterAndExpand" Clicked="Button_OnClicked2" BackgroundColor="{DynamicResource buttonColor}" TextColor="{DynamicResource textColor}"></Button>
         </StackLayout>
     </StackLayout>
     </ScrollView>
